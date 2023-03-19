@@ -21,6 +21,7 @@
     - fix: 버그 수정
     - docs: 문서 작업
     - study: 공부 필요
+    - help: 도움 필요
     - release: 배포 작업
 
 ## 브랜치 전략
