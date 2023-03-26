@@ -28,5 +28,26 @@
     <a class="nav-link" href="manager1_Directions.jsp">사용법</a>
   </li>
 </ul>
+<div class="mb-3">
+  <label for="manager-name" class="form-label">담당자명</label>
+  <input type="text" class="form-control" id="manager-name">
+</div>
+<div class="mb-3">
+  <label for="manager-tel" class="form-label">연락처</label>
+  <input type="text" class="form-control" id="manager-tel">
+</div>
+<%--<div class="input-group mb-3">--%>
+<%--  <span class="input-group-text" id="Manager_name">담당자명</span>--%>
+<%--  <input type="text" class="form-control" aria-label="nanager-name" aria-describedby="basic-addon1">--%>
+<%--</div>--%>
+<%--<div class="input-group mb-3">--%>
+<%--  <span class="input-group-text" id="Manager_tel">연락처</span>--%>
+<%--  <input type="text" class="form-control" aria-label="manager-tel" aria-describedby="basic-addon2">--%>
+<%--</div>--%>
+<button type="button" class="btn btn-primary">생성하기</button>
+<div class="form-floating mb-3">
+  <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput" placeholder="name@example.com">
+  <label for="floatingEmptyPlaintextInput">관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</label>
+</div>
 </body>
 </html>
