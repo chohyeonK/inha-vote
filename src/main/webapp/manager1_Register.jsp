@@ -14,7 +14,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> </head>
 <body>
-<ul class="nav nav-pills nav-fill">
+<ul class="nav nav-pills nav-fill" style="max-width: 800px; margin: 20px auto;">
   <li class="nav-item">
     <a class="nav-link" href="manager1_Home.jsp">Home</a>
   </li>
@@ -28,7 +28,14 @@
     <a class="nav-link" href="manager1_Directions.jsp">사용법</a>
   </li>
 </ul>
-
+<ul class="nav nav-tabs" style="max-width: 800px; margin: 20px auto;">
+  <li class="nav-item">
+    <a class="nav-link active">투표 등록</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link">투표 결과</a>
+  </li>
+</ul>
 <%-- ## 1 markup --%>
 <div style="max-width: 800px; margin: 20px auto;">
   <div class="input-group" style="">
@@ -217,6 +224,15 @@
   </div>
   <hr />
 </div>
+
+<ul class="nav nav-tabs" style="max-width: 800px; margin: 20px auto;">
+  <li class="nav-item">
+    <a class="nav-link">투표 등록</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active">투표 결과</a>
+  </li>
+</ul>
 
 <%-- ## 5 markup --%>
 <div style="max-width: 800px; margin: 20px auto;">
