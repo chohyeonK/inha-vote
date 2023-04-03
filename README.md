@@ -49,6 +49,10 @@ Issues: #1234
 - 호스트명, 사용자, 암호 입력
 ![1](https://user-images.githubusercontent.com/125789872/229511934-14a029ba-e334-40ca-825e-98a49f796721.PNG)
 
+2. inteliJ DB 연동
+![4](https://user-images.githubusercontent.com/125789872/229516589-e0558551-493f-46a3-95db-4e87fe4e2648.PNG)
+![3](https://user-images.githubusercontent.com/125789872/229516602-fcf2c0f2-13a9-4241-b299-bc2095776a65.PNG)
+
 ### 파일 질라 접속
 1. 파일 -> 사이트 관리자 -> 새 사이트 만들기 -> 이미지 참고
 참고 ![2](https://user-images.githubusercontent.com/125789872/229513591-ce1c7d26-6f18-49ce-a1aa-1616b885d2d0.PNG)
