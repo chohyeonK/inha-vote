@@ -47,10 +47,10 @@ Issues: #1234
 ## DB 접속
 1. HeidiSQL 로그인(아래와 같이)
 - 호스트명, 사용자, 암호 입력
-![image](https://user-images.githubusercontent.com/45556262/227258019-77410de1-beb2-4cff-959c-607f0e2f42eb.png)
-### DB 접속 참고
-- AWS 사이트 접속 후 로그인(계정 따로 안내)
-    - [접속 링크](https://aws.amazon.com/ko/console/)
-- DB 관련 정보 확인 가능(엔트포인트 - IP, 포트 등)
-![image](https://user-images.githubusercontent.com/45556262/227258588-a88b8595-8247-486f-b343-5e645a08a4af.png)
+![1](https://user-images.githubusercontent.com/125789872/229511934-14a029ba-e334-40ca-825e-98a49f796721.PNG)
+
+### 파일 질라 접속
+1. 파일 -> 사이트 관리자 -> 새 사이트 만들기 -> 이미지 참고
+참고 ![2](https://user-images.githubusercontent.com/125789872/229513591-ce1c7d26-6f18-49ce-a1aa-1616b885d2d0.PNG)
+
 
