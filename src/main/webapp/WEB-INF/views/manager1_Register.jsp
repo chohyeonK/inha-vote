@@ -16,16 +16,16 @@
 <body>
 <ul class="nav nav-pills nav-fill" style="max-width: 800px; margin: 20px auto;">
   <li class="nav-item">
-    <a class="nav-link" href="manager1_Home.jsp">Home</a>
+    <a class="nav-link" href="/">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="manager1_CreateVote.jsp">투표 생성</a>
+    <a class="nav-link" href="CreateVote">투표 생성</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="manager1_Register.jsp">투표 등록</a>
+    <a class="nav-link active" aria-current="page" href="Register">투표 등록</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="manager1_Directions.jsp">사용법</a>
+    <a class="nav-link" href="Directions">사용법</a>
   </li>
 </ul>
 <ul class="nav nav-tabs" style="max-width: 800px; margin: 20px auto;">
