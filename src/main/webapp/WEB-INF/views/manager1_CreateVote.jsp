@@ -46,9 +46,8 @@
 <%--  <input type="text" class="form-control" aria-label="manager-tel" aria-describedby="basic-addon2">--%>
 <%--</div>--%>
 <div class="btn btn-primary">생성하기</div>
-  <div class="form-floating" style="margin: 20px auto">
-    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" disabled></textarea>
-    <label for="floatingTextarea2">관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</label>
+  <div style="width: 100%; height: 150px; border: 1px solid gray; color: gray; margin-top: 15px;">
+    관리자 코드를 분실하실 경우 관리자에게 문의하십시오.
   </div>
 </div>
 </body>
