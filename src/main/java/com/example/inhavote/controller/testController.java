@@ -20,9 +20,6 @@ public class testController {
     {
         return "manager1_Register";
     }
-    @GetMapping("/Directions")
-    public String Directions()
-    {
-        return "manager1_Directions";
-    }
+    @GetMapping("/Help")
+    public String Help() { return "manager1_Help"; }
 }
