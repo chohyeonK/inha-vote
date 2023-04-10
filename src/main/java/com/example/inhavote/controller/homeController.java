@@ -23,6 +23,6 @@ public class homeController {
     @GetMapping("/Help")
     public String Help() { return "manager/manager1_Help"; }
     @GetMapping("/Vote")
-    public String Vote() { return "manager/manager1_Help"; }
+    public String Vote() { return "vote/vote"; }
 
 }
