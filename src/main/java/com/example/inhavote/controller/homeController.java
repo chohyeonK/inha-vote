@@ -24,5 +24,9 @@ public class homeController {
     public String Help() { return "manager/manager1_Help"; }
     @GetMapping("/Vote")
     public String Vote() { return "vote/vote"; }
+    @GetMapping("/User1")
+    public String User1() { return "user/user_1"; }
+    @GetMapping("/User2")
+    public String User2() { return "user/user_2"; }
 
 }
