@@ -16,11 +16,15 @@ public class ManagerEntity {
     private String manager_id;
     private String manager_name;
     private String manager_tel;
+
     private String vote_name;
     private char vote_active;
-    @Id
-    private String vote_id;
 
+    @Id
+    @GeneratedValue
+    private int p_id;
+
+    private String vote_id;
     private String student_major;
     private int student_grade;
 
@@ -29,7 +33,6 @@ public class ManagerEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date end_date;
 
-    @OneToMany(mappedBy = "vote",cascade = CascadeType.REMOVE)
-    private List<CandidateEntity> candidateList;
+
 }
 

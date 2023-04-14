@@ -18,23 +18,27 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
-<div class="mb-3">
-  <label for="manager-name" class="form-label">담당자명</label>
-  <input type="text" class="form-control" id="manager-name">
+    <form action="/CreateVote/managerid_create" method="post">
+        <div class="mb-3">
+            <label for="manager-name" class="form-label">담당자명</label>
+            <input type="text" class="form-control" id="manager-name" name="manager_name">
+        </div>
+        <div class="mb-3">
+          <label for="manager-tel" class="form-label">연락처</label>
+          <input type="text" class="form-control" id="manager-tel" name="manager_tel">
+        </div>
+        <button type="submit" class="btn btn-primary">생성하기</button>
+    </form>
+  <div class="form-floating mnr-zone">
+    <textarea class="form-control mnr-guide" id="floatingTextarea2"disabled readonly></textarea>
+    <label for="floatingTextarea2">관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</label>
+  </div>
 </div>
-<div class="mb-3">
-  <label for="manager-tel" class="form-label">연락처</label>
-  <input type="text" class="form-control" id="manager-tel">
-</div>
-<div class="btn btn-primary">생성하기</div>
-<div class="form-floating mnr-zone">
-  <textarea class="form-control mnr-guide" id="floatingTextarea2"disabled readonly></textarea>
-  <label for="floatingTextarea2">관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</label>
-</div>
-</div>
+
 </body>
 </html>

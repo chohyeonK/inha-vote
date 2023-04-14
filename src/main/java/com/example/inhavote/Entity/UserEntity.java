@@ -11,14 +11,10 @@ import lombok.Setter;
 public class UserEntity {
 
     private String student_id;
-
     private boolean email_confirm;
     private boolean vote_confirm;
-    private String vote_id;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer user_id;
+    private String vote_id;
 
 
 }
