@@ -24,7 +24,7 @@
     <div style="border: 1px solid black; padding: 10px;">미융대 학생회장, 부회장 선거<br>
         투표 시작 : 2023.03.01 00:00<br>
         투표 종료 : 2023.04.01 00:00</div>
-    <div class="d-flex justify-content-center" style="margin: 15px;">
+    <div class="d-flex justify-content-center" style="margin: 15px;" onclick="location.href='User3'">
         <button type="button" class="btn btn-primary btn-block">학생회장 후보</button>
     </div>
     <div class="d-flex justify-content-center" style="margin: 15px">

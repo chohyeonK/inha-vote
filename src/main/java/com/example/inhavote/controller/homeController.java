@@ -28,5 +28,11 @@ public class homeController {
     public String User1() { return "user/user_1"; }
     @GetMapping("/User2")
     public String User2() { return "user/user_2"; }
+    @GetMapping("/User3")
+    public String User3() { return "user/user_3"; }
+    @GetMapping("/User3_1")
+    public String User3_1() { return "user/user_3_1"; }
+    @GetMapping("/User5")
+    public String User5() { return "user/user_5"; }
 
 }
