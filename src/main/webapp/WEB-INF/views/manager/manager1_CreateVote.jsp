@@ -39,6 +39,6 @@
     <label for="floatingTextarea2">관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</label>
   </div>
 </div>
-
+<h1>${vote_id}</h1>
 </body>
 </html>
