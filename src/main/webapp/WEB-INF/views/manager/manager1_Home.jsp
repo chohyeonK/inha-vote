@@ -21,7 +21,7 @@
 </head>
 <body>
 <%@include file="../layout/top_menu.jsp" %>
-<div style="width: 950px; height: auto; margin: 0 auto;">
+<div style="width: 790px; height: auto; margin: 0 auto;">
     <img src="../../../resources/img/main.png" width="100%"/>
 </div>
 </body>
