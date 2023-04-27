@@ -11,7 +11,7 @@
     <a class="nav-link" aria-current="page" href="/">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="CreateVote">투표 생성</a>
+    <a class="nav-link" href="CreateVote">관리자 등록</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="Register">투표 등록</a>

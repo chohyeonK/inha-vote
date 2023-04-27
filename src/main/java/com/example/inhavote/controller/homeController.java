@@ -34,5 +34,9 @@ public class homeController {
     public String User3_1() { return "user/user_3_1"; }
     @GetMapping("/User5")
     public String User5() { return "user/user_5"; }
+    @GetMapping("/Register2")
+    public String Register2() { return "manager/manager1_Register2"; }
+    @GetMapping("/Register3")
+    public String Register3() { return "manager/manager1_Register3"; }
 
 }

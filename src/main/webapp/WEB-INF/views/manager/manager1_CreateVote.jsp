@@ -32,7 +32,9 @@
           <label for="manager-tel" class="form-label">연락처</label>
           <input type="text" class="form-control" id="manager-tel" name="manager_tel">
         </div>
-        <button type="submit" class="btn btn-primary">생성하기</button>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">생성하기</button>
+        </div>
     </form>
   <div class="form-floating mnr-zone">
     <textarea class="form-control mnr-guide" id="floatingTextarea2"disabled readonly></textarea>
