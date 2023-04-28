@@ -38,5 +38,7 @@ public class homeController {
     public String Register2() { return "manager/manager1_Register2"; }
     @GetMapping("/Register3")
     public String Register3() { return "manager/manager1_Register3"; }
+    @GetMapping("/Admin")
+    public String Admin() { return "manager/manager2_Admin"; }
 
 }
