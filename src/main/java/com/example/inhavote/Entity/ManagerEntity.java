@@ -13,26 +13,30 @@ import java.util.List;
 @Table(name="vote")
 public class ManagerEntity {
 
-    private String manager_id;
-    private String manager_name;
-    private String manager_tel;
-
-    private String vote_name;
-    private char vote_active;
+    @Column(name = "manager_id")
+    private String managerid;
+    @Column(name = "manager_name")
+    private String managername;
+    @Column(name = "manager_tel")
+    private String managertel;
+    @Column(name = "vote_name")
+    private String votename;
+    @Column(name = "vote_active")
+    private char voteactive;
 
     @Id
-    @GeneratedValue
-    private int p_id;
-
-    private String vote_id;
-    private String student_major;
-    private int student_grade;
+    @Column(name = "vote_id")
+    private String voteid;
+    @Column(name = "student_major")
+    private String studentmajor;
+    @Column(name = "student_grade")
+    private int studentgrade;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date start_date;
+    @Column(name = "start_date")
+    private Date startdate;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date end_date;
-
-
+    @Column(name = "end_date")
+    private Date enddate;
 }
 

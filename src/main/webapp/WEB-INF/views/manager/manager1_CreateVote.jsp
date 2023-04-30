@@ -23,7 +23,7 @@
 <body>
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
-    <form action="/CreateVote/managerid_create" method="post">
+    <form action="/CreateVote" method="post">
         <div class="mb-3">
             <label for="manager-name" class="form-label">담당자명</label>
             <input type="text" class="form-control" id="manager-name" name="manager_name">
@@ -41,6 +41,6 @@
     <label for="floatingTextarea2">관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</label>
   </div>
 </div>
-<h1>${vote_id}</h1>
+<h1>${manager_id}</h1>
 </body>
 </html>

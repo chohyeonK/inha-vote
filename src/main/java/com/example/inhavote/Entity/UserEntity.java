@@ -9,12 +9,15 @@ import lombok.Setter;
 @Entity
 @Table(name="User")
 public class UserEntity {
-
-    private String student_id;
-    private boolean email_confirm;
-    private boolean vote_confirm;
+    @Column(name = "student_id")
+    private String studentid;
+    @Column(name = "email_confirm")
+    private boolean emailconfirm;
+    @Column(name = "vote_confirm")
+    private boolean voteconfirm;
     @Id
-    private String vote_id;
+    @Column(name = "vote_id")
+    private String voteid;
 
 
 }

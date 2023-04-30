@@ -1,6 +1,7 @@
 package com.example.inhavote.Entity;
 
 //import jakarta.persistence.Column;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -14,13 +15,14 @@ import lombok.Setter;
 @Table(name="Student")
 public class StudentsEntity {
     @Id
-    private String student_id;
-
-    private String student_name;
-
-    private String student_major;
-
-    private int student_grade;
+    @Column(name = "student_id")
+    private String studentid;
+    @Column(name = "student_name")
+    private String studentname;
+    @Column(name = "student_major")
+    private String studentmajor;
+    @Column(name = "student_grade")
+    private int studentgrade;
 
 
 }

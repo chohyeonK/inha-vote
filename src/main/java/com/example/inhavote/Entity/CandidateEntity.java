@@ -10,14 +10,17 @@ import lombok.Setter;
 @Table(name="Candidate")
 public class CandidateEntity {
     @Id
-    private String student_id;
-
-    private String candidate_spec;
-    private String candidate_promise;
-
-    private String vote_id;
-    private int vote_counter;
-
-    private String img_path;
+    @Column(name = "student_id")
+    private String studentid;
+    @Column(name = "candidate_spec")
+    private String candidatespec;
+    @Column(name = "student_promise")
+    private String candidatepromise;
+    @Column(name = "vote_id")
+    private String voteid;
+    @Column(name = "vote_counter")
+    private int votecounter;
+    @Column(name = "img_path")
+    private String imgpath;
 
 }

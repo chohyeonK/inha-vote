@@ -12,8 +12,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().requestMatchers(
-                new AntPathRequestMatcher("/**")).permitAll()
+        http
+                .csrf().disable() // csrf 토큰 비활성화 (테스트시 걸어두는 게 좋음)
+                .authorizeHttpRequests()
+                .requestMatchers(new AntPathRequestMatcher("/**"))
+                .permitAll()
+
         ;
         return http.build();
     }
