@@ -13,18 +13,30 @@ function inputPhone(target) {
 
 // 투표 등록 관련 함수
 function nextPage() {
-    console.log('다음 페이지')
-    const nextEl = document.getElementById('register2-2')
-    const prevEl = document.getElementById('register2-1')
+    // 필수 입력값 체크
+    const voteNm = document.getElementById('vote-name').value
+    const voteStDt = document.getElementById('stDatePicker').value
+    const voteToDt = document.getElementById('toDatePicker').value
 
-    nextEl.style.display = 'block';
-    prevEl.style.display = 'none';
+    if(voteNm && voteStDt && voteToDt) {
+        const nextEl = document.getElementById('register2-2')
+        const prevEl = document.getElementById('register2-1')
+
+        nextEl.style.display = 'block';
+        prevEl.style.display = 'none';
+
+        return true
+    } else {
+        alert('투표명과 투표기간을 입력해주세요.')
+        return false
+    }
 }
 
 // 투표 등록 - 캘린더 라이브러리 연동 함수
 function onDate() {
     $(function(){
-        $('#datepicker').datepicker();
+        $('#stDatePicker').datepicker();
+        $('#toDatePicker').datepicker();
     })
 
     // 한글 세팅
@@ -40,4 +52,16 @@ function onDate() {
         showMonthAfterYear: true,
         yearSuffix: '년'
     });
+}
+
+// 투표 등록 함수
+function onVoteSubmit() {
+    const voteNm = document.getElementById('vote-name').value
+    const voteStDt = document.getElementById('stDatePicker').value
+    const voteToDt = document.getElementById('toDatePicker').value
+    const stuMajor  = document.getElementById('stu-major');
+    const stuMajorValue = (stuMajor.options[stuMajor.selectedIndex].value);
+    const stuGrade  = document.getElementById('stu-grade');
+    const stuGradeValue = (stuGrade.options[stuGrade.selectedIndex].value);
+    console.log(voteNm, voteStDt, voteToDt, stuMajorValue, stuGradeValue)
 }

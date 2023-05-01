@@ -37,35 +37,38 @@
     <div class="tab-pane fade show active" id="reg1">
       <div>
         <div id="register2-1">
-          <div class="d-flex form-group" style="margin-top: 15px;">
-            <label for="staticEmail1" class="col-form-label" style="width: 80px;">투표명: </label>
-            <div class="" style="margin-left: 15px;">
-              <input type="text" class="form-control" id="staticEmail1" value="투표명을 입력해주세요.">
+          <div class="mt-3 mb-3">
+            <label for="vote-name" class="form-label">투표명</label>
+            <input type="text" class="form-control" id="vote-name" name="vote-name" placeholder="투표명을 입력해주세요.">
+          </div>
+          <div class="mb-3">
+            <label for="stDatePicker" class="form-label">투표 기간</label>
+            <div class="d-flex">
+              <input type="text" class="form-control mr-3" id="stDatePicker" placeholder="시작 날짜를 입력해주세요.">
+              <input type="text" class="form-control" id="toDatePicker" placeholder="종료 날짜를 입력해주세요.">
+            </div>
+
+          </div>
+          <div class="mb-3">
+            <label for="stu-major" class="form-label">대상자</label>
+            <div class="d-flex">
+                <select id="stu-major" class="custom-select mr-3">
+                  <option value="모든과" selected>전체</option>
+                  <option value="금융투자학과">금융투자학과</option>
+                  <option value="산업경영학과">산업경영학과</option>
+                  <option value="소프트웨어융합공학과">소프트웨어융합공학과</option>
+                  <option value="메카트로닉스공학과">메카트로닉스공학과</option>
+                </select>
+                <select id="stu-grade" class="custom-select">
+                  <option value="0" selected>전체</option>
+                  <option value="1">1학년</option>
+                  <option value="2">2학년</option>
+                  <option value="3">3학년</option>
+                  <option value="4">4학년</option>
+                </select>
             </div>
           </div>
-          <div class="d-flex form-group" style="margin-top: 15px;">
-            <label for="datepicker" class="col-form-label" style="width: 80px;">투표 기간: </label>
-            <div class="" style="margin-left: 15px;">
-              <input type="text" class="form-control" id="datepicker" value="투표 기간을 입력해주세요.">
-            </div>
-          </div>
-          <div class="d-flex form-group" style="margin-top: 15px;">
-            <label class="col-form-label" style="width: 80px;">대상자: </label>
-            <div class="col-form-label" style="margin-left: 15px;">
-              <select class="custom-select">
-                <option selected>전체</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-              <select class="custom-select">
-                <option selected>전체</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-          </div>
+
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <button type="button" class="btn btn-primary" onclick="nextPage()">다음</button>
           </div>
@@ -175,7 +178,8 @@
 
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <%--        <button type="button" class="btn btn-primary">투표 추가</button>--%>
-            <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="location.href='Register3'">완료</button>
+            <%--<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="location.href='Register3'">완료</button> --%>
+              <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="onVoteSubmit()">완료</button>
           </div>
           <hr />
         </div>

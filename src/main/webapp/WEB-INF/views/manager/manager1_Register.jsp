@@ -32,16 +32,33 @@
 
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
-      <div>
-        <div class="input-group" style="margin-top: 20px;">
-          <span class="input-group-text">관리자 코드</span>
-          <input type="text" class="form-control"/>
+      <form action="/Register/managerid_login" method="post">
+
+        <div class="mt-3 mb-3">
+          <label for="manager-name" class="form-label">관리자 이름</label>
+          <input type="text" class="form-control" id="manager-name" name="manager_name" placeholder="관리자 이름을 입력해주세요.">
         </div>
+        <div class="mb-3">
+          <label for="manager_id" class="form-label">관리자 코드</label>
+          <input type="text" class="form-control" id="manager_id" name="manager_id" placeholder="관리자 코드를 입력해주세요.">
+        </div>
+
         <div class="d-flex justify-content-center" style="margin: 15px">
           <button type="button" class="btn btn-primary" onclick="location.href='Register2'">로그인</button>
         </div>
-        <hr />
-      </div>
+      </form>
+      <hr />
+      <h1>${err}</h1>
+<%--      <div>--%>
+<%--        <div class="input-group" style="margin-top: 20px;">--%>
+<%--          <span class="input-group-text">관리자 코드</span>--%>
+<%--          <input type="text" class="form-control"/>--%>
+<%--        </div>--%>
+<%--        <div class="d-flex justify-content-center" style="margin: 15px">--%>
+<%--          <button type="button" class="btn btn-primary" onclick="location.href='Register2'">로그인</button>--%>
+<%--        </div>--%>
+<%--        <hr />--%>
+<%--      </div>--%>
     </div>
     <div class="tab-pane fade" id="reg2">
       <p style="margin-top: 20px;">투표 결과가 아직 집계되지 않았습니다.</p>
