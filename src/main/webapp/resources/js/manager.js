@@ -1,10 +1,17 @@
-// 관리자 등록 페이지 - 모달 관련 함수
+// 관리자 등록 - 모달 관련 함수
 function closeModal() {
     $('#myModal').modal('hide')
     window.location.href = window.location.protocol + '//' + window.location.host + '/CreateVote'
 }
 
-// 투표 등록 페이지 관련 함수
+// 관리자 등록 - 연락처 자동 하이픈 생성 함수
+function inputPhone(target) {
+    target.value = target.value
+        .replace(/[^0-9]/g, '')
+        .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+}
+
+// 투표 등록 관련 함수
 function nextPage() {
     console.log('다음 페이지')
     const nextEl = document.getElementById('register2-2')
@@ -14,7 +21,7 @@ function nextPage() {
     prevEl.style.display = 'none';
 }
 
-// 투표 등록 페이지 - 캘린더 라이브러리 연동 함수
+// 투표 등록 - 캘린더 라이브러리 연동 함수
 function onDate() {
     $(function(){
         $('#datepicker').datepicker();

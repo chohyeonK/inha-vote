@@ -39,13 +39,13 @@
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
     <form action="/CreateVote" method="post" onsubmit="return onSubmit()">
-        <div class="mb-3">
+        <div class="mt-3 mb-3">
             <label for="manager-name" class="form-label">담당자명</label>
-            <input type="text" class="form-control" id="manager-name" name="manager_name">
+            <input type="text" class="form-control" id="manager-name" name="manager_name" placeholder="담당자명을 입력해주세요.">
         </div>
         <div class="mb-3">
           <label for="manager-tel" class="form-label">연락처</label>
-          <input type="text" class="form-control" id="manager-tel" name="manager_tel">
+          <input type="text" class="form-control" id="manager-tel" name="manager_tel" placeholder="연락처를 입력해주세요." oninput="inputPhone(this)">
         </div>
         <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-primary">생성하기</button>
