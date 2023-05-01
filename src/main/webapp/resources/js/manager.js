@@ -1,3 +1,4 @@
+// 투표 등록 페이지 관련 함수
 function nextPage() {
     console.log('다음 페이지')
     const nextEl = document.getElementById('register2-2')
@@ -7,7 +8,8 @@ function nextPage() {
     prevEl.style.display = 'none';
 }
 
+// 관리자 등록 페이지 - 모달 관련 함수
 function closeModal() {
     $('#myModal').modal('hide')
-    window.location.href = 'localhost:8080/createVote'
+    window.location.href = window.location.protocol + '//' + window.location.host + '/CreateVote'
 }

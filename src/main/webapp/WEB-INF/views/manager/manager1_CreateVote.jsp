@@ -20,23 +20,6 @@
     <script src="../../../resources/js/common.js"></script>
 </head>
 <body>
-<!--class="modal fade"-->
-<%--<div id="myModal" tabindex="-1" role="dialog">--%>
-<%--    <div class="modal-dialog" role="document">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h5 class="modal-title">관리자 등록 완료</h5>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                <p id="managerId">${manager_id}</p>--%>
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">닫기</button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -55,7 +38,7 @@
 </div>
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
-    <form action="/CreateVote" method="post">
+    <form action="/CreateVote" method="post" onsubmit="return onSubmit()">
         <div class="mb-3">
             <label for="manager-name" class="form-label">담당자명</label>
             <input type="text" class="form-control" id="manager-name" name="manager_name">
@@ -73,9 +56,22 @@
     </div>
 </div>
 <script>
+    // 값 전송 받은 후 모달창 띄우는 함수
     const managerId = document.getElementById('managerId').innerText
     if (managerId) {
         $('#myModal').modal('show')
+    }
+
+    // 값 체크하는 함수
+    function onSubmit() {
+        const managerName = document.getElementById('manager-name').value
+        const managerTel = document.getElementById('manager-tel').value
+        if (managerName && managerTel) {
+            return true
+        } else {
+            alert('담당자명 또는 담당자 연락처를 입력하여주세요.')
+            return false
+        }
     }
 </script>
 </body>
