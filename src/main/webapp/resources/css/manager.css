@@ -1,1 +1,7 @@
 /* 관리자페이지에서 사용되는 스타일 정의 */
+.admin-frame {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    word-break: keep-all;
+}

@@ -6,3 +6,8 @@ function nextPage() {
     nextEl.style.display = 'block';
     prevEl.style.display = 'none';
 }
+
+function closeModal() {
+    $('#myModal').modal('hide')
+    window.location.href = 'localhost:8080/createVote'
+}

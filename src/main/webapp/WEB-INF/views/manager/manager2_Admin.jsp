@@ -21,10 +21,13 @@
 
 </head>
 <body>
-<div class="frame">
+<div class="admin-frame">
+    <h1>Vote Admin</h1>
+
     <table border="3">
         <th>번호</th>
         <th>관리자 코드</th>
+        <th>투표 ID</th>
         <th>담당자명</th>
         <th>담당자 연락처</th>
         <th>투표기간</th>
@@ -35,6 +38,7 @@
         <tr>
             <td>1</td>
             <td>johndae</td>
+            <td>vote_A12151</td>
             <td>하도영</td>
             <td>010-1234-1234</td>
             <td>2023.03.02~2023.04.01</td>
@@ -67,6 +71,7 @@
         <tr>
             <td>2</td>
             <td>bandae</td>
+            <td>vote_A25656</td>
             <td>하도영</td>
             <td>010-1234-1234</td>
             <td>2023.03.02~2023.04.01</td>
