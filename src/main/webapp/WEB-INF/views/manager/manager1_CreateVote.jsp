@@ -45,7 +45,7 @@
         </div>
         <div class="mb-3">
           <label for="manager-tel" class="form-label">연락처</label>
-          <input type="text" class="form-control" id="manager-tel" name="manager_tel" placeholder="연락처를 입력해주세요." oninput="inputPhone(this)">
+          <input type="text" class="form-control" id="manager-tel" name="manager_tel" placeholder="연락처를 입력해주세요." maxlength="13" oninput="inputPhone(this)">
         </div>
         <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-primary">생성하기</button>
