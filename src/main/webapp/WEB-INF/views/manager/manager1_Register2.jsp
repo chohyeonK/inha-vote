@@ -83,8 +83,8 @@
             <div style="margin-top: 15px;">학번 검색</div>
             <div style="width: 100%; height: 600px; border: 1px solid black; margin-top: 15px;">
               <div style="width: 50%; height: 100%; padding: 16px; border-right: 1px solid black; float: left;">
-                <form class="form-inline" style="display: flex;">
-                  <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+                <form class="form-inline" style="display: flex;" action="searchStudentName" method="get">
+                  <input class="form-control " type="search" placeholder="Search" aria-label="Search" name="student_name">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
                 </form>
                 <div style="border: 1px solid black;">

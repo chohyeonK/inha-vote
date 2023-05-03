@@ -1,6 +1,6 @@
 package com.example.inhavote.controller;
 
-import com.example.inhavote.DTO.CandidateDTO;
+//import com.example.inhavote.DTO.CandidateDTO;
 import com.example.inhavote.DTO.ManagerDTO;
 import com.example.inhavote.Service.ManagerService;
 import jakarta.servlet.http.HttpSession;
@@ -63,6 +63,7 @@ public class ManagerController {
         model.addAttribute("manager_id", manager_id);
         return "manager/manager1_Register3";
     }
+
 
 
 }
