@@ -1,6 +1,8 @@
 package com.example.inhavote.DTO;
 
+import com.example.inhavote.Entity.ManagerEntity;
 import com.example.inhavote.RandomCode;
+import com.example.inhavote.Repository.ManagerRepository;
 import lombok.Getter;
 
 import java.util.Date;

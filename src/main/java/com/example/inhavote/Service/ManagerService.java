@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @RequiredArgsConstructor
 @Service
 public class ManagerService {
@@ -23,16 +25,15 @@ public class ManagerService {
         this.managerRepository.save(manager);
     }
     @Transactional
-    public  void register(String vote_id,String vote_name){
+    public  void register(String vote_id, String vote_name,int student_grade,String student_major,Date start_date,Date end_date){
         ManagerEntity manager=managerRepository.findByVoteid(vote_id);
         manager.setVotename(vote_name);
-
-        /*manager.setEnddate(managerDTO.getEnd_date());
-        manager.setStartdate(managerDTO.getStart_date());
-        manager.setStudentgrade(managerDTO.getStudent_grade());
-        manager.setStudentmajor(managerDTO.getStudent_major());*/
-        //this.managerRepository.save(manager);
+        manager.setEnddate(end_date);
+        manager.setStartdate(start_date);
+        manager.setStudentgrade(student_grade);
+        manager.setStudentmajor(student_major);
     }
+
     public ManagerEntity findByManager_id(String manager_id){
         System.out.println("managerRepository.findByVote_id(vote_id):"+managerRepository.findByManagerid(manager_id));
         return managerRepository.findByManagerid(manager_id);
@@ -40,5 +41,10 @@ public class ManagerService {
     public ManagerEntity findByVote_id(String vote_id){
         System.out.println("managerRepository.findByVote_id(vote_id):"+managerRepository.findByVoteid(vote_id));
         return managerRepository.findByVoteid(vote_id);
+    }
+    public Boolean findByManager_idAndManager_name(String manager_id,String manager_name){
+        ManagerEntity manager=managerRepository.findByManageridAndManagername(manager_id,manager_name);
+        boolean exists=(manager!=null);
+        return exists;
     }
 }

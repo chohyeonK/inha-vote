@@ -11,4 +11,5 @@ public interface ManagerRepository extends JpaRepository<ManagerEntity,String> {
 
     ManagerEntity findByVoteid(String vote_id);
     ManagerEntity findByManagerid(String manager_id);
+    ManagerEntity findByManageridAndManagername(String manager_id,String manager_name);
 }

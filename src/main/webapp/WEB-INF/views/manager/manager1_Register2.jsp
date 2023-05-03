@@ -36,30 +36,31 @@
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <div>
+        <form action="/Register2/vote_resgister" method="post">
         <div id="register2-1">
           <div class="mt-3 mb-3">
             <label for="vote-name" class="form-label">투표명</label>
-            <input type="text" class="form-control" id="vote-name" name="vote-name" placeholder="투표명을 입력해주세요.">
+            <input type="text" class="form-control" id="vote-name" name="vote_name" placeholder="투표명을 입력해주세요.">
           </div>
           <div class="mb-3">
             <label for="stDatePicker" class="form-label">투표 기간</label>
             <div class="d-flex">
-              <input type="text" class="form-control mr-3" id="stDatePicker" placeholder="시작 날짜를 입력해주세요.">
-              <input type="text" class="form-control" id="toDatePicker" placeholder="종료 날짜를 입력해주세요.">
+              <input type="text" class="form-control mr-3" id="stDatePicker" name="start_date" placeholder="시작 날짜를 입력해주세요.">
+              <input type="text" class="form-control" id="toDatePicker" name="end_date" placeholder="종료 날짜를 입력해주세요.">
             </div>
 
           </div>
           <div class="mb-3">
             <label for="stu-major" class="form-label">대상자</label>
             <div class="d-flex">
-                <select id="stu-major" class="custom-select mr-3">
+                <select id="stu-major" class="custom-select mr-3" name="student_major">
                   <option value="모든과" selected>전체</option>
                   <option value="금융투자학과">금융투자학과</option>
                   <option value="산업경영학과">산업경영학과</option>
                   <option value="소프트웨어융합공학과">소프트웨어융합공학과</option>
                   <option value="메카트로닉스공학과">메카트로닉스공학과</option>
                 </select>
-                <select id="stu-grade" class="custom-select">
+                <select id="stu-grade" class="custom-select" name="student_grade">
                   <option value="0" selected>전체</option>
                   <option value="1">1학년</option>
                   <option value="2">2학년</option>
@@ -68,12 +69,13 @@
                 </select>
             </div>
           </div>
-
+          <input type="hidden" name="manager_id" value=${manager_id} />
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <button type="button" class="btn btn-primary" onclick="nextPage()">다음</button>
           </div>
           <hr />
         </div>
+
 
         <%-- ## 3 markup --%>
         <div id="register2-2" style="display: none;">
@@ -179,10 +181,11 @@
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <%--        <button type="button" class="btn btn-primary">투표 추가</button>--%>
             <%--<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="location.href='Register3'">완료</button> --%>
-              <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="onVoteSubmit()">완료</button>
+              <button type="submit" class="btn btn-primary" style="margin-left: 10px;" onclick="onVoteSubmit()">완료</button>
           </div>
           <hr />
         </div>
+        </form>
       </div>
     </div>
     <div class="tab-pane fade" id="reg2">
