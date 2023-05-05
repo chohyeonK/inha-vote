@@ -1,5 +1,8 @@
 package com.example.inhavote.controller;
 
+import com.example.inhavote.Entity.ManagerEntity;
+import com.example.inhavote.Service.ManagerService;
+import org.springframework.ui.Model;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/")
 public class UserController {
-    @GetMapping("/User1/{manager_id}")
-    public String User1(@PathVariable("manager_id") String manager_id){
+    private final ManagerService managerService;
+
+    @GetMapping("/User1={manager_id}")
+    public String User1(@PathVariable("manager_id") String manager_id, Model model){
         System.out.println("user"+manager_id);
+        ManagerEntity manager = managerService.findByManager_id(manager_id) ;
+        model.addAttribute("vote_name",manager.getVotename());
+        model.addAttribute("start_date",manager.getStartdate());
+        model.addAttribute("end_date",manager.getEnddate());
         return "user/user_1";
     }
+
 }

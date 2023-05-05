@@ -21,9 +21,9 @@
 </head>
 <body>
 <div class="frame">
-    <div style="border: 1px solid black; padding: 10px;">미융대 학생회장, 부회장 선거<br>
-    투표 시작 : 2023.03.01 00:00<br>
-    투표 종료 : 2023.04.01 00:00</div>
+    <div style="border: 1px solid black; padding: 10px;">${vote_name}<br>
+    투표 시작 : ${start_date}<br>
+    투표 종료 : ${end_date}</div>
     <div class="d-flex justify-content-center" style="margin: 15px">
         <button type="button" class="btn btn-primary btn-lg" onclick="location.href='User2'">투표 정보</button>
     </div>
