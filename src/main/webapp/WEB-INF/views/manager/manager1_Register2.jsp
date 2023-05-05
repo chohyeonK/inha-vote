@@ -36,7 +36,7 @@
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <div>
-        <form action="/Register2/vote_resgister" method="post">
+        <form action="/Register2/vote_resgister" method="post" enctype="multipart/form-data">
         <div id="register2-1">
           <div class="mt-3 mb-3">
             <label for="vote-name" class="form-label">투표명</label>
@@ -177,7 +177,9 @@
               </div>
             </div>
           </div>
-
+          <%--사진 입력--%>
+          <input type="file" name="img" />
+          <%--<h1>${err}</h1>--%>
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <%--        <button type="button" class="btn btn-primary">투표 추가</button>--%>
             <%--<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="location.href='Register3'">완료</button> --%>

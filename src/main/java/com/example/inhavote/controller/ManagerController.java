@@ -13,7 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.inhavote.Entity.ManagerEntity;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +32,7 @@ public class ManagerController {
     @PostMapping(value = "/CreateVote")
     public String createVote(ManagerDTO managerDTO, Model model) {
         System.out.println(managerDTO.toString());
-        managerService.create(managerDTO);
+        managerService.create_vote(managerDTO);
         model.addAttribute("manager_id", managerDTO.getManager_id());
         return "manager/manager1_CreateVote";
     }
@@ -52,15 +57,18 @@ public class ManagerController {
     }
 
     @PostMapping(value = "/Register2/vote_resgister")
-    public String registerVote(Model model, @RequestParam("manager_id") String manager_id, @RequestParam String vote_name, @RequestParam String student_major, @RequestParam int student_grade, @RequestParam String start_date, @RequestParam String end_date) throws ParseException {
+    public String registerVote(@RequestParam MultipartFile img,Model model, @RequestParam String manager_id, @RequestParam String vote_name, @RequestParam String student_major, @RequestParam int student_grade, @RequestParam String start_date, @RequestParam String end_date) throws ParseException {
         ManagerEntity manager = managerService.findByManager_id(manager_id) ;
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date m_start_date,m_end_date;
         m_start_date=formatter.parse(start_date);
         m_end_date=formatter.parse(end_date);
         System.out.println(manager_id+"/"+vote_name+" 전공:"+student_major+" 학년:"+student_grade);
-        managerService.register(manager.getVoteid(),vote_name,student_grade,student_major,m_start_date,m_end_date);
+        managerService.register_vote(manager.getVoteid(),vote_name,student_grade,student_major,m_start_date,m_end_date);
+        managerService.imgUpload(img);
         model.addAttribute("manager_id", manager_id);
+
+        //model .addAttribute("err",managerService.imgUpload(file));
         return "manager/manager1_Register3";
     }
 

@@ -6,7 +6,12 @@ import com.example.inhavote.Repository.ManagerRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 
 @RequiredArgsConstructor
@@ -14,7 +19,7 @@ import java.util.Date;
 public class ManagerService {
     private final ManagerRepository managerRepository;
 
-    public void create(ManagerDTO managerDTO) {
+    public void create_vote(ManagerDTO managerDTO) {
         ManagerEntity manager = new ManagerEntity() ;
         manager.setManagerid(managerDTO.getManager_id());
         manager.setManagername(managerDTO.getManager_name());
@@ -25,7 +30,7 @@ public class ManagerService {
         this.managerRepository.save(manager);
     }
     @Transactional
-    public  void register(String vote_id, String vote_name,int student_grade,String student_major,Date start_date,Date end_date){
+    public  void register_vote(String vote_id, String vote_name,int student_grade,String student_major,Date start_date,Date end_date){
         ManagerEntity manager=managerRepository.findByVoteid(vote_id);
         manager.setVotename(vote_name);
         manager.setEnddate(end_date);
@@ -46,5 +51,25 @@ public class ManagerService {
         ManagerEntity manager=managerRepository.findByManageridAndManagername(manager_id,manager_name);
         boolean exists=(manager!=null);
         return exists;
+    }
+    public void imgUpload( MultipartFile file) {
+        String fileName = file.getOriginalFilename();
+        if (fileName.endsWith(".jpg") || fileName.endsWith(".png")) {
+            if (!file.isEmpty()) {
+                try {
+                    byte[] bytes = file.getBytes();
+                    Path path = Paths.get("./src/main/webapp/resources/img_candidate/" + file.getOriginalFilename());
+                    Files.write(path, bytes);
+                    //return "succes";
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            //return "empty file";
+        }
+        //return "extension error"; //err
+    }
+    public void create_user(String student_major,int student_grade){
+
     }
 }
