@@ -1,8 +1,9 @@
 package com.example.inhavote.Service;
 
-import com.example.inhavote.Entity.ManagerEntity;
+import com.example.inhavote.Entity.*;
 import com.example.inhavote.DTO.ManagerDTO;
 import com.example.inhavote.Repository.ManagerRepository;
+import com.example.inhavote.Repository.StudentsRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -69,7 +72,7 @@ public class ManagerService {
         }
         //return "extension error"; //err
     }
-    public void create_user(String student_major,int student_grade){
 
-    }
+
+
 }

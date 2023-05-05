@@ -2,7 +2,7 @@ package com.example.inhavote.controller;
 
 //import com.example.inhavote.DTO.CandidateDTO;
 import com.example.inhavote.DTO.ManagerDTO;
-import com.example.inhavote.Service.ManagerService;
+import com.example.inhavote.Service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.converter.json.GsonBuilderUtils;
@@ -28,6 +28,7 @@ import java.util.Date;
 @RequestMapping("/")
 public class ManagerController {
     private final ManagerService managerService;
+    private final StudentsService studentsService;
 
     @PostMapping(value = "/CreateVote")
     public String createVote(ManagerDTO managerDTO, Model model) {
@@ -66,6 +67,8 @@ public class ManagerController {
         System.out.println(manager_id+"/"+vote_name+" 전공:"+student_major+" 학년:"+student_grade);
         managerService.register_vote(manager.getVoteid(),vote_name,student_grade,student_major,m_start_date,m_end_date);
         managerService.imgUpload(img);
+
+        studentsService.create_user(student_major,student_grade,manager.getVoteid());
         model.addAttribute("manager_id", manager_id);
 
         //model .addAttribute("err",managerService.imgUpload(file));
