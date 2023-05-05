@@ -1,6 +1,6 @@
 package com.example.inhavote.controller;
 
-import com.example.inhavote.DTO.CandidateDTO;
+//import com.example.inhavote.DTO.CandidateDTO;
 import com.example.inhavote.DTO.ManagerDTO;
 import com.example.inhavote.Service.ManagerService;
 import jakarta.servlet.http.HttpSession;
@@ -71,6 +71,7 @@ public class ManagerController {
         //model .addAttribute("err",managerService.imgUpload(file));
         return "manager/manager1_Register3";
     }
+
 
 
 }
