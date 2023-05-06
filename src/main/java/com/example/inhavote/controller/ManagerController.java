@@ -5,6 +5,9 @@ import com.example.inhavote.DTO.ManagerDTO;
 import com.example.inhavote.Service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,6 +78,11 @@ public class ManagerController {
         return "manager/manager1_Register3";
     }
 
-
+    @PostMapping(value = "/Register2/student_list")
+    public String studentList(Model model)
+    {
+        model.addAttribute("list", studentsService.studentList());
+        return "studentList";
+    }
 
 }

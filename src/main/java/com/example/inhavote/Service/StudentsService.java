@@ -4,6 +4,7 @@ import com.example.inhavote.Entity.*;
 import com.example.inhavote.Repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,5 +37,10 @@ public class StudentsService {
             System.out.println("\n");*/
             this.userRepository.save(user);
         }
+    }
+
+    public List<StudentsEntity> studentList()
+    {
+        return studentsRepository.findAll();
     }
 }

@@ -11,5 +11,6 @@ public interface StudentsRepository extends JpaRepository<StudentsEntity,String>
     List<StudentsEntity> findByStudentmajorAndStudentgrade(String student_major, int student_grade);
     List<StudentsEntity> findByStudentmajor(String student_major);
     List<StudentsEntity> findByStudentgrade(int student_grade);
+    List<StudentsEntity> findByStudentname(String student_name);
     List<StudentsEntity> findAll();
 }
