@@ -47,14 +47,14 @@ Issues: #1234
 ## DB 접속
 1. HeidiSQL 로그인(아래와 같이)
 - 호스트명, 사용자, 암호 입력
-![1](https://user-images.githubusercontent.com/125789872/229511934-14a029ba-e334-40ca-825e-98a49f796721.PNG)
+![229511934-14a029ba-e334-40ca-825e-98a49f796721](https://user-images.githubusercontent.com/125789872/236659601-e3a50a9e-a792-4245-8483-8d7168adde96.png)
+
 
 2. inteliJ DB 연동
 ![4](https://user-images.githubusercontent.com/125789872/229516589-e0558551-493f-46a3-95db-4e87fe4e2648.PNG)
-![3](https://user-images.githubusercontent.com/125789872/229516602-fcf2c0f2-13a9-4241-b299-bc2095776a65.PNG)
+![229516602-fcf2c0f2-13a9-4241-b299-bc2095776a65](https://user-images.githubusercontent.com/125789872/236659606-abe9bd44-bae6-43c6-ad39-504d5f40c8e4.png)
 
-### 파일 질라 접속
-1. 파일 -> 사이트 관리자 -> 새 사이트 만들기 -> 이미지 참고
-참고 ![2](https://user-images.githubusercontent.com/125789872/229513591-ce1c7d26-6f18-49ce-a1aa-1616b885d2d0.PNG)
+
+
 
 
