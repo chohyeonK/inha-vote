@@ -32,7 +32,7 @@
 
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
-      <form action="/Register/managerid_login" method="post">
+      <form action="/Login/managerid_login" method="post">
         <div class="mt-3 mb-3">
           <label for="manager-name" class="form-label">관리자 이름</label>
           <input type="text" class="form-control" id="manager-name" name="manager_name" placeholder="관리자 이름을 입력해주세요.">

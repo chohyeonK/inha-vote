@@ -36,7 +36,7 @@
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <div>
-        <form action="/Register2/vote_resgister" method="post" enctype="multipart/form-data">
+        <form action="/Register/vote_register" method="post" enctype="multipart/form-data">
         <div id="register2-1">
           <div class="mt-3 mb-3">
             <label for="vote-name" class="form-label">투표명</label>
