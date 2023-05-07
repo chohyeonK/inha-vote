@@ -5,9 +5,6 @@ import com.example.inhavote.DTO.ManagerDTO;
 import com.example.inhavote.Service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,11 +35,11 @@ public class ManagerController {
         System.out.println(managerDTO.toString());
         managerService.create_vote(managerDTO);
         model.addAttribute("manager_id", managerDTO.getManager_id());
-        return "manager/manager1_CreateVote";
+        return "manager/manager_CreateVote";
     }
 
 
-    @PostMapping(value = "/Register/managerid_login")
+    @PostMapping(value = "/Login/managerid_login")
     public String loginVote(@RequestParam String manager_id,@RequestParam String manager_name,Model model) {
         boolean login=managerService.findByManager_idAndManager_name(manager_id,manager_name);
         String return_page="";
@@ -51,16 +48,16 @@ public class ManagerController {
 
         if (login) {
             model.addAttribute("manager_id", manager_id);
-            return_page= "manager/manager1_Register2";
+            return_page= "manager/manager_Register";
         } else if (!(login)) {
             model.addAttribute("err", false);
-            return_page= "manager/manager1_Register";
+            return_page= "manager/manager_Login";
         }
 
         return return_page;
     }
 
-    @PostMapping(value = "/Register2/vote_resgister")
+    @PostMapping(value = "/Register/vote_register")
     public String registerVote(@RequestParam MultipartFile img,Model model, @RequestParam String manager_id, @RequestParam String vote_name, @RequestParam String student_major, @RequestParam int student_grade, @RequestParam String start_date, @RequestParam String end_date) throws ParseException {
         ManagerEntity manager = managerService.findByManager_id(manager_id) ;
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
@@ -75,7 +72,7 @@ public class ManagerController {
         model.addAttribute("manager_id", manager_id);
 
         //model .addAttribute("err",managerService.imgUpload(file));
-        return "manager/manager1_Register3";
+        return "manager/manager_URL";
     }
 
     @PostMapping(value = "/Register2/student_list")

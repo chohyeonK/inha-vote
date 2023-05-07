@@ -8,20 +8,20 @@ public class homeController {
 
     @GetMapping("/")
     public String Home() {
-        return "manager/manager1_Home";
+        return "manager/manager_Home";
     }
     @GetMapping("/CreateVote")
     public String CreateVote()
     {
-        return "manager/manager1_CreateVote";
+        return "manager/manager_CreateVote";
     }
-    @GetMapping("/Register")
-    public String Register()
+    @GetMapping("/Login")
+    public String Login()
     {
-        return "manager/manager1_Register";
+        return "manager/manager_Login";
     }
     @GetMapping("/Help")
-    public String Help() { return "manager/manager1_Help"; }
+    public String Help() { return "manager/manager_Help"; }
     @GetMapping("/Vote")
     public String Vote() { return "vote/vote"; }
     @GetMapping("/User1")
@@ -34,11 +34,12 @@ public class homeController {
     public String User3_1() { return "user/user_3_1"; }
     @GetMapping("/User5")
     public String User5() { return "user/user_5"; }
-    @GetMapping("/Register2")
-    public String Register2() { return "manager/manager1_Register2"; }
-    @GetMapping("/Register3")
-    public String Register3() { return "manager/manager1_Register3"; }
+    @GetMapping("/Register")
+    public String Register() { return "manager/manager_Register"; }
+    @GetMapping("/URL")
+    public String URL() { return "manager/manager_URL"; }
     @GetMapping("/Admin")
-    public String Admin() { return "manager/manager2_Admin"; }
+    public String Admin() { return "Admin"; }
+
 
 }
