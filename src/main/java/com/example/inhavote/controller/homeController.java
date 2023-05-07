@@ -24,18 +24,18 @@ public class homeController {
     public String Help() { return "manager/manager_Help"; }
     @GetMapping("/Vote")
     public String Vote() { return "vote/vote"; }
-    @GetMapping("/User1")
-    public String User1() { return "user/user_1"; }
-    @GetMapping("/User2")
-    public String User2() { return "user/user_2"; }
-    @GetMapping("/User3")
-    public String User3() { return "user/user_3"; }
-    @GetMapping("/User3_1")
-    public String User3_1() { return "user/user_3_1"; }
-    @GetMapping("/User5")
-    public String User5() { return "user/user_5"; }
+    @GetMapping("/UserHome")
+    public String UserHome() { return "user/user_home"; }
+    @GetMapping("/UserInfo")
+    public String UserInfo() { return "user/user_info"; }
+    @GetMapping("/UserInfo/list")
+    public String UserInfo_list() { return "user/user_info_list"; }
+    @GetMapping("/UserInfo/list/candidate")
+    public String UserInfo_list_candidate() { return "user/user_info_candidate"; }
+    @GetMapping("/UserEmail")
+    public String UserEmail() { return "user/user_email"; }
     @GetMapping("/Register")
-    public String Register() { return "manager/manager_Register"; }
+    public String Register() { return "manager/manager1_Register"; }
     @GetMapping("/URL")
     public String URL() { return "manager/manager_URL"; }
     @GetMapping("/Admin")

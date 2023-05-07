@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: isangho
-  Date: 2023/04/10
-  Time: 11:38 PM
+  Date: 2023/04/11
+  Time: 12:12 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>사용자</title>
+    <title>사용자-투표 정보</title>
     <link href="../../../resources/css/common.css" rel="stylesheet">
     <link href="../../../resources/css/manager.css" rel="stylesheet">
     <script src="../../../resources/js/manager.js"></script>
@@ -22,16 +22,13 @@
 <body>
 <div class="frame">
     <div style="border: 1px solid black; padding: 10px;">${vote_name}<br>
-    투표 시작 : ${start_date}<br>
-    투표 종료 : ${end_date}</div>
-    <div class="d-flex justify-content-center" style="margin: 15px">
-        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='User2'">투표 정보</button>
+        투표 시작 : ${start_date}<br>
+        투표 종료 : ${end_date}</div>
+    <div class="d-flex justify-content-center" style="margin: 15px;" onclick="location.href='UserInfo/list=${manager_id}'">
+        <button type="button" class="btn btn-primary btn-block">학생회장 후보</button>
     </div>
     <div class="d-flex justify-content-center" style="margin: 15px">
-        <button type="button" class="btn btn-primary btn-lg">투표 하기</button>
-    </div>
-    <div class="d-flex justify-content-center" style="margin: 15px">
-        <button type="button" class="btn btn-primary btn-lg" onclick="alert('2023.04.01 이후 확인할 수 있습니다.')">투표 결과</button>
+        <button type="button" class="btn btn-primary btn-block">학생부회장 후보</button>
     </div>
 </div>
 </body>

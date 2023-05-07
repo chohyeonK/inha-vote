@@ -15,14 +15,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
     private final ManagerService managerService;
 
-    @GetMapping("/User1={manager_id}")
-    public String User1(@PathVariable("manager_id") String manager_id, Model model){
+    @GetMapping("/UserHome={manager_id}")
+    public String UserHome(@PathVariable("manager_id") String manager_id, Model model){
         System.out.println("user"+manager_id);
         ManagerEntity manager = managerService.findByManager_id(manager_id) ;
         model.addAttribute("vote_name",manager.getVotename());
         model.addAttribute("start_date",manager.getStartdate());
         model.addAttribute("end_date",manager.getEnddate());
-        return "user/user_1";
+        return "user/user_home";
+    }
+    @GetMapping("/UserInfo={manager_id}")
+    public String UserInfo(@PathVariable("manager_id") String manager_id, Model model){
+        System.out.println("user"+manager_id);
+        ManagerEntity manager = managerService.findByManager_id(manager_id) ;
+        model.addAttribute("vote_name",manager.getVotename());
+        model.addAttribute("start_date",manager.getStartdate());
+        model.addAttribute("end_date",manager.getEnddate());
+        return "user/user_info";
+    }
+    @GetMapping("/UserInfo/list={manager_id}")
+    public String UserInfo_list(@PathVariable("manager_id") String manager_id, Model model){
+        System.out.println("user"+manager_id);
+        ManagerEntity manager = managerService.findByManager_id(manager_id) ;
+        model.addAttribute("vote_name",manager.getVotename());
+        model.addAttribute("start_date",manager.getStartdate());
+        model.addAttribute("end_date",manager.getEnddate());
+        return "user/user_info_list";
     }
 
 }

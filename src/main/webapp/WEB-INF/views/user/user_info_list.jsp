@@ -21,9 +21,9 @@
 </head>
 <body>
 <div class="frame">
-  <div style="border: 1px solid black; padding: 10px;"><br>미융대 학생회장 후보<br><br></div>
+  <div style="border: 1px solid black; padding: 10px;"><br>${vote_name}<br><br></div>
   <div class="list-group" style="margin-top: 15px">
-    <a onclick="location.href='User3_1'" class="list-group-item list-group-item-action" style="padding: 30px">
+    <a onclick="location.href='list/candidate'" class="list-group-item list-group-item-action" style="padding: 30px">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">기호 1번</h5>
       </div>
