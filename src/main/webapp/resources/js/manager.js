@@ -35,10 +35,19 @@ function nextPage() {
 // 투표 등록 - 캘린더 라이브러리 연동 함수
 function onDate() {
     $(function(){
-        $('#stDatePicker').datepicker();
-        $('#toDatePicker').datepicker();
+        $('#stDatePicker').datepicker({
+            dateFormat: 'yy-mm-dd',
+            minDate: 0,
+            onClose: function (selectedDate) {
+                $('#toDatePicker').datepicker({
+                    dateFormat: 'yy-mm-dd',
+                    minDate: new Date(selectedDate)
+                });
+            }
+        });
     })
 
+    // $("#stDatePicker").datepicker('getDate')
     // 한글 세팅
     $.datepicker.setDefaults({
         dateFormat: 'yy-mm-dd',
