@@ -110,75 +110,86 @@
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                       <div class="card-body">
                         <div style="display: flex; border: 1px solid black;">
-                          <div style="width: 40%; height: 150px; border-right: 1px solid black;">
-                            사진
+                          <div style="width: 40%; height: 170px; overflow: hidden; border-right: 1px solid black;">
+                            <div style="width: 130px; height: 100%;">
+                              <label for="file" id="fileLabel">
+                                <div style="width: 130px; height: 100%; background-color: #DCEDEB;">사진 등록</div>
+                              </label>
+                              <input type="file" name="file" id="file" accept=".jpg, .png" onchange="readFile(this);" />
+                              <img id="preview" style="width: 100%; height: auto;"/>
+                            </div>
                           </div>
                           <div style="width: 60%;">
-                            설명
+                            <textarea placeholder="설명"></textarea>
                           </div>
                         </div>
                         <div style="margin-top: 15px; height: 120px; border: 1px solid black;">
-                          공약
+                          <textarea placeholder="공약"></textarea>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="card">
-                    <div class="card-header" id="headingTwo">
-                      <h5 class="mb-0">
-                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          기호 2번 소프트웨어융합공학과 2학년 전재준
-                        </button>
-                      </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                      <div class="card-body">
-                        <div style="display: flex; border: 1px solid black;">
-                          <div style="width: 40%; height: 150px; border-right: 1px solid black;">
-                            사진
-                          </div>
-                          <div style="width: 60%;">
-                            설명
-                          </div>
-                        </div>
-                        <div style="margin-top: 15px; height: 120px; border: 1px solid black;">
-                          공약
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-header" id="headingThree">
-                      <h5 class="mb-0">
-                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                          기호 3번 소프트웨어융합공학과 2학년 주여정
-                        </button>
-                      </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                      <div class="card-body">
-                        <div class="card-body">
-                          <div style="display: flex; border: 1px solid black;">
-                            <div style="width: 40%; height: 150px; border-right: 1px solid black;">
-                              사진
-                            </div>
-                            <div style="width: 60%;">
-                              설명
-                            </div>
-                          </div>
-                          <div style="margin-top: 15px; height: 120px; border: 1px solid black;">
-                            공약
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+<%--                  <div class="card">--%>
+<%--                    <div class="card-header" id="headingTwo">--%>
+<%--                      <h5 class="mb-0">--%>
+<%--                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">--%>
+<%--                          기호 2번 소프트웨어융합공학과 2학년 전재준--%>
+<%--                        </button>--%>
+<%--                      </h5>--%>
+<%--                    </div>--%>
+<%--                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">--%>
+<%--                      <div class="card-body">--%>
+<%--                        <div style="display: flex; border: 1px solid black;">--%>
+<%--                          <div style="width: 40%; height: 170px; overflow: hidden; border-right: 1px solid black;">--%>
+<%--                            <div style="width: 130px; height: 100%;">--%>
+<%--                              <label for="file" id="fileLabel">--%>
+<%--                                <div style="width: 130px; height: 100%; background-color: #DCEDEB;">사진 등록</div>--%>
+<%--                              </label>--%>
+<%--                              <input type="file" name="file" id="file" accept=".jpg, .png" onchange="readFile(this);" />--%>
+<%--                              <img id="preview" style="width: 100%; height: auto;"/>--%>
+<%--                            </div>--%>
+<%--                          </div>--%>
+<%--                          <div style="width: 60%;">--%>
+<%--                            <textarea placeholder="설명"></textarea>--%>
+<%--                          </div>--%>
+<%--                        </div>--%>
+<%--                        <div style="margin-top: 15px; height: 120px; border: 1px solid black;">--%>
+<%--                          <textarea placeholder="공약"></textarea>--%>
+<%--                        </div>--%>
+<%--                      </div>--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                  <div class="card">--%>
+<%--                    <div class="card-header" id="headingThree">--%>
+<%--                      <h5 class="mb-0">--%>
+<%--                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">--%>
+<%--                          기호 3번 소프트웨어융합공학과 2학년 주여정--%>
+<%--                        </button>--%>
+<%--                      </h5>--%>
+<%--                    </div>--%>
+<%--                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">--%>
+<%--                      <div class="card-body">--%>
+<%--                        <div class="card-body">--%>
+<%--                          <div style="display: flex; border: 1px solid black;">--%>
+<%--                            <div style="width: 40%; height: 150px; border-right: 1px solid black;">--%>
+<%--                              사진--%>
+<%--                            </div>--%>
+<%--                            <div style="width: 60%;">--%>
+<%--                              <textarea placeholder="설명"></textarea>--%>
+<%--                            </div>--%>
+<%--                          </div>--%>
+<%--                          <div style="margin-top: 15px; height: 120px; border: 1px solid black;">--%>
+<%--                            <textarea placeholder="공약"></textarea>--%>
+<%--                          </div>--%>
+<%--                        </div>--%>
+<%--                      </div>--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
                 </div>
               </div>
             </div>
           </div>
-          <%--사진 입력--%>
-          <input type="file" name="img" />
+
           <%--<h1>${err}</h1>--%>
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <%--        <button type="button" class="btn btn-primary">투표 추가</button>--%>

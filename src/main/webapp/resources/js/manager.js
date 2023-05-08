@@ -54,11 +54,27 @@ function onDate() {
     });
 }
 
-// 투표 등록 함수
+// 투표 등록 - 사진 등록 함수
+function readFile(file) {
+    if (file.files && file.files[0]) {
+        var reader = new FileReader()
+        reader.onload = function(e) {
+            document.getElementById('fileLabel').style.display = 'none'
+            document.getElementById('preview').src = e.target.result
+        };
+        reader.readAsDataURL(file.files[0])
+    } else {
+        document.getElementById('preview').src = ""
+    }
+}
+
+// 투표 등록 - 투표 등록 함수
 function onVoteSubmit() {
     const voteNm = document.getElementById('vote-name').value
     const voteStDt = document.getElementById('stDatePicker').value
     const voteToDt = document.getElementById('toDatePicker').value
+    // const voteStDtNew = new Date(voteStDt)
+    // const voteTtDtNew = new Date(voteToDt)
     const stuMajor  = document.getElementById('stu-major');
     const stuMajorValue = (stuMajor.options[stuMajor.selectedIndex].value);
     const stuGrade  = document.getElementById('stu-grade');
