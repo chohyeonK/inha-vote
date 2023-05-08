@@ -101,7 +101,7 @@
                   <div class="card">
                     <div class="card-header" id="headingOne">
                       <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                           기호1번 소프트웨어융합공학과 2학년 문동은
                         </button>
                       </h5>
@@ -126,7 +126,7 @@
                   <div class="card">
                     <div class="card-header" id="headingTwo">
                       <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                           기호 2번 소프트웨어융합공학과 2학년 전재준
                         </button>
                       </h5>
@@ -150,7 +150,7 @@
                   <div class="card">
                     <div class="card-header" id="headingThree">
                       <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                           기호 3번 소프트웨어융합공학과 2학년 주여정
                         </button>
                       </h5>
