@@ -4,11 +4,11 @@ window.onload = function(e) {
     var menu = document.querySelectorAll("#menubar li a");
     if (window.location.pathname == '/CreateVote') {
         menu[1].classList.add("active")
-    } else if (window.location.pathname == '/Login' || window.location.pathname == '/Register2' || window.location.pathname == '/Register3') {
-        menu[2].classList.add("active")
+    } else if (window.location.pathname == '/') {
+        menu[0].classList.add("active")
     } else if (window.location.pathname == '/Help') {
         menu[3].classList.add("active")
     } else {
-        menu[0].classList.add("active")
+        menu[2].classList.add("active")
     }
 }
