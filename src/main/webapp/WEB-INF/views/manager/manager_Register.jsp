@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kimchohyeon
@@ -189,7 +190,27 @@
               </div>
             </div>
           </div>
-
+          <div>
+            <table>
+              <thead>
+              <tr>
+                <th>Item Name</th>
+                <th>Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <!-- 반복문을 이용하여 리스트 출력 -->
+               <c:forEach var="student" items="${student_list}">
+                 <tr>
+                   <td>${student.studentgrade}</td>
+                   <td>${student.studentid}</td>
+                   <td>${student.studentmajor}</td>
+                   <td>${student.studentname}</td>
+                 </tr>
+               </c:forEach>
+              </tbody>
+            </table>
+          </div>
           <%--<h1>${err}</h1>--%>
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <%--        <button type="button" class="btn btn-primary">투표 추가</button>--%>

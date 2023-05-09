@@ -57,18 +57,15 @@ public class ManagerService {
     }
     public void imgUpload( MultipartFile file) {
         String fileName = file.getOriginalFilename();
-        if (fileName.endsWith(".jpg") || fileName.endsWith(".png")) {
-            if (!file.isEmpty()) {
-                try {
-                    byte[] bytes = file.getBytes();
-                    Path path = Paths.get("./src/main/webapp/resources/img_candidate/" + file.getOriginalFilename());
-                    Files.write(path, bytes);
-                    //return "succes";
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                Path path = Paths.get("./src/main/webapp/resources/img_candidate/" + file.getOriginalFilename());
+                Files.write(path, bytes);
+                //return "succes";
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            //return "empty file";
         }
         //return "extension error"; //err
     }

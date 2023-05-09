@@ -39,7 +39,7 @@ public class StudentsService {
         }
     }
 
-    public List<StudentsEntity> studentList()
+    public List<StudentsEntity> findAll()
     {
         return studentsRepository.findAll();
     }

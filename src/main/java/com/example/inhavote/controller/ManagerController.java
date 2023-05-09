@@ -47,7 +47,9 @@ public class ManagerController {
         //System.out.println(managerService.findByManager_idAndManager_name(manager_id,manager_name));
 
         if (login) {
-            model.addAttribute("manager_id", manager_id);
+          model.addAttribute("manager_id", manager_id);
+
+            model.addAttribute("student_list", studentsService.findAll());
             return_page= "manager/manager_Register";
         } else if (!(login)) {
             model.addAttribute("err", false);
@@ -60,10 +62,10 @@ public class ManagerController {
     @PostMapping(value = "/Register/vote_register")
     public String registerVote(@RequestParam MultipartFile img,Model model, @RequestParam String manager_id, @RequestParam String vote_name, @RequestParam String student_major, @RequestParam int student_grade, @RequestParam String start_date, @RequestParam String end_date) throws ParseException {
         ManagerEntity manager = managerService.findByManager_id(manager_id) ;
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date m_start_date,m_end_date;
-        m_start_date=formatter.parse(start_date);
-        m_end_date=formatter.parse(end_date);
+        m_start_date=formatter.parse(start_date+" 09:00:00");
+        m_end_date=formatter.parse(end_date+" 18:00:00");
         System.out.println(manager_id+"/"+vote_name+" 전공:"+student_major+" 학년:"+student_grade);
         managerService.register_vote(manager.getVoteid(),vote_name,student_grade,student_major,m_start_date,m_end_date);
         managerService.imgUpload(img);
@@ -75,11 +77,6 @@ public class ManagerController {
         return "manager/manager_URL";
     }
 
-    @PostMapping(value = "/Register2/student_list")
-    public String studentList(Model model)
-    {
-        model.addAttribute("list", studentsService.studentList());
-        return "studentList";
-    }
+
 
 }
