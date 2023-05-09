@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,7 +48,11 @@
         </div>
       </form>
       <hr />
-      <h1>${err}</h1>
+      <c:if test="${err == false}">
+        <div class="alert alert-danger" role="alert">
+            관리자 이름과 코드가 맞지 않습니다. 다시 확인해주세요.
+        </div>
+      </c:if>
     </div>
     <div class="tab-pane fade" id="reg2">
       <p style="margin-top: 20px;">투표 결과가 아직 집계되지 않았습니다.</p>

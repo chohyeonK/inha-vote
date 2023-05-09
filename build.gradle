@@ -12,13 +12,12 @@ sourceCompatibility = '17'
 repositories {
     mavenCentral()
 }
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+//    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.4.1'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -29,7 +28,12 @@ dependencies {
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     //스프링 시큐리티
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    // JSTL
+    implementation 'jakarta.servlet:jakarta.servlet-api' //스프링부트 3.0 이상
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api' //스프링부트 3.0 이상
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl' //스프링부트 3.0 이상
 }
+
 
 tasks.named('test') {
     useJUnitPlatform()
