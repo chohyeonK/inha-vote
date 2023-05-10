@@ -33,14 +33,5 @@ public class UserController {
         model.addAttribute("end_date",manager.getEnddate());
         return "user/user_info";
     }
-    @GetMapping("/UserInfo/list={manager_id}")
-    public String UserInfo_list(@PathVariable("manager_id") String manager_id, Model model){
-        System.out.println("user"+manager_id);
-        ManagerEntity manager = managerService.findByManager_id(manager_id) ;
-        model.addAttribute("vote_name",manager.getVotename());
-        model.addAttribute("start_date",manager.getStartdate());
-        model.addAttribute("end_date",manager.getEnddate());
-        return "user/user_info_list";
-    }
 
 }
