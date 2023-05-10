@@ -28,10 +28,6 @@ public class homeController {
     public String UserHome() { return "user/user_home"; }
     @GetMapping("/UserInfo")
     public String UserInfo() { return "user/user_info"; }
-    @GetMapping("/UserInfo/list")
-    public String UserInfo_list() { return "user/user_info_list"; }
-    @GetMapping("/UserInfo/list/candidate")
-    public String UserInfo_list_candidate() { return "user/user_info_candidate"; }
     @GetMapping("/UserEmail")
     public String UserEmail() { return "user/user_email"; }
     @GetMapping("/Register")
