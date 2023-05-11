@@ -2,6 +2,7 @@ package com.example.inhavote.controller;
 
 //import com.example.inhavote.DTO.CandidateDTO;
 import com.example.inhavote.DTO.ManagerDTO;
+import com.example.inhavote.Entity.*;
 import com.example.inhavote.Service.*;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -77,6 +79,13 @@ public class ManagerController {
         return "manager/manager_URL";
     }
 
+    @GetMapping("/Register/search")
+    public List<StudentsEntity> searchName(@RequestParam String student_name){
+        System.out.println(student_name);
+        List<StudentsEntity> result = studentsService.findByStudent_name(student_name);
 
+        return result;
+
+    }
 
 }

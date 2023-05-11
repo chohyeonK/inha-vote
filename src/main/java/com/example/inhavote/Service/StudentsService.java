@@ -43,4 +43,10 @@ public class StudentsService {
     {
         return studentsRepository.findAll();
     }
+    public List<StudentsEntity> findByStudent_name(String student_name){
+        //System.out.println(studentsRepository.findByStudentname(student_name));
+        return studentsRepository.findByStudentname(student_name);
+    }
+
+
 }
