@@ -1,3 +1,7 @@
+// 전역 변수 선언
+var cnt = 1
+var studentArr = new Array()
+
 // 관리자 등록 - 모달 관련 함수
 function closeModal() {
     $('#myModal').modal('hide')
@@ -63,17 +67,72 @@ function onDate() {
     });
 }
 
+function createCandidate(name, id, grade, major, index) {
+    console.log(name, id, grade, major, index)
+    const divAccordian = document.getElementById('accordion')
+    let divCard = document.createElement('div');
+    divCard.innerHTML = '<div class="card-header" id="heading-' + index + '>\n' +
+        '                      <h5 class="mb-0">\n' +
+        '                        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapse' + index + '" aria-expanded="true" aria-controls="collapse' + index + '">\n' +
+        '                          기호' + cnt + '번 ' + major + ' ' + grade + '학년 ' + name +'\n' +
+        '                        </button>\n' +
+        '                      </h5>'
+    divAccordian.append(divCard)
+
+    let divCollapse = document.createElement('div');
+    divCollapse.setAttribute('id', 'collapse' + index)
+    divCollapse.setAttribute('class', 'collapse show')
+    divCollapse.setAttribute('aria-labelledby', 'heading' + index)
+    divCollapse.setAttribute('data-parent', '#accordion')
+    divCollapse.innerHTML = '<div class="card-body">\n' +
+        '                        <div style="display: flex; border: 1px solid black;">\n' +
+        '                          <div style="width: 45%; height: 170px; overflow: hidden; border-right: 1px solid black;">\n' +
+        '                            <div style="width: 130px; height: 100%;">\n' +
+        '                              <label for="file' +index + '" id="fileLabel'+ index + '">\n' +
+        '                                <div style="width: 130px; height: 100%; background-color: #DCEDEB;">사진 등록</div>\n' +
+        '                              </label>\n' +
+        '                              <input type="file" name="file' +index + '" id="file' + index + '" accept=".jpg, .png" onchange="readFile(this, '+ index + ');" />\n' +
+        '                              <img id="preview' + index + '" style="width: 100%; height: auto;"/>\n' +
+        '                            </div>\n' +
+        '                          </div>\n' +
+        '                          <div style="width: 55%;">\n' +
+        '                            <textarea id="spec' + index+ '" placeholder="설명" style="resize: none;"></textarea>\n' +
+        '                          </div>\n' +
+        '                        </div>\n' +
+        '                        <div style="margin-top: 15px; height: 120px; border: 1px solid black;">\n' +
+        '                          <textarea id="promise' + index + '" placeholder="공약" style="resize: none;"></textarea>\n' +
+        '                        </div>\n' +
+        '                      </div>\n' +
+        '                    </div>'
+
+    divAccordian.append(divCollapse)
+
+    var student = new Object()
+    student.name = name
+    student.grade = grade
+    student.id = id
+    student.major = major
+    student.spec = ''
+    student.promise = ''
+    studentArr.push(student)
+
+    console.log(studentArr)
+
+    cnt++ // 기호 번호 카운팅
+}
+
 // 투표 등록 - 사진 등록 함수
-function readFile(file) {
+function readFile(file, index) {
     if (file.files && file.files[0]) {
         var reader = new FileReader()
         reader.onload = function(e) {
-            document.getElementById('fileLabel').style.display = 'none'
-            document.getElementById('preview').src = e.target.result
+
+            document.getElementById('fileLabel' + index).style.display = 'none'
+            document.getElementById('preview' + index).src = e.target.result
         };
         reader.readAsDataURL(file.files[0])
     } else {
-        document.getElementById('preview').src = ""
+        document.getElementById('preview' + index).src = ""
     }
 }
 
@@ -88,5 +147,11 @@ function onVoteSubmit() {
     const stuMajorValue = (stuMajor.options[stuMajor.selectedIndex].value);
     const stuGrade  = document.getElementById('stu-grade');
     const stuGradeValue = (stuGrade.options[stuGrade.selectedIndex].value);
-    console.log(voteNm, voteStDt, voteToDt, stuMajorValue, stuGradeValue)
+    console.log(voteNm, voteStDt, voteToDt, stuMajorValue, stuGradeValue, studentArr)
+
+    // 후보자 스펙, 공약 저장
+    for(var i =0; i < studentArr.length; i++) {
+        studentArr[i].spec = document.getElementById('spec' + i+1).value
+        studentArr[i].spec = document.getElementById('promise' + i+1).value
+    }
 }
