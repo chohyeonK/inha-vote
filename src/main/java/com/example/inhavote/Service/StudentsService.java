@@ -47,6 +47,9 @@ public class StudentsService {
         //System.out.println(studentsRepository.findByStudentname(student_name));
         return studentsRepository.findByStudentname(student_name);
     }
+    public StudentsEntity findByStudent_id(String student_id) {
+        return studentsRepository.findByStudentid(student_id);
+    }
 
 
 }

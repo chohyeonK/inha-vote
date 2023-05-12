@@ -32,7 +32,7 @@
   </div>
   <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="인증 번호" aria-label="sc number" aria-describedby="button-addon2">
-    <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="alert('인증되었습니다.')">확인</button>
+    <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="alert('인증되었습니다.'), location.href='UserVote=${manager_id}'">확인</button>
   </div>
   <div style="border: 1px solid black; padding: 10px;">미융대 학생만 참여 가능하며, 인하대 이메일만 사용할 수 있습니다.</div>
 </div>

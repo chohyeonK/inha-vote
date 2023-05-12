@@ -28,10 +28,10 @@
         <button type="button" class="btn btn-primary btn-lg" onclick="location.href='UserInfo=${manager_id}'">투표 정보</button>
     </div>
     <div class="d-flex justify-content-center" style="margin: 15px">
-        <button type="button" class="btn btn-primary btn-lg">투표 하기</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='UserEmail=${manager_id}'">투표 하기</button>
     </div>
     <div class="d-flex justify-content-center" style="margin: 15px">
-        <button type="button" class="btn btn-primary btn-lg" onclick="alert('${end_date} 이후 확인할 수 있습니다.')">투표 결과</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='UserResult=${manager_id}'">투표 결과</button>
     </div>
 </div>
 </body>

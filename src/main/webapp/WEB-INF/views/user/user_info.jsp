@@ -26,7 +26,7 @@
             투표 시작 : ${start_date}<br>
             투표 종료 : ${end_date}</div>
         <div class="d-flex justify-content-center" style="margin: 15px;">
-            <button type="button" class="btn btn-primary btn-block" onclick="toList(2)">학생회장 후보</button>
+            <button type="button" class="btn btn-primary btn-block" onclick="movePage_info(2)">학생회장 후보</button>
         </div>
         <div class="d-flex justify-content-center" style="margin: 15px">
             <button type="button" class="btn btn-primary btn-block">학생부회장 후보</button>
@@ -36,7 +36,7 @@
     <div id="userinfo_2" style="display: none;">
         <div style="border: 1px solid black; padding: 10px;"><br>${vote_name}<br><br></div>
         <div class="list-group" style="margin-top: 15px">
-            <a class="list-group-item list-group-item-action" style="padding: 30px" onclick="toList(3)">
+            <a class="list-group-item list-group-item-action" style="padding: 30px" onclick="movePage_info(3)">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">기호 1번</h5>
                 </div>
@@ -84,7 +84,7 @@
 </div>
 
 <script>
-    function toList(Destination)
+    function movePage_info(Destination)
     {
         const page1 = document.getElementById('userinfo_1')
         const page2 = document.getElementById('userinfo_2')
