@@ -38,7 +38,8 @@
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <div>
-        <form action="/Register/vote_register" method="post" enctype="multipart/form-data">
+<%--        enctype="multipart/form-data"--%>
+        <form method="post" >
         <div id="register2-1">
           <div class="mt-3 mb-3">
             <label for="vote-name" class="form-label">투표명</label>
@@ -71,7 +72,7 @@
                 </select>
             </div>
           </div>
-          <input type="hidden" name="manager_id" value=${manager_id} />
+          <input type="hidden" name="manager_id" id="manager_id" value=${manager_id} />
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <button type="button" class="btn btn-primary" onclick="nextPage()">다음</button>
           </div>
@@ -216,7 +217,7 @@
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <%--        <button type="button" class="btn btn-primary">투표 추가</button>--%>
             <%--<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="location.href='Register3'">완료</button> --%>
-              <button type="submit" class="btn btn-primary" style="margin-left: 10px;" onclick="onVoteSubmit()">완료</button>
+              <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="onVoteSubmit()">완료</button>
           </div>
           <hr />
         </div>

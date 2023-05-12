@@ -1,5 +1,6 @@
 // 전역 변수 선언
 var cnt = 1
+var dataArr = new Array()
 var studentArr = new Array()
 
 // 관리자 등록 - 모달 관련 함수
@@ -80,27 +81,27 @@ function createCandidate(name, id, grade, major, index) {
     divAccordian.append(divCard)
 
     let divCollapse = document.createElement('div');
-    divCollapse.setAttribute('id', 'collapse' + index)
+    divCollapse.setAttribute('id', 'collapse' + cnt)
     divCollapse.setAttribute('class', 'collapse show')
-    divCollapse.setAttribute('aria-labelledby', 'heading' + index)
+    divCollapse.setAttribute('aria-labelledby', 'heading' + cnt)
     divCollapse.setAttribute('data-parent', '#accordion')
     divCollapse.innerHTML = '<div class="card-body">\n' +
         '                        <div style="display: flex; border: 1px solid black;">\n' +
         '                          <div style="width: 45%; height: 170px; overflow: hidden; border-right: 1px solid black;">\n' +
         '                            <div style="width: 130px; height: 100%;">\n' +
-        '                              <label for="file' +index + '" id="fileLabel'+ index + '">\n' +
+        '                              <label for="file' +cnt + '" id="fileLabel'+ cnt + '">\n' +
         '                                <div style="width: 130px; height: 100%; background-color: #DCEDEB;">사진 등록</div>\n' +
         '                              </label>\n' +
-        '                              <input type="file" name="file' +index + '" id="file' + index + '" accept=".jpg, .png" onchange="readFile(this, '+ index + ');" />\n' +
-        '                              <img id="preview' + index + '" style="width: 100%; height: auto;"/>\n' +
+        '                              <input type="file" name="file' +cnt + '" id="file' + cnt + '" accept=".jpg, .png" onchange="readFile(this, '+ index + ');" />\n' +
+        '                              <img id="preview' + cnt + '" style="width: 100%; height: auto;"/>\n' +
         '                            </div>\n' +
         '                          </div>\n' +
         '                          <div style="width: 55%;">\n' +
-        '                            <textarea id="spec' + index+ '" placeholder="설명" style="resize: none;"></textarea>\n' +
+        '                            <textarea id="spec' + cnt+ '" placeholder="설명" style="resize: none;"></textarea>\n' +
         '                          </div>\n' +
         '                        </div>\n' +
         '                        <div style="margin-top: 15px; height: 120px; border: 1px solid black;">\n' +
-        '                          <textarea id="promise' + index + '" placeholder="공약" style="resize: none;"></textarea>\n' +
+        '                          <textarea id="promise' + cnt + '" placeholder="공약" style="resize: none;"></textarea>\n' +
         '                        </div>\n' +
         '                      </div>\n' +
         '                    </div>'
@@ -110,10 +111,10 @@ function createCandidate(name, id, grade, major, index) {
     var student = new Object()
     student.name = name
     student.grade = grade
-    student.id = id
+    student.studentid = id
     student.major = major
-    student.spec = ''
-    student.promise = ''
+    student.candidate_spec = ''
+    student.candidatepromise = ''
     studentArr.push(student)
 
     console.log(studentArr)
@@ -138,20 +139,39 @@ function readFile(file, index) {
 
 // 투표 등록 - 투표 등록 함수
 function onVoteSubmit() {
-    const voteNm = document.getElementById('vote-name').value
-    const voteStDt = document.getElementById('stDatePicker').value
-    const voteToDt = document.getElementById('toDatePicker').value
+    const manager_id = document.getElementById('manager_id').value
+    const vote_name = document.getElementById('vote-name').value
+    const start_date = document.getElementById('stDatePicker').value
+    const end_date = document.getElementById('toDatePicker').value
     // const voteStDtNew = new Date(voteStDt)
     // const voteTtDtNew = new Date(voteToDt)
     const stuMajor  = document.getElementById('stu-major');
-    const stuMajorValue = (stuMajor.options[stuMajor.selectedIndex].value);
+    const student_major = (stuMajor.options[stuMajor.selectedIndex].value);
     const stuGrade  = document.getElementById('stu-grade');
-    const stuGradeValue = (stuGrade.options[stuGrade.selectedIndex].value);
-    console.log(voteNm, voteStDt, voteToDt, stuMajorValue, stuGradeValue, studentArr)
+    const student_grade = (stuGrade.options[stuGrade.selectedIndex].value);
+    // console.log(voteNm, voteStDt, voteToDt, stuMajorValue, stuGradeValue, studentArr)
 
     // 후보자 스펙, 공약 저장
-    for(var i =0; i < studentArr.length; i++) {
-        studentArr[i].spec = document.getElementById('spec' + i+1).value
-        studentArr[i].spec = document.getElementById('promise' + i+1).value
+    for (var i = 0; i < studentArr.length; i++) {
+        studentArr[i].spec = document.getElementById('spec' + (i+1).toString()).value;
+        studentArr[i].promise = document.getElementById('promise' + (i+1).toString()).value;
     }
+
+    dataArr.push(manager_id, vote_name, start_date, end_date, stuMajor, stuGrade, studentArr)
+
+    $.ajax({
+        cache : false,
+        url : "/Register/vote_register", // 요기에
+        type : 'POST',
+        data : JSON.stringify(dataArr),
+        contentType: 'application/json',
+        success : function(data) {
+            var jsonObj = JSON.parse(data);
+        }, // success
+
+        error : function(xhr, status) {
+            alert(xhr + " : " + status);
+        }
+    }); // $.ajax */
+
 }
