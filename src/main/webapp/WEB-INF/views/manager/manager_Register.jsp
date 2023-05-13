@@ -22,6 +22,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
   <script src="../../../resources/js/manager.js"></script>
   <script src="../../../resources/js/common.js"></script>
+  <script src="../../../resources/js/manager_search.js"></script>
 <body>
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
@@ -85,11 +86,11 @@
             <div style="margin-top: 15px;">학번 검색</div>
             <div style="width: 100%; height: 600px; border: 1px solid black; margin-top: 15px;">
               <div style="width: 55%; height: 100%; padding: 16px; border-right: 1px solid black; float: left;">
-                <form class="form-inline" style="display: flex;" >
-                  <input class="form-control " type="search" placeholder="Search" aria-label="Search" name="student_name" style="width: 80%; float: left;">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="studentSearch()">검색</button>
+                <form class="form-inline" method="get">
+                  <input class="form-control " type="text" placeholder="Search" aria-label="Search" name="student_name" id="student_name" onkeydown="keyDown(event)" style="width: 80%; float: left;">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="studentSearch()">검색</button>
                 </form>
-                <div style="border: 1px solid black; height: calc(100% - 40px); overflow: auto;">
+                <div id="studentAll" style="border: 1px solid black; height: calc(100% - 40px); overflow: auto;">
                   <!-- 반복문을 이용하여 리스트 출력 -->
                   <c:forEach var="student" items="${student_list}" varStatus="status">
                     <div style="border-bottom: 1px solid black;" onclick="createCandidate('${student.studentname}', '${student.studentid}', '${student.studentgrade}', '${student.studentmajor}', '${status.count}')">
@@ -97,6 +98,9 @@
                     </div>
                   </c:forEach>
                 </div>
+                  <div id="searchList" style="display: none; border: 1px solid black; height: calc(100% - 40px); overflow: auto;">
+
+                  </div>
               </div>
               <div style="width: 45%; height: 100%; overflow: auto; float: left;">
                 <div id="accordion">

@@ -70,13 +70,13 @@ public class ManagerController {
     }
 
     @GetMapping("/Register/search")
-    public List<StudentsEntity> searchName(@RequestParam String student_name){
-        //System.out.println(student_name);
-        List<StudentsEntity> result = studentsService.findByStudent_name(student_name);
-
+    @ResponseBody // 문자열을 반환할 경우 @ResponseBody 어노테이션을 추가합니다.
+    public List<StudentsEntity> getString(@RequestParam("param1") String param1) {
+        System.out.println(param1);
+        List<StudentsEntity> result = studentsService.findByStudent(param1);
         return result;
-
     }
+
     @GetMapping("/manager/manager_URL={data}")
     public String setManagerid(@PathVariable("data") String manager_id,Model model){
         System.out.println(manager_id);
