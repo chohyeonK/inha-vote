@@ -1,7 +1,6 @@
 // 전역 변수 선언
 var cnt = 1
-var dataArr = new Array()
-var studentArr = new Array()
+var candidates = new Array()
 
 // 관리자 등록 - 모달 관련 함수
 function closeModal() {
@@ -109,15 +108,13 @@ function createCandidate(name, id, grade, major, index) {
     divAccordian.append(divCollapse)
 
     var student = new Object()
-    student.name = name
-    student.grade = grade
-    student.studentid = id
-    student.major = major
-    student.candidate_spec = ''
-    student.candidatepromise = ''
-    studentArr.push(student)
 
-    console.log(studentArr)
+    student.studentid = id
+    student.candidatespec = ''
+    student.candidatepromise = ''
+    candidates.push(student)
+
+    console.log(candidates)
 
     cnt++ // 기호 번호 카운팅
 }
@@ -141,23 +138,31 @@ function readFile(file, index) {
 function onVoteSubmit() {
     const manager_id = document.getElementById('manager_id').value
     const vote_name = document.getElementById('vote-name').value
-    const start_date = document.getElementById('stDatePicker').value
-    const end_date = document.getElementById('toDatePicker').value
-    // const voteStDtNew = new Date(voteStDt)
-    // const voteTtDtNew = new Date(voteToDt)
+    const voteStDt = document.getElementById('stDatePicker').value
+    const voteToDt = document.getElementById('toDatePicker').value
+     const start_date = new Date(voteStDt+" 09:00:00")
+     const end_date = new Date(voteToDt+" 18:00:00")
     const stuMajor  = document.getElementById('stu-major');
     const student_major = (stuMajor.options[stuMajor.selectedIndex].value);
     const stuGrade  = document.getElementById('stu-grade');
     const student_grade = (stuGrade.options[stuGrade.selectedIndex].value);
-    // console.log(voteNm, voteStDt, voteToDt, stuMajorValue, stuGradeValue, studentArr)
 
     // 후보자 스펙, 공약 저장
-    for (var i = 0; i < studentArr.length; i++) {
-        studentArr[i].spec = document.getElementById('spec' + (i+1).toString()).value;
-        studentArr[i].promise = document.getElementById('promise' + (i+1).toString()).value;
+    for (var i = 0; i < candidates.length; i++) {
+        candidates[i].candidatespec = document.getElementById('spec' + (i+1).toString()).value;
+        candidates[i].candidatepromise = document.getElementById('promise' + (i+1).toString()).value;
     }
 
-    dataArr.push(manager_id, vote_name, start_date, end_date, stuMajor, stuGrade, studentArr)
+    const dataArr = {
+        manager_id: manager_id,
+        vote_name: vote_name,
+        student_major: student_major,
+        student_grade: student_grade,
+        start_date: start_date,
+        end_date: end_date,
+        candidates: candidates
+    };
+    console.log(dataArr);
 
     $.ajax({
         cache : false,
@@ -165,8 +170,10 @@ function onVoteSubmit() {
         type : 'POST',
         data : JSON.stringify(dataArr),
         contentType: 'application/json',
+        dataType: "text",
         success : function(data) {
-            var jsonObj = JSON.parse(data);
+            console.log(data)
+            window.location.href="http://localhost:8080/manager/manager_URL="+data;
         }, // success
 
         error : function(xhr, status) {

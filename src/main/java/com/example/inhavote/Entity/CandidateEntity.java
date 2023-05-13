@@ -20,7 +20,7 @@ public class CandidateEntity {
 
     @Column(name = "candidate_spec")
     private String candidatespec;
-    @Column(name = "student_promise")
+    @Column(name = "candidate_promise")
     private String candidatepromise;
 
     @Column(name = "vote_counter")

@@ -10,17 +10,12 @@ public class CreateVoteDTO {
     private String vote_id;
     private String manager_id;
     private char vote_active;
-//    private String vote_name;
-//    private int student_grade;
-//    private String student_major;
-//    private Date start_date;
-//    private Date end_date;
-    private String randomdata=RandomCode.randomCode();
+
     public CreateVoteDTO(String manager_name, String manager_tel) {
         this.manager_name=manager_name;
         this.manager_tel=manager_tel;
-        manager_id= randomdata;
-        vote_id="vote_"+randomdata;
+        manager_id= RandomCode.randomCode();
+        vote_id="vote_"+RandomCode.randomCode();
         vote_active='Y';
     }
 

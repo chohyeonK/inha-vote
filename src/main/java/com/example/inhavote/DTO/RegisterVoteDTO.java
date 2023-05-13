@@ -22,17 +22,7 @@ public class RegisterVoteDTO {
     private List<CandidateEntity> candidates;
 
 
-    public RegisterVoteDTO(String manager_id, String vote_name, String student_major, int student_grade, String start_date, String end_date,  List<CandidateEntity> candidates) throws ParseException {
-        this.manager_id = manager_id;
-        this.vote_name = vote_name;
-        this.student_major = student_major;
-        this.student_grade = student_grade;
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date m_start_date,m_end_date;
-        m_start_date=formatter.parse(start_date+" 09:00:00");
-        m_end_date=formatter.parse(end_date+" 18:00:00");
-        this.start_date = m_start_date;
-        this.end_date = m_end_date;
+    public RegisterVoteDTO() {
 
         this.candidates = candidates;
     }

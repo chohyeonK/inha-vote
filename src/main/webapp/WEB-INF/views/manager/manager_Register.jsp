@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kimchohyeon
@@ -39,7 +38,7 @@
     <div class="tab-pane fade show active" id="reg1">
       <div>
 <%--        enctype="multipart/form-data"--%>
-        <form method="post" >
+        <form method="post" enctype="multipart/form-data">
         <div id="register2-1">
           <div class="mt-3 mb-3">
             <label for="vote-name" class="form-label">투표명</label>
@@ -86,9 +85,9 @@
             <div style="margin-top: 15px;">학번 검색</div>
             <div style="width: 100%; height: 600px; border: 1px solid black; margin-top: 15px;">
               <div style="width: 55%; height: 100%; padding: 16px; border-right: 1px solid black; float: left;">
-                <form class="form-inline" style="display: flex;" action="searchStudentName" method="get">
+                <form class="form-inline" style="display: flex;" >
                   <input class="form-control " type="search" placeholder="Search" aria-label="Search" name="student_name" style="width: 80%; float: left;">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="studentSearch()">검색</button>
                 </form>
                 <div style="border: 1px solid black; height: calc(100% - 40px); overflow: auto;">
                   <!-- 반복문을 이용하여 리스트 출력 -->
@@ -101,117 +100,13 @@
               </div>
               <div style="width: 45%; height: 100%; overflow: auto; float: left;">
                 <div id="accordion">
-<%--                  <div class="card">--%>
-<%--                    <div class="card-header" id="headingOne">--%>
-<%--                      <h5 class="mb-0">--%>
-<%--                        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">--%>
-<%--                          기호1번 소프트웨어융합공학과 2학년 문동은--%>
-<%--                        </button>--%>
-<%--                      </h5>--%>
-<%--                    </div>--%>
 
-<%--                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">--%>
-<%--                      <div class="card-body">--%>
-<%--                        <div style="display: flex; border: 1px solid black;">--%>
-<%--                          <div style="width: 40%; height: 170px; overflow: hidden; border-right: 1px solid black;">--%>
-<%--                            <div style="width: 130px; height: 100%;">--%>
-<%--                              <label for="file" id="fileLabel">--%>
-<%--                                <div style="width: 130px; height: 100%; background-color: #DCEDEB;">사진 등록</div>--%>
-<%--                              </label>--%>
-<%--                              <input type="file" name="file" id="file" accept=".jpg, .png" onchange="readFile(this);" />--%>
-<%--                              <img id="preview" style="width: 100%; height: auto;"/>--%>
-<%--                            </div>--%>
-<%--                          </div>--%>
-<%--                          <div style="width: 60%;">--%>
-<%--                            <textarea placeholder="설명"></textarea>--%>
-<%--                          </div>--%>
-<%--                        </div>--%>
-<%--                        <div style="margin-top: 15px; height: 120px; border: 1px solid black;">--%>
-<%--                          <textarea placeholder="공약"></textarea>--%>
-<%--                        </div>--%>
-<%--                      </div>--%>
-<%--                    </div>--%>
-<%--                  </div>--%>
-<%--                  <div class="card">--%>
-<%--                    <div class="card-header" id="headingTwo">--%>
-<%--                      <h5 class="mb-0">--%>
-<%--                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">--%>
-<%--                          기호 2번 소프트웨어융합공학과 2학년 전재준--%>
-<%--                        </button>--%>
-<%--                      </h5>--%>
-<%--                    </div>--%>
-<%--                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">--%>
-<%--                      <div class="card-body">--%>
-<%--                        <div style="display: flex; border: 1px solid black;">--%>
-<%--                          <div style="width: 40%; height: 170px; overflow: hidden; border-right: 1px solid black;">--%>
-<%--                            <div style="width: 130px; height: 100%;">--%>
-<%--                              <label for="file" id="fileLabel">--%>
-<%--                                <div style="width: 130px; height: 100%; background-color: #DCEDEB;">사진 등록</div>--%>
-<%--                              </label>--%>
-<%--                              <input type="file" name="file" id="file" accept=".jpg, .png" onchange="readFile(this);" />--%>
-<%--                              <img id="preview" style="width: 100%; height: auto;"/>--%>
-<%--                            </div>--%>
-<%--                          </div>--%>
-<%--                          <div style="width: 60%;">--%>
-<%--                            <textarea placeholder="설명"></textarea>--%>
-<%--                          </div>--%>
-<%--                        </div>--%>
-<%--                        <div style="margin-top: 15px; height: 120px; border: 1px solid black;">--%>
-<%--                          <textarea placeholder="공약"></textarea>--%>
-<%--                        </div>--%>
-<%--                      </div>--%>
-<%--                    </div>--%>
-<%--                  </div>--%>
-<%--                  <div class="card">--%>
-<%--                    <div class="card-header" id="headingThree">--%>
-<%--                      <h5 class="mb-0">--%>
-<%--                        <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">--%>
-<%--                          기호 3번 소프트웨어융합공학과 2학년 주여정--%>
-<%--                        </button>--%>
-<%--                      </h5>--%>
-<%--                    </div>--%>
-<%--                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">--%>
-<%--                      <div class="card-body">--%>
-<%--                        <div class="card-body">--%>
-<%--                          <div style="display: flex; border: 1px solid black;">--%>
-<%--                            <div style="width: 40%; height: 150px; border-right: 1px solid black;">--%>
-<%--                              사진--%>
-<%--                            </div>--%>
-<%--                            <div style="width: 60%;">--%>
-<%--                              <textarea placeholder="설명"></textarea>--%>
-<%--                            </div>--%>
-<%--                          </div>--%>
-<%--                          <div style="margin-top: 15px; height: 120px; border: 1px solid black;">--%>
-<%--                            <textarea placeholder="공약"></textarea>--%>
-<%--                          </div>--%>
-<%--                        </div>--%>
-<%--                      </div>--%>
-<%--                    </div>--%>
-<%--                  </div>--%>
                 </div>
               </div>
             </div>
           </div>
           <div>
-<%--            <table>--%>
-<%--              <thead>--%>
-<%--              <tr>--%>
-<%--                <th>Item Name</th>--%>
-<%--                <th>Price</th>--%>
-<%--              </tr>--%>
-<%--              </thead>--%>
-<%--              <tbody>--%>
-<%--              <!-- 반복문을 이용하여 리스트 출력 -->--%>
-<%--               <c:forEach var="student" items="${student_list}">--%>
-<%--                 <tr>--%>
-<%--                   <td>${student.studentgrade}</td>--%>
-<%--                   <td>${student.studentid}</td>--%>
-<%--                   <td>${student.studentmajor}</td>--%>
-<%--                   <td>${student.studentname}</td>--%>
-<%--                 </tr>--%>
-<%--               </c:forEach>--%>
-<%--              </tbody>--%>
-<%--            </table>--%>
+
           </div>
           <%--<h1>${err}</h1>--%>
           <div class="d-flex justify-content-end" style="margin-top: 15px;">

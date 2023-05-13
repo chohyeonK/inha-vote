@@ -55,22 +55,18 @@ public class ManagerController {
     }
 
     @PostMapping(value = "/Register/vote_register")
-    //@ResponseBody
-    public String registerVote(@RequestBody List<CandidateEntity> candidates,RegisterVoteDTO registerVoteDTO,@RequestParam("file") MultipartFile img, Model model)
-            throws ParseException {
-                System.out.println(candidates);
-                //registerVoteDTO.setCandidates(candidates);
-                System.out.println(registerVoteDTO.toString());
-                String manager_id=registerVoteDTO.getManager_id();
-                ManagerEntity manager = managerService.findByManager_id(manager_id) ;
-                String vote_id=manager.getVoteid();
-                managerService.register_vote(vote_id,registerVoteDTO);
-                //candidateService.register_candidate(registerVoteDTO.getCandidates(),vote_id);
-                studentsService.create_user(registerVoteDTO.getStudent_major(),registerVoteDTO.getStudent_grade(),vote_id);
+    @ResponseBody
+    public String registerVote(@RequestBody RegisterVoteDTO registerVoteDTO, Model model){
+        System.out.println(registerVoteDTO.toString());
+        String manager_id=registerVoteDTO.getManager_id();
+        ManagerEntity manager = managerService.findByManager_id(manager_id) ;
+        String vote_id=manager.getVoteid();
+        managerService.register_vote(vote_id,registerVoteDTO);
+        candidateService.register_candidate(registerVoteDTO.getCandidates(),vote_id);
+        studentsService.create_user(registerVoteDTO.getStudent_major(),registerVoteDTO.getStudent_grade(),vote_id);
 
-                //candidateService.imgUpload();
-                model.addAttribute("manager_id", manager_id);
-                return "manager/manager_URL";
+
+        return manager_id;
     }
 
     @GetMapping("/Register/search")
@@ -79,6 +75,13 @@ public class ManagerController {
         List<StudentsEntity> result = studentsService.findByStudent_name(student_name);
 
         return result;
+
+    }
+    @GetMapping("/manager/manager_URL={data}")
+    public String setManagerid(@PathVariable("data") String manager_id,Model model){
+        System.out.println(manager_id);
+        model.addAttribute("manager_id", manager_id);
+        return "manager/manager_URL";
 
     }
 

@@ -34,7 +34,8 @@
     <div class="tab-pane fade show active" id="reg1">
       <div>
         <div style="margin-top: 20px;">
-          생성된 url: localhost:8080/UserHome=${manager_id}
+          생성된 url:
+          <a href="http://localhost:8080/UserHome=${manager_id}"> localhost:8080/UserHome=${manager_id}</a>
           <div class="form-floating mnr-zone">
             <textarea class="form-control mnr-guide" id="floatingTextarea2"disabled readonly>관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</textarea>
           </div>
