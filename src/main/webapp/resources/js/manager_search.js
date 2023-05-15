@@ -27,7 +27,7 @@ function createCandidate(name, id, grade, major, index) {
         '                              <label for="file' +cnt + '" id="fileLabel'+ cnt + '">\n' +
         '                                <div style="width: 130px; height: 100%; background-color: #DCEDEB;">사진 등록</div>\n' +
         '                              </label>\n' +
-        '                              <input type="file" name="file' +cnt + '" id="file' + cnt + '" accept=".jpg, .png" onchange="readFile(this, '+ index + ');" />\n' +
+        '                              <input type="file" name="file' +cnt + '" id="file' + cnt + '" accept=".jpg, .png" onchange="readFile(this, '+ cnt + ');" />\n' +
         '                              <img id="preview' + cnt + '" style="width: 100%; height: auto;"/>\n' +
         '                            </div>\n' +
         '                          </div>\n' +
