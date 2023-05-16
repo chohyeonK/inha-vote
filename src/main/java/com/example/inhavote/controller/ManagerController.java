@@ -54,6 +54,27 @@ public class ManagerController {
         return return_page;
     }
 
+    @PostMapping(value = "/Login/result_login")
+    public String loginResult(@RequestParam String manager_id,@RequestParam String manager_name,Model model) {
+        boolean login=managerService.findByManager_idAndManager_name(manager_id,manager_name);
+        ManagerEntity manager = managerService.findByManager_id(manager_id);
+        String return_page="";
+        //System.out.println(manager_id+"  "+manager_name);
+        //System.out.println(managerService.findByManager_idAndManager_name(manager_id,manager_name));
+
+        if (login) {
+            model.addAttribute("manager_id", manager_id);
+            model.addAttribute("vote_name",manager.getVotename());
+            model.addAttribute("end_date",manager.getEnddate());
+            return_page= "manager/manager_ResultCertified";
+        } else if (!(login)) {
+            model.addAttribute("err", false);
+            return_page= "manager/manager_Result";
+        }
+
+        return return_page;
+    }
+
     @PostMapping(value = "/Register/vote_register")
     @ResponseBody
     public String registerVote(@RequestBody RegisterVoteDTO registerVoteDTO, Model model){

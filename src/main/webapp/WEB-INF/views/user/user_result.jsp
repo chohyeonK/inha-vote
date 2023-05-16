@@ -22,7 +22,7 @@
   <%-- 9 markup  --%>
   <div style="width: 400px; margin: 0 auto;">
     <div style="border: 1px solid black; padding: 20px;">
-      <p>미융대 학생회장 선거 결과</p>
+      <p>${vote_name} 결과</p>
       <div style="display: flex; border: 1px solid black;">
         <div style="width: 40%; height: 150px; border-right: 1px solid black;">
           사진

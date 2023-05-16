@@ -6,7 +6,7 @@ window.onload = function(e) {
         menu[1].classList.add("active")
     } else if (window.location.pathname == '/') {
         menu[0].classList.add("active")
-    } else if (window.location.pathname == '/Help') {
+    } else if (window.location.pathname == '/Result') {
         menu[3].classList.add("active")
     } else {
         menu[2].classList.add("active")

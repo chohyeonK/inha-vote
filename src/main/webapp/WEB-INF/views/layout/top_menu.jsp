@@ -17,6 +17,6 @@
     <a class="nav-link" href="Login">투표 등록</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="Help">사용법</a>
+    <a class="nav-link" href="Result">투표 결과</a>
   </li>
 </ul>

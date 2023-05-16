@@ -20,8 +20,8 @@ public class homeController {
     {
         return "manager/manager_Login";
     }
-    @GetMapping("/Help")
-    public String Help() { return "manager/manager_Help"; }
+    @GetMapping("/Result")
+    public String Result() { return "manager/manager_Result"; }
     @GetMapping("/UserVote")
     public String Vote() { return "user/user_vote"; }
     @GetMapping("/UserResult")
