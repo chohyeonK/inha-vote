@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -58,17 +59,27 @@ public class ManagerController {
     public String loginResult(@RequestParam String manager_id,@RequestParam String manager_name,Model model) {
         boolean login=managerService.findByManager_idAndManager_name(manager_id,manager_name);
         ManagerEntity manager = managerService.findByManager_id(manager_id);
+        Date end_date = manager.getEnddate();
+        Date today = new Date();
+        boolean compareDate = today.before(end_date);
         String return_page="";
         //System.out.println(manager_id+"  "+manager_name);
         //System.out.println(managerService.findByManager_idAndManager_name(manager_id,manager_name));
 
         if (login) {
-            model.addAttribute("manager_id", manager_id);
-            model.addAttribute("vote_name",manager.getVotename());
-            model.addAttribute("end_date",manager.getEnddate());
-            return_page= "manager/manager_ResultCertified";
+            if (!(compareDate)) {
+                model.addAttribute("manager_id", manager_id);
+                model.addAttribute("vote_name", manager.getVotename());
+                model.addAttribute("end_date", manager.getEnddate());
+                return_page = "manager/manager_ResultCertified";
+            } else if (compareDate) {
+                model.addAttribute("err2", false);
+                model.addAttribute("end_date", manager.getEnddate());
+                return_page= "manager/manager_Result";
+            }
+
         } else if (!(login)) {
-            model.addAttribute("err", false);
+            model.addAttribute("err1", false);
             return_page= "manager/manager_Result";
         }
 
