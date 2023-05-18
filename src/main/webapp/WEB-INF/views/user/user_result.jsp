@@ -16,6 +16,7 @@
   <script src="../../../resources/js/common.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
 <div class="frame">
@@ -38,10 +39,35 @@
         </div>
       </div>
     </div>
+    <canvas id="myChart"></canvas>
     <div style="border: 1px solid black; color: red; margin-top: 15px; text-align: center; padding: 20px;">
       결과는 ${end_date}까지 확인할 수 있습니다.
     </div>
   </div>
 </div>
+<script>
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'bar', //
+    data: {
+      labels: ['기호 1번', '기호 2번', '기호 3번'],
+      datasets: [{
+        label: '득표수',
+        backgroundColor: 'rgb(0, 123, 255)',
+        borderColor: 'rgb(0, 123, 255)',
+        data: [20, 50, 30,]
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+</script>
 </body>
 </html>
