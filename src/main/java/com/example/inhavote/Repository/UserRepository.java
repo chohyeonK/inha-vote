@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, UserId> {
+    UserEntity findByStudentidAndVoteid(String studentId, String voteId);
 }

@@ -12,7 +12,7 @@ import lombok.Setter;
 public class UserEntity {
 
     @Column(name = "email_confirm")
-    private boolean emailconfirm;
+    private String emailconfirm;
     @Column(name = "vote_confirm")
     private boolean voteconfirm;
 
