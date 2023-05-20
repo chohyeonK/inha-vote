@@ -45,8 +45,8 @@
     <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="confirmCode()">확인</button>
   </div>
   <div style="border: 1px solid black; padding: 10px;">미융대 학생만 참여 가능하며, 인하대 이메일만 사용할 수 있습니다.</div>
-<%--  <input type="hidden" id="voteId" name="voteId" value="${manager_id}">vote_1G22XT--%>
-  <input type="hidden" id="voteId" name="voteId" value="vote_1G22XT">
+  <input type="hidden" id="voteId" name="voteId" value="${manager_id}">
+<%--  <input type="hidden" id="voteId" name="voteId" value="vote_1G22XT">--%>
 </div>
 </body>
 </html>
