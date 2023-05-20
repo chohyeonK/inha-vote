@@ -33,7 +33,7 @@ public class homeController {
     @GetMapping("/UserEmail")
     public String UserEmail() { return "user/user_email"; }
     @GetMapping("/Register")
-    public String Register() { return "manager/manager1_Register"; }
+    public String Register() { return "manager/manager_Register"; }
     @GetMapping("/URL")
     public String URL() { return "manager/manager_URL"; }
     @GetMapping("/Admin")

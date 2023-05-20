@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -40,10 +41,11 @@ public class ManagerService {
         manager.setStudentgrade(registerVoteDTO.getStudent_grade());
         manager.setStudentmajor(registerVoteDTO.getStudent_major());
     }
-    public ManagerEntity findByManager_id(String manager_id){
+    public List<ManagerEntity> findByManager_id(String manager_id){
         //System.out.println("managerRepository.findByVote_id(vote_id):"+managerRepository.findByManagerid(manager_id));
         return managerRepository.findByManagerid(manager_id);
     }
+    public int vote_count(String manager_id){ return managerRepository.findByManagerid(manager_id).size();}
 
     public Boolean findByManager_idAndManager_name(String manager_id,String manager_name){ //managerLogin
         ManagerEntity manager=managerRepository.findByManageridAndManagername(manager_id,manager_name);
@@ -51,7 +53,9 @@ public class ManagerService {
         return exists;
     }
 
-
+    public ManagerEntity findByVote_id(String vote_id){
+        return managerRepository.findByVoteid(vote_id);
+    }
 
 
 

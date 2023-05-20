@@ -3,6 +3,7 @@ package com.example.inhavote.DTO;
 import com.example.inhavote.Entity.CandidateEntity;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

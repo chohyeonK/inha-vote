@@ -1,6 +1,8 @@
 // 전역 변수 선언
-var cnt = 1
-var candidates = new Array()
+//var cnt = 1
+var candidates = new Array();
+var imgArr= new Array();
+
 
 // 관리자 등록 - 모달 관련 함수
 function closeModal() {
@@ -120,18 +122,20 @@ function onDate() {
 // }
 
 // 투표 등록 - 사진 등록 함수
-function readFile(file, index) {
+function readFile(file, cnt) {
     if (file.files && file.files[0]) {
         var reader = new FileReader()
         reader.onload = function(e) {
 
-            document.getElementById('fileLabel' + index).style.display = 'none'
-            document.getElementById('preview' + index).src = e.target.result
+            document.getElementById('fileLabel'+cnt).style.display = 'none';
+            document.getElementById('preview'+cnt ).src = e.target.result;
         };
-        reader.readAsDataURL(file.files[0])
+        reader.readAsDataURL(file.files[0]);
+        imgArr.push(file);
     } else {
-        document.getElementById('preview' + index).src = ""
+        document.getElementById('preview'+cnt).src = ""
     }
+    console.log("imgArr:"+imgArr);
 }
 
 // 투표 등록 - 투표 등록 함수
@@ -162,15 +166,23 @@ function onVoteSubmit() {
         end_date: end_date,
         candidates: candidates
     };
-    console.log(dataArr);
+    var formData=new FormData();
+    formData.append("dataArr",new Blob([JSON.stringify(dataArr)],{type:"application/json"}));
+
+    for (let i = 0; i < imgArr.length; i++) {
+        formData.append("imgArr", imgArr[i].files[0]);
+        //console.log(imgArr[i]);
+    }
+
+    console.log("dataArr:"+formData);
 
     $.ajax({
         cache : false,
         url : "/Register/vote_register", // 요기에
         type : 'POST',
-        data : JSON.stringify(dataArr),
-        contentType: 'application/json',
-        dataType: "text",
+        data : formData,
+        processData: false,
+        contentType: false,
         success : function(data) {
             console.log(data)
             window.location.href="http://localhost:8080/manager/manager_URL="+data;
