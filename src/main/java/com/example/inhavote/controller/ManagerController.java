@@ -5,7 +5,10 @@ import com.example.inhavote.DTO.CreateVoteDTO;
 import com.example.inhavote.DTO.RegisterVoteDTO;
 import com.example.inhavote.Entity.*;
 import com.example.inhavote.Service.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,15 +39,16 @@ public class ManagerController {
 
 
     @PostMapping(value = "/Login/managerid_login")
-    public String loginVote(@RequestParam String manager_id,@RequestParam String manager_name,Model model) {
+    public String loginVote(@RequestParam String manager_id, @RequestParam String manager_name, Model model) {
+
         boolean login=managerService.findByManager_idAndManager_name(manager_id,manager_name);
         String return_page="";
         //System.out.println(manager_id+"  "+manager_name);
         //System.out.println(managerService.findByManager_idAndManager_name(manager_id,manager_name));
 
         if (login) {
-          model.addAttribute("manager_id", manager_id);
 
+            model.addAttribute("manager_id", manager_id);
             model.addAttribute("student_list", studentsService.findAll());
             return_page= "manager/manager_Register";
         } else if (!(login)) {
@@ -58,23 +62,22 @@ public class ManagerController {
     @PostMapping(value = "/Login/result_login")
     public String loginResult(@RequestParam String manager_id,@RequestParam String manager_name,Model model) {
         boolean login=managerService.findByManager_idAndManager_name(manager_id,manager_name);
-        ManagerEntity manager = managerService.findByManager_id(manager_id);
-        Date end_date = manager.getEnddate();
+        List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
+        Date end_date = manager.get(0).getEnddate();
         Date today = new Date();
         boolean compareDate = today.before(end_date);
         String return_page="";
         //System.out.println(manager_id+"  "+manager_name);
         //System.out.println(managerService.findByManager_idAndManager_name(manager_id,manager_name));
-
         if (login) {
             if (!(compareDate)) {
                 model.addAttribute("manager_id", manager_id);
-                model.addAttribute("vote_name", manager.getVotename());
-                model.addAttribute("end_date", manager.getEnddate());
+                model.addAttribute("vote_name", manager.get(0).getVotename());
+                model.addAttribute("end_date", manager.get(0).getEnddate());
                 return_page = "manager/manager_ResultCertified";
             } else if (compareDate) {
                 model.addAttribute("err2", false);
-                model.addAttribute("end_date", manager.getEnddate());
+                model.addAttribute("end_date", manager.get(0).getEnddate());
                 return_page= "manager/manager_Result";
             }
 
@@ -82,21 +85,23 @@ public class ManagerController {
             model.addAttribute("err1", false);
             return_page= "manager/manager_Result";
         }
-
         return return_page;
     }
 
-    @PostMapping(value = "/Register/vote_register")
+    @PostMapping(value = "/Register/vote_register",consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     @ResponseBody
-    public String registerVote(@RequestBody RegisterVoteDTO registerVoteDTO, Model model){
+    public String registerVote(@RequestPart(value="dataArr") RegisterVoteDTO registerVoteDTO, Model model,@RequestParam("imgArr") List<MultipartFile> imgArr){
         System.out.println(registerVoteDTO.toString());
         String manager_id=registerVoteDTO.getManager_id();
-        ManagerEntity manager = managerService.findByManager_id(manager_id) ;
-        String vote_id=manager.getVoteid();
+        List<ManagerEntity> manager = managerService.findByManager_id(manager_id) ;
+        String vote_id=manager.get(0).getVoteid();
         managerService.register_vote(vote_id,registerVoteDTO);
         candidateService.register_candidate(registerVoteDTO.getCandidates(),vote_id);
         studentsService.create_user(registerVoteDTO.getStudent_major(),registerVoteDTO.getStudent_grade(),vote_id);
 
+        for(int i=0;i<registerVoteDTO.getCandidates().size();i++){
+            candidateService.imgUpload(imgArr.get(i), registerVoteDTO.getCandidates().get(i).getStudentid(),vote_id);
+        }
 
         return manager_id;
     }

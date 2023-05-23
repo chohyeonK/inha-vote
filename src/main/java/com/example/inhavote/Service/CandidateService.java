@@ -32,12 +32,12 @@ public class CandidateService {
             this.candidateRepository.save(candidateEntity);
         }
     }
-    public void imgUpload( MultipartFile file,String student_id) {
+    public void imgUpload( MultipartFile file,String student_id,String vote_id) {
         String fileName = file.getOriginalFilename();
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-                Path path = Paths.get("./src/main/webapp/resources/img/candidate_img/" + student_id+".png");
+                Path path = Paths.get("./src/main/webapp/resources/img/candidate_img/" + vote_id+"-"+student_id+".png");
                 Files.write(path, bytes);
                 //return "succes";
             } catch (IOException e) {
