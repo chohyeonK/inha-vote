@@ -22,14 +22,6 @@
 <body>
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#reg1">투표 등록</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#reg2">투표 결과</a>
-    </li>
-  </ul>
 
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">

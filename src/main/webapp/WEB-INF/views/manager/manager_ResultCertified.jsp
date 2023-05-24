@@ -28,16 +28,16 @@
             <p>${vote_name} 결과</p>
             <div style="display: flex; border: 1px solid black;">
                 <div style="width: 40%; height: 150px; border-right: 1px solid black;">
-                    사진
+                    ${student_name}<br>${candidate_promise}
                 </div>
                 <div style="width: 60%;">
                     ${img_path}
                 </div>
             </div>
             <div>
-                <div style="margin-top: 10px;">득표수</div>
+                <div style="margin-top: 10px;">득표수 ${vote_counter}</div>
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                    <div class="progress-bar" role="progressbar" style="width: ${vote_counter}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">${vote_counter}</div>
                 </div>
             </div>
         </div>
@@ -52,12 +52,12 @@
     var chart = new Chart(ctx, {
         type: 'bar', //
         data: {
-            labels: ['기호 1번', '기호 2번', '기호 3번'],
+            labels: ['${student_name}'],
             datasets: [{
                 label: '득표수',
                 backgroundColor: 'rgb(0, 123, 255)',
                 borderColor: 'rgb(0, 123, 255)',
-                data: [20, 50, 30,]
+                data: [${vote_counter}]
             }]
         },
         options: {
