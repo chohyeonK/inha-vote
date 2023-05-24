@@ -22,16 +22,16 @@ public class homeController {
     }
     @GetMapping("/Result")
     public String Result() { return "manager/manager_Result"; }
-    @GetMapping("/UserVote")
-    public String Vote() { return "user/user_vote"; }
+//    @GetMapping("/UserVote")
+//    public String Vote() { return "user/user_vote"; }
     @GetMapping("/UserResult")
     public String userResult() { return "user/user_result"; }
     @GetMapping("/UserHome")
     public String UserHome() { return "user/user_home"; }
     @GetMapping("/UserInfo")
     public String UserInfo() { return "user/user_info"; }
-    @GetMapping("/UserEmail")
-    public String UserEmail() { return "user/user_email"; }
+//    @GetMapping("/UserEmail")
+//    public String UserEmail() { return "user/user_email"; }
     @GetMapping("/Register")
     public String Register() { return "manager/manager_Register"; }
     @GetMapping("/URL")

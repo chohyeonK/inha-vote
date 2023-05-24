@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,38 +22,31 @@
 </head>
 <body>
 <div class="frame">
-    <div id="userinfo_3" style="display: none;">
-    ${userinfo_3.getAttribute("student_id")}
-    <c:forEach var="list" items="${candidate_info}" varStatus="i">
-        <div>${list.studentid} /</div>
-        <c:if test="${list.studentid eq userinfo_3.getAttribute('student_id')}">
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="<c:url value="/resources/img_candidate/${list.imgpath}"/>"class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">${candidates.get(i).studentname}</h5>
-                            <p class="card-text">${list.candidatespec}</p>
-                        </div>
-                    </div>
-                </div>
+    <div id="userinfo_3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="<c:url value="/resources/img_candidate/${candidate_info.imgpath}"/>"class="img-fluid rounded-start" alt="...">
             </div>
-            <div class="card text-center" style="margin-top: 10px">
-                <div class="card-header">
-                    <ul class="nav nav-pills card-header-pills">
-                        <li class="nav-item">
-                            <a class="nav-link active">공약</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="col-md-8">
                 <div class="card-body">
-                    <p class="card-text">${list.candidatepromise}</p>
+                    <h5 class="card-title">기호 ${candiNum}번 ${candidate.studentname}</h5>
+                    <p class="card-text">${candidate_info.candidatespec}</p>
                 </div>
             </div>
-        </c:if>
-    </c:forEach>
+        </div>
+    </div>
+    <div class="card text-center" style="margin-top: 10px">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills">
+                <li class="nav-item">
+                    <a class="nav-link active">공약</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <p class="card-text">${candidate_info.candidatepromise}</p>
+        </div>
+    </div>
 </div>
 </div>
 </body>

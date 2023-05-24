@@ -11,15 +11,16 @@ public class EmailService {
     @Autowired
     private JavaMailSender emailSender;
 
+    // 이메일 인증 발송
     public boolean sendMail(String userEmail, String code) {
-        System.out.println("sendMail 실행");
         SimpleMailMessage message = new SimpleMailMessage();
+
         message.setFrom("chohyeonK3@gmail.com");
-//        message.setTo(userEmail);
-        message.setTo("tkrhkaktq@naver.com");
+        message.setTo(userEmail);
+//        message.setTo("tkrhkaktq@naver.com");
         message.setSubject("인하대 투표웹 인증 메일입니다.");
         message.setText("인증번호: " + code);
-        System.out.println(message);
+
         emailSender.send(message);
         return true;
     }

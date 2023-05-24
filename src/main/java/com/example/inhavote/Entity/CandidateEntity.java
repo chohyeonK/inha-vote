@@ -27,5 +27,4 @@ public class CandidateEntity {
     private int votecounter;
     @Column(name = "img_path")
     private String imgpath;
-
 }
