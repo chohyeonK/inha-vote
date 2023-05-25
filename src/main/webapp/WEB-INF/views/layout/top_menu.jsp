@@ -20,3 +20,4 @@
     <a class="nav-link" href="Result">투표 결과</a>
   </li>
 </ul>
+<a href="/session_out">로그아웃</a>

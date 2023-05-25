@@ -45,9 +45,16 @@
             관리자 이름과 코드가 맞지 않습니다. 다시 확인해주세요.
         </div>
       </c:if>
-    </div>
-    <div class="tab-pane fade" id="reg2">
-      <p style="margin-top: 20px;">투표 결과가 아직 집계되지 않았습니다.</p>
+      <c:if test="${err2 == false}">
+        <div class="alert alert-danger" role="alert">
+            ${end_date}이후 확인할 수 있습니다.
+        </div>
+      </c:if>
+      <c:if test="${err3 == false}">
+        <div class="alert alert-danger" role="alert">
+            이미 등록된 투표입니다. 수정은 관리자에게 문의해주세요.
+        </div>
+      </c:if>
     </div>
   </div>
 

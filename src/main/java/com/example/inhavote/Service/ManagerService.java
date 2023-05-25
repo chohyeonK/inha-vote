@@ -41,6 +41,18 @@ public class ManagerService {
         manager.setStudentgrade(registerVoteDTO.getStudent_grade());
         manager.setStudentmajor(registerVoteDTO.getStudent_major());
     }
+    public boolean compareVoteDate(String manager_id) {
+        List<ManagerEntity> manager = findByManager_id(manager_id);
+        Date end_date = manager.get(0).getEnddate();
+        String vote_name=manager.get(0).getVotename();
+        Date today = new Date();
+
+        return today.before(end_date)?true:false;
+    }
+    public boolean existVote(String manager_id){
+        List<ManagerEntity> manager=findByManager_id(manager_id);
+        return manager.get(0).getVotename()!=null ? true:false;
+    }
     public List<ManagerEntity> findByManager_id(String manager_id){
         //System.out.println("managerRepository.findByVote_id(vote_id):"+managerRepository.findByManagerid(manager_id));
         return managerRepository.findByManagerid(manager_id);

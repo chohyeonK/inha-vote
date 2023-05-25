@@ -68,58 +68,7 @@ function onDate() {
         yearSuffix: '년'
     });
 }
-//
-// function createCandidate(name, id, grade, major, index) {
-//     console.log(name, id, grade, major, index)
-//     const divAccordian = document.getElementById('accordion')
-//     let divCard = document.createElement('div');
-//     divCard.innerHTML = '<div class="card-header" id="heading-' + index + '>\n' +
-//         '                      <h5 class="mb-0">\n' +
-//         '                        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapse' + index + '" aria-expanded="true" aria-controls="collapse' + index + '">\n' +
-//         '                          기호' + cnt + '번 ' + major + ' ' + grade + '학년 ' + name +'\n' +
-//         '                        </button>\n' +
-//         '                      </h5>'
-//     divAccordian.append(divCard)
-//
-//     let divCollapse = document.createElement('div');
-//     divCollapse.setAttribute('id', 'collapse' + cnt)
-//     divCollapse.setAttribute('class', 'collapse show')
-//     divCollapse.setAttribute('aria-labelledby', 'heading' + cnt)
-//     divCollapse.setAttribute('data-parent', '#accordion')
-//     divCollapse.innerHTML = '<div class="card-body">\n' +
-//         '                        <div style="display: flex; border: 1px solid black;">\n' +
-//         '                          <div style="width: 45%; height: 170px; overflow: hidden; border-right: 1px solid black;">\n' +
-//         '                            <div style="width: 130px; height: 100%;">\n' +
-//         '                              <label for="file' +cnt + '" id="fileLabel'+ cnt + '">\n' +
-//         '                                <div style="width: 130px; height: 100%; background-color: #DCEDEB;">사진 등록</div>\n' +
-//         '                              </label>\n' +
-//         '                              <input type="file" name="file' +cnt + '" id="file' + cnt + '" accept=".jpg, .png" onchange="readFile(this, '+ index + ');" />\n' +
-//         '                              <img id="preview' + cnt + '" style="width: 100%; height: auto;"/>\n' +
-//         '                            </div>\n' +
-//         '                          </div>\n' +
-//         '                          <div style="width: 55%;">\n' +
-//         '                            <textarea id="spec' + cnt+ '" placeholder="설명" style="resize: none;"></textarea>\n' +
-//         '                          </div>\n' +
-//         '                        </div>\n' +
-//         '                        <div style="margin-top: 15px; height: 120px; border: 1px solid black;">\n' +
-//         '                          <textarea id="promise' + cnt + '" placeholder="공약" style="resize: none;"></textarea>\n' +
-//         '                        </div>\n' +
-//         '                      </div>\n' +
-//         '                    </div>'
-//
-//     divAccordian.append(divCollapse)
-//
-//     var student = new Object()
-//
-//     student.studentid = id
-//     student.candidatespec = ''
-//     student.candidatepromise = ''
-//     candidates.push(student)
-//
-//     console.log(candidates)
-//
-//     cnt++ // 기호 번호 카운팅
-// }
+
 
 // 투표 등록 - 사진 등록 함수
 function readFile(file, cnt) {
@@ -184,13 +133,16 @@ function onVoteSubmit() {
         processData: false,
         contentType: false,
         success : function(data) {
-            console.log(data)
-            window.location.href="http://localhost:8080/manager/manager_URL="+data;
-        }, // success
+            if(data==="err"){
+                window.location.href="http://localhost:8080/manager/manager_Login";
 
+            }else {
+                console.log(data)
+                window.location.href = "http://localhost:8080/manager/manager_URL=" + data;
+            }
+        }, // success
         error : function(xhr, status) {
             alert(xhr + " : " + status);
         }
     }); // $.ajax */
-
 }

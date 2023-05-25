@@ -26,19 +26,10 @@
 <body>
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#reg1">투표 등록</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#reg2">투표 결과</a>
-    </li>
-  </ul>
 
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <div>
-<%--        enctype="multipart/form-data"--%>
         <form method="post" enctype="multipart/form-data">
         <div id="register2-1">
           <div class="mt-3 mb-3">
@@ -110,7 +101,6 @@
             </div>
           </div>
           <div>
-
           </div>
           <%--<h1>${err}</h1>--%>
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
@@ -122,9 +112,6 @@
         </div>
         </form>
       </div>
-    </div>
-    <div class="tab-pane fade" id="reg2">
-      <p style="margin-top: 20px;">투표 결과가 아직 집계되지 않았습니다.</p>
     </div>
   </div>
 </div>
