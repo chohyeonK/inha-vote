@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div style="height: 750px; overflow: auto;">
+    <div style="max-height: 750px; overflow: auto;">
         <c:forEach var="list" items="${candidate_student}" varStatus="status">
             <div class="d-flex bd-highlight mb-3" style="height: 100px">
                 <div class="align-self-center p-2 bd-highlight">

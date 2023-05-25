@@ -27,7 +27,7 @@
 <div class="frame">
     <div id="userinfo_2">
         <div style="border: 1px solid black; padding: 10px;"><br>${vote_name}<br><br></div>
-        <div id="list-group-div" class="list-group" style="margin-top: 15px; height: 750px; overflow: auto;">
+        <div id="list-group-div" class="list-group" style="margin-top: 15px; max-height: 750px; overflow: auto;">
             <c:forEach var="list" items="${cadidate_student}" varStatus="status">
                 <a class="list-group-item list-group-item-action" style="padding: 30px" onclick="location.href='/UserInfo_candidate?vote_id='+`${vote_id}`+'&student_id='+`${list.student_id}`+'&candiNum='+`${status.index+1}`">
                     <div class="row g-0">
