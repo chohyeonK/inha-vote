@@ -28,7 +28,7 @@
                 <h5 class="modal-title">관리자 등록 완료</h5>
             </div>
             <div class="modal-body">
-                <h3 id="managerId">${manager_id}</h3>
+                <h3 id="managerId">${managerid}</h3>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()">닫기</button>

@@ -34,7 +34,7 @@ public class ManagerController {
     public String createVote(CreateVoteDTO createVoteDTO, Model model) {
         //System.out.println(createVoteDTO.toString());
         managerService.create_vote(createVoteDTO);
-        model.addAttribute("manager_id", createVoteDTO.getManager_id());
+        model.addAttribute("managerid", createVoteDTO.getManager_id());
         return "manager/manager_CreateVote";
     }
 
