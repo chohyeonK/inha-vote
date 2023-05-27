@@ -25,7 +25,6 @@ public class RegisterVoteDTO {
 
     public RegisterVoteDTO() {
 
-        this.candidates = candidates;
     }
 
     @Override

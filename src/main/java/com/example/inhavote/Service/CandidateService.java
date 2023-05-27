@@ -35,7 +35,7 @@ public class CandidateService {
             candidateEntity.setCandidatepromise(candidate.getCandidatepromise());
             candidateEntity.setCandidatespec(candidate.getCandidatespec());
             candidateEntity.setVoteid(vote_id);
-            candidateEntity.setImgpath(candidate.getStudentid()+".png");
+            candidateEntity.setImgpath(candidate.getVoteid()+"-"+candidate.getStudentid()+".png");
             candidateEntity.setStudentid(candidate.getStudentid());
             this.candidateRepository.save(candidateEntity);
         }
@@ -106,9 +106,9 @@ public class CandidateService {
     // 투표 대상 득표수 증가
     @Transactional
     public void voteCounterUp(CandidateEntity voteUser) {
-        System.out.println("voteCounterUp");
+        //System.out.println("voteCounterUp");
         int currentCounter = voteUser.getVotecounter() + 1;
         voteUser.setVotecounter(currentCounter);
-        System.out.println(voteUser.getVotecounter());
+        //System.out.println(voteUser.getVotecounter());
     }
 }
