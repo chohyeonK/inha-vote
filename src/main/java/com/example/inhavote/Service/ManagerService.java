@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
@@ -43,11 +44,11 @@ public class ManagerService {
     }
     public boolean compareVoteDate(String manager_id) {
         List<ManagerEntity> manager = findByManager_id(manager_id);
-        Date end_date = manager.get(0).getEnddate();
-        String vote_name=manager.get(0).getVotename();
-        Date today = new Date();
-
-        return today.before(end_date)?true:false;
+        if (Objects.nonNull(manager.get(0).getEnddate())){
+            Date today = new Date();
+            return today.before(manager.get(0).getEnddate())?true:false;
+        }
+        else return true;
     }
     public boolean existVote(String manager_id){
         List<ManagerEntity> manager=findByManager_id(manager_id);

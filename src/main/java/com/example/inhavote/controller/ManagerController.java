@@ -60,10 +60,18 @@ public class ManagerController {
         List<ManagerEntity> manager=managerService.findByManager_id(manager_id);
         if(manager_id!=null) {
             if(managerService.compareVoteDate(manager_id)){
-                System.out.println("날짜 안지남");
-                redirectAttributes.addFlashAttribute("end_date",manager.get(0).getEnddate());
-                redirectAttributes.addFlashAttribute("err2",false);
-                return "redirect:/Login";
+                if(!managerService.existVote(manager_id)){
+                    System.out.println("등록 안됨");
+                    redirectAttributes.addFlashAttribute("err4",false);
+                    //redirectAttributes.addFlashAttribute("page","/");
+                    return "redirect:/Login";
+                }
+               else {
+                    System.out.println("날짜 안지남");
+                    redirectAttributes.addFlashAttribute("end_date",manager.get(0).getEnddate());
+                    redirectAttributes.addFlashAttribute("err2",false);
+                    return "redirect:/Login";
+                }
             }
             return "manager/manager_ResultCertified";
         }
@@ -101,7 +109,6 @@ public class ManagerController {
     public String loginVote(HttpServletRequest request, @RequestParam String manager_id, @RequestParam String manager_name, RedirectAttributes redirectAttributes) {
 
         boolean login=managerService.findByManager_idAndManager_name(manager_id,manager_name);
-        String return_page="";
         //System.out.println(manager_id+"  "+manager_name);
         //System.out.println(managerService.findByManager_idAndManager_name(manager_id,manager_name));
         HttpSession session=request.getSession();
@@ -114,8 +121,6 @@ public class ManagerController {
             //System.out.println("manager_id:"+session.getAttribute("manager_id"));
             return "redirect:../"+page;
 
-            model.addAttribute("student_list", studentsService.findAll());
-            return_page= "manager/manager_Register";
         } else if (!(login)) {
             redirectAttributes.addFlashAttribute("err", false);
             return "redirect:../Login";
@@ -148,14 +153,14 @@ public class ManagerController {
     @GetMapping("/Register/search")
     @ResponseBody // 문자열을 반환할 경우 @ResponseBody 어노테이션을 추가합니다.
     public List<StudentsEntity> getString(@RequestParam("param1") String param1) {
-        System.out.println(param1);
+        //System.out.println(param1);
         List<StudentsEntity> result = studentsService.findByStudent(param1);
         return result;
     }
 
     @GetMapping("/manager/manager_URL={data}")
     public String setManagerid(@PathVariable("data") String manager_id,Model model){
-        System.out.println(manager_id);
+        //System.out.println(manager_id);
         model.addAttribute("manager_id", manager_id);
         return "manager/manager_URL";
 
