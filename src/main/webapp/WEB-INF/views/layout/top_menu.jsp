@@ -14,10 +14,10 @@
     <a class="nav-link" href="CreateVote">관리자 등록</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="Login">투표 등록</a>
+    <a class="nav-link" href="/session?page=Register">투표 등록</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="Result">투표 결과</a>
+    <a class="nav-link" href="/session?page=Result">투표 결과</a>
   </li>
 </ul>
 <a href="/session_out">로그아웃</a>
