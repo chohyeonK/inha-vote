@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -87,7 +88,19 @@ public class UserController {
     public String UserResult(@PathVariable("manager_id") String manager_id, Model model){
         System.out.println("userresult"+manager_id);
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
+        List<CandidateEntity> candidates = candidateService.findByVote_id(manager.get(0).getVoteid());
+        StudentsEntity student0 = studentsService.findByStudent_id(candidates.get(0).getStudentid());
+        StudentsEntity student1 = studentsService.findByStudent_id(candidates.get(1).getStudentid());
+        StudentsEntity student2 = studentsService.findByStudent_id(candidates.get(2).getStudentid());
+
         model.addAttribute("end_date",manager.get(0).getEnddate());
+        model.addAttribute("student_name_0",student0.getStudentname());
+        model.addAttribute("student_name_1",student1.getStudentname());
+        model.addAttribute("student_name_2",student2.getStudentname());
+        model.addAttribute("vote_counter_0",candidates.get(0).getVotecounter());
+        model.addAttribute("vote_counter_1",candidates.get(1).getVotecounter());
+        model.addAttribute("vote_counter_2",candidates.get(2).getVotecounter());
+        model.addAttribute("img_path",candidates.get(0).getImgpath());
         return "user/user_result";
     }
     @GetMapping("/UserEmail={manager_id}")
