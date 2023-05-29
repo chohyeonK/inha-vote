@@ -75,7 +75,7 @@ public class ManagerController {
             }
             return "manager/manager_ResultCertified";
         }
-        else return "redirect:/";
+        else return "err";
     }
 
     @GetMapping("/Register")
@@ -91,10 +91,18 @@ public class ManagerController {
             }
             return "manager/manager_Register";
         }
-        else return "redirect:/";
+        else return "err";
     }
     @GetMapping("/URL")
-    public String URL() { return "manager/manager_URL"; }
+    public String URL(HttpServletRequest request,RedirectAttributes redirectAttributes) {
+        HttpSession session=request.getSession();
+        String manager_id=(String)session.getAttribute("manager_id");
+        if(manager_id!=null) {
+            return "manager/manager_URL";
+        }
+        else return "err";
+    }
+
     @GetMapping("/session_out")
     public String SessionOut(HttpServletRequest request){
         HttpSession session=request.getSession();
