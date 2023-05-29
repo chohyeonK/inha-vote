@@ -89,6 +89,8 @@ function readFile(file, cnt) {
 
 // 투표 등록 - 투표 등록 함수
 function onVoteSubmit() {
+    document.getElementById('overlay').style.display = 'block'
+
     const manager_id = document.getElementById('manager_id').value
     const vote_name = document.getElementById('vote-name').value
     const voteStDt = document.getElementById('stDatePicker').value
@@ -102,9 +104,11 @@ function onVoteSubmit() {
 
     // 후보자 스펙, 공약 저장
     for (var i = 0; i < candidates.length; i++) {
-        candidates[i].candidatespec = document.getElementById('spec' + (i+1).toString()).value;
-        candidates[i].candidatepromise = document.getElementById('promise' + (i+1).toString()).value;
+        candidates[i].candidatespec = document.getElementsByClassName('spec')[i].value
+        candidates[i].candidatepromise = document.getElementsByClassName('promise')[i].value
     }
+
+    // console.log(candidates)
 
     const dataArr = {
         manager_id: manager_id,
@@ -134,6 +138,7 @@ function onVoteSubmit() {
         contentType: false,
         success : function(data) {
             if(data==="err"){
+                document.getElementById('overlay').style.display = 'none'
                 window.location.href="http://localhost:8080/manager/manager_Login";
 
             }else {

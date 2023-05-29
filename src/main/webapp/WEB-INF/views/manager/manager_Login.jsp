@@ -22,7 +22,6 @@
 <body>
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
-
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <form action="/Login/managerid_login" method="post">
@@ -62,8 +61,11 @@
       </c:if>
     </div>
   </div>
+</div>
 
-
+<%--로딩 스피너 구현--%>
+<div id="overlay">
+  <span class="loader"></span>
 </div>
 </body>
 </html>

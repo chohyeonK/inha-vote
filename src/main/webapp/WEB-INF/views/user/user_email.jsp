@@ -48,5 +48,9 @@
     <input type="hidden" id="managerId" name="managerId" value="${manager_id}">
   <input type="hidden" id="voteId" name="voteId" value="${vote_id}">
 </div>
+<%--로딩 스피너 구현--%>
+<div id="overlay">
+    <span class="loader"></span>
+</div>
 </body>
 </html>

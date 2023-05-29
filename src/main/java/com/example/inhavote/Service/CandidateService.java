@@ -35,7 +35,7 @@ public class CandidateService {
             candidateEntity.setCandidatepromise(candidate.getCandidatepromise());
             candidateEntity.setCandidatespec(candidate.getCandidatespec());
             candidateEntity.setVoteid(vote_id);
-            candidateEntity.setImgpath(candidate.getVoteid()+"-"+candidate.getStudentid()+".png");
+            candidateEntity.setImgpath(vote_id+"-"+candidate.getStudentid()+".png");
             candidateEntity.setStudentid(candidate.getStudentid());
             this.candidateRepository.save(candidateEntity);
         }

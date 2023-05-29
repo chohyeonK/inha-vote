@@ -6,6 +6,8 @@ window.onload= function() {
 // 사용자페이지 - 인증 이메일 보내는 함수
 function sendMail() {
     console.log('sendMail 함수 실행')
+    document.getElementById('overlay').style.display = 'block'
+
     // var name = document.getElementById('userName').value
     var id = document.getElementById('userId').value
     var email = document.getElementById('userEmail').value + '@inha.edu'
@@ -29,6 +31,8 @@ function sendMail() {
             contentType: 'application/json',
             success : function(res) {
                 // console.log(res)
+                document.getElementById('overlay').style.display = 'none'
+
                 if(res.resCode == 120) { // 성공
                     alert(res.resMessage)
                     return true
@@ -50,12 +54,16 @@ function sendMail() {
         });
     } else {
         alert('이름과 학번, 이메일을 확인해주세요.')
+        document.getElementById('overlay').style.display = 'none'
+
         return false
     }
 }
 
 // 사용자페이지 - 인증번호 확인하는 함수
 function confirmCode() {
+    document.getElementById('overlay').style.display = 'block'
+
     var id = document.getElementById('userId').value
     var voteId = document.getElementById('voteId').value
     var code = document.getElementById('voteCode').value
@@ -75,6 +83,8 @@ function confirmCode() {
         contentType: 'application/json',
         success : function(res) {
             // console.log(res)
+            document.getElementById('overlay').style.display = 'none'
+
             if(res.resCode == 120) { // 성공
                 alert(res.resMessage)
                 location.href='/UserVote?manager_id=' + managerId + '&vote_id=' + voteId + '&student_id=' + id;
@@ -103,7 +113,16 @@ function onVote(voteStudentId, voteId, manager_id) {
 
     console.log(voteStudentId, voteId, voteNumber)
 
+    const query = 'label[for="'+ voteNumber + '"]'
+    var voteCandidate = document.querySelector(query).innerText;
+
+
     // 투표 후보자 다시 한번 확인 컨펌창 띄우기
+    if(!confirm("투표할 대상이 " + voteCandidate + "(이)가 맞습니까?")) {
+        return false;
+    }
+
+    document.getElementById('overlay').style.display = 'block'
 
     let studentVote = {
         student_id: voteStudentId,
@@ -118,7 +137,9 @@ function onVote(voteStudentId, voteId, manager_id) {
         data : JSON.stringify(studentVote),
         contentType: 'application/json',
         success : function(data) {
-            console.log(data)
+            // console.log(data)
+            document.getElementById('overlay').style.display = 'none'
+
             if(data) {
                 alert('투표 완료되었습니다. 메인 페이지로 이동합니다.')
                 location.href='/UserHome=' + managerId;

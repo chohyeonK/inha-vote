@@ -19,6 +19,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
   <script src="../../../resources/js/manager.js"></script>
   <script src="../../../resources/js/common.js"></script>
@@ -26,7 +27,6 @@
 <body>
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
-
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <div>
@@ -84,8 +84,9 @@
                 <div id="studentAll" style="border: 1px solid black; height: calc(100% - 40px); overflow: auto;">
                   <!-- 반복문을 이용하여 리스트 출력 -->
                   <c:forEach var="student" items="${student_list}" varStatus="status">
-                    <div style="border-bottom: 1px solid black;" onclick="createCandidate('${student.studentname}', '${student.studentid}', '${student.studentgrade}', '${student.studentmajor}', '${status.count}')">
+                    <div style="border-bottom: 1px solid black;" >
                         ${student.studentname} ${student.studentid} ${student.studentgrade}학년 ${student.studentmajor}
+                          <i class="bi bi-plus-circle"  onclick="createCandidate('${student.studentname}', '${student.studentid}', '${student.studentgrade}', '${student.studentmajor}', '${status.count}')"></i>
                     </div>
                   </c:forEach>
                 </div>
@@ -116,6 +117,10 @@
   </div>
 </div>
 
+<%--로딩 스피너 구현--%>
+<div id="overlay">
+  <span class="loader"></span>
+</div>
 <script>
   // 캘린더 라이브러리 연동
   onDate()
