@@ -55,6 +55,11 @@
             이미 등록된 투표입니다. 수정은 관리자에게 문의해주세요.
         </div>
       </c:if>
+      <c:if test="${err4 == false}">
+        <div class="alert alert-danger" role="alert">
+          아직 등록 되지 않은 투표입니다. 등록을 먼저 진행해주세요.
+        </div>
+      </c:if>
     </div>
   </div>
 
