@@ -79,9 +79,10 @@ public class ManagerController {
     }
 
     @GetMapping("/Register")
-    public String Register(HttpServletRequest request,RedirectAttributes redirectAttributes) {
+    public String Register(HttpServletRequest request,RedirectAttributes redirectAttributes,Model model) {
         HttpSession session=request.getSession();
         String manager_id=(String)session.getAttribute("manager_id");
+        model.addAttribute("student_list", studentsService.findAll());
         if(manager_id!=null) {
             if (managerService.existVote(manager_id)){
                 System.out.println("테이블 존재 어쩌구");
@@ -117,7 +118,7 @@ public class ManagerController {
         if (login) {
             session.setAttribute("manager_id",manager_id);
             redirectAttributes.addFlashAttribute("manager_id", manager_id);
-            redirectAttributes.addFlashAttribute("student_list", studentsService.findAll());
+            //redirectAttributes.addFlashAttribute("student_list", studentsService.findAll());
             //System.out.println("manager_id:"+session.getAttribute("manager_id"));
             return "redirect:../"+page;
 
