@@ -55,6 +55,10 @@
         <textarea class="form-control mnr-guide" id="floatingTextarea2" disabled readonly>관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</textarea>
     </div>
 </div>
+<%--로딩 스피너 구현--%>
+<div id="overlay">
+    <span class="loader"></span>
+</div>
 <script>
     // 값 전송 받은 후 모달창 띄우는 함수
     const managerId = document.getElementById('managerId').innerText
@@ -67,6 +71,8 @@
         const managerName = document.getElementById('manager-name').value
         const managerTel = document.getElementById('manager-tel').value
         if (managerName && managerTel) {
+            document.getElementById('overlay').style.display = 'block'
+
             return true
         } else {
             alert('담당자명 또는 담당자 연락처를 입력하여주세요.')

@@ -72,7 +72,7 @@
 
 
         <%-- ## 3 markup --%>
-        <div id="register2-2">
+        <div id="register2-2" style="display: none;">
           <div>
             <div style="margin-top: 15px;">학번 검색</div>
             <div style="width: 100%; height: 600px; border: 1px solid black; margin-top: 15px;">
@@ -117,6 +117,10 @@
   </div>
 </div>
 
+<%--로딩 스피너 구현--%>
+<div id="overlay">
+  <span class="loader"></span>
+</div>
 <script>
   // 캘린더 라이브러리 연동
   onDate()
