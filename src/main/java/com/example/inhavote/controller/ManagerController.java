@@ -169,10 +169,10 @@ public class ManagerController {
     }
 
     @GetMapping("/manager/manager_URL={data}")
-    public String setManagerid(@PathVariable("data") String manager_id,Model model){
+    public String setManagerid(@PathVariable("data") String manager_id,RedirectAttributes redirectAttributes){
         //System.out.println(manager_id);
-        model.addAttribute("manager_id", manager_id);
-        return "manager/manager_URL";
+        redirectAttributes.addFlashAttribute("manager_id", manager_id);
+        return "redirect:/URL";
 
     }
 
