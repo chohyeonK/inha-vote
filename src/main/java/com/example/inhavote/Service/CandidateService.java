@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -64,6 +65,50 @@ public class CandidateService {
 
         return candidate_list;
     }
+
+    public CandidateEntity findElectedByVote_id(String vote_id)
+    {
+        List<CandidateEntity> candidates = findByVote_id(vote_id);
+        int elected_count = candidates.get(0).getVotecounter();
+
+        for(CandidateEntity candidate  : candidates)
+        {
+            if( elected_count <= candidate.getVotecounter() )
+            {
+                elected_count = candidate.getVotecounter();
+            }
+        }
+        CandidateEntity elected = findByVoteidAndVotecounter(vote_id, elected_count);
+
+        return elected;
+    }
+
+    public int getVoteRateByVoteidAndVoteCounter(String vote_id, int vote_counter)
+    {
+        List<CandidateEntity> candidates = findByVote_id(vote_id);
+        long totalVoteCount = 0;
+
+        for(CandidateEntity candidate : candidates)
+        {
+            totalVoteCount += candidate.getVotecounter();
+        }
+        double voteRate = (double)vote_counter / (double)totalVoteCount * 100;
+
+        return (int)voteRate;
+    }
+    public long getTotalVoteCountByVoteid(String vote_id)
+    {
+        List<CandidateEntity> candidates = findByVote_id(vote_id);
+        long totalVoteCount = 0;
+
+        for(CandidateEntity candidate : candidates)
+        {
+            totalVoteCount += candidate.getVotecounter();
+        }
+
+        return totalVoteCount;
+    }
+
     public List<CandidateEntity> findByVote_id(String vote_id){
         return candidateRepository.findByVoteid(vote_id);
     }
@@ -77,6 +122,11 @@ public class CandidateService {
 
     public CandidateStudentDTO findCandidateVote(String vote_id, String vote_number) {
         return candidateRepository.findCandidateVote(vote_id, vote_number);
+    }
+
+    public CandidateEntity findByVoteidAndVotecounter(String vote_id, int vote_counter)
+    {
+        return candidateRepository.findByVoteidAndVotecounter(vote_id, vote_counter);
     }
 
     // 후보자 득표수 증가

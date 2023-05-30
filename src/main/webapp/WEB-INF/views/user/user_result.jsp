@@ -27,25 +27,50 @@
       <p>${vote_name} 결과</p>
       <div style="display: flex; border: 1px solid black;">
         <div style="width: 40%; height: 150px; border-right: 1px solid black;">
-          ${student_name_0}
+          ${img_path}
         </div>
         <div style="width: 60%;">
-          ${img_path}
+          ${student_name}<br>
         </div>
       </div>
       <div>
         <div style="margin-top: 10px;">득표수 ${vote_counter}</div>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: ${vote_counter}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">${vote_counter}%</div>
+          <div class="progress-bar" role="progressbar" style="width: ${vote_rate}%;" aria-valuenow="${vote_rate}" aria-valuemin="0" aria-valuemax="100">${vote_rate}%</div>
         </div>
+        <div style="float: right">${vote_counter}/${total_vote_count}</div>
       </div>
     </div>
-    <canvas id="myChart"></canvas>
+<%--    <canvas id="myChart"></canvas>--%>
     <div style="border: 1px solid black; color: red; margin-top: 15px; text-align: center; padding: 20px;">
       결과는 ${end_date}까지 확인할 수 있습니다.
     </div>
   </div>
 </div>
+<%--<script>--%>
+<%--  var ctx = document.getElementById('myChart').getContext('2d');--%>
+<%--  var chart = new Chart(ctx, {--%>
+<%--    type: 'bar', //--%>
+<%--    data: {--%>
+<%--      labels: ['${student_name}', '${student_name}', '${student_name}'],--%>
+<%--      datasets: [{--%>
+<%--        label: '득표수',--%>
+<%--        backgroundColor: 'rgb(0, 123, 255)',--%>
+<%--        borderColor: 'rgb(0, 123, 255)',--%>
+<%--        data: [${vote_counter}, ${vote_counter}, ${vote_counter}]--%>
+<%--      }]--%>
+<%--    },--%>
+<%--    options: {--%>
+<%--      scales: {--%>
+<%--        yAxes: [{--%>
+<%--          ticks: {--%>
+<%--            beginAtZero: true--%>
+<%--          }--%>
+<%--        }]--%>
+<%--      }--%>
+<%--    }--%>
+<%--  });--%>
+<%--</script>--%>
 <%--<script>
   var ctx = document.getElementById('myChart').getContext('2d');
   var chart = new Chart(ctx, {
