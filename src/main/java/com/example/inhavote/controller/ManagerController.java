@@ -64,18 +64,19 @@ public class ManagerController {
                     System.out.println("등록 안됨");
                     redirectAttributes.addFlashAttribute("err4",false);
                     //redirectAttributes.addFlashAttribute("page","/");
-                    return "redirect:/Login";
+                    return "redirect:/error";
                 }
                else {
                     System.out.println("날짜 안지남");
                     redirectAttributes.addFlashAttribute("end_date",manager.get(0).getEnddate());
                     redirectAttributes.addFlashAttribute("err2",false);
-                    return "redirect:/Login";
+                    return "redirect:/error";
                 }
             }
+            /*결과 출력 함수*/
             return "manager/manager_ResultCertified";
         }
-        else return "err";
+        else return "/error";
     }
 
     @GetMapping("/Register")
@@ -87,11 +88,11 @@ public class ManagerController {
             if (managerService.existVote(manager_id)){
                 System.out.println("테이블 존재 어쩌구");
                 redirectAttributes.addFlashAttribute("err3",false);
-                return "redirect:/Login";
+                return "redirect:/error";
             }
             return "manager/manager_Register";
         }
-        else return "err";
+        else return "/error";
     }
     @GetMapping("/URL")
     public String URL(HttpServletRequest request,RedirectAttributes redirectAttributes) {
@@ -100,7 +101,7 @@ public class ManagerController {
         if(manager_id!=null) {
             return "manager/manager_URL";
         }
-        else return "err";
+        else return "/error";
     }
 
     @GetMapping("/session_out")
@@ -156,7 +157,7 @@ public class ManagerController {
             }
 
             return manager_id;
-        }else return "err";
+        }else return "/error";
     }
 
     @GetMapping("/Register/search")

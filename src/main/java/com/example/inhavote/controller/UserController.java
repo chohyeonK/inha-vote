@@ -8,10 +8,13 @@ import com.example.inhavote.Entity.*;
 import com.example.inhavote.RandomCode;
 import com.example.inhavote.Service.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collections;
 import java.util.List;
@@ -104,8 +107,8 @@ public class UserController {
         return "user/user_result";
     }
     @GetMapping("/UserEmail={manager_id}")
-    public String UserEmail(@PathVariable("manager_id") String manager_id, Model model){
-        System.out.println("useremail"+manager_id);
+    public String UserEmail(@PathVariable("manager_id") String manager_id,Model model){
+
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
         model.addAttribute("vote_id", manager.get(0).getVoteid());
         return "user/user_email";
@@ -156,8 +159,10 @@ public class UserController {
 
     @PostMapping("/confirmCode")
     @ResponseBody
-    public ResponseDTO confirmCode(@RequestBody StudentVoteDTO studentDTO){
+    public ResponseDTO confirmCode(HttpServletRequest request, @RequestBody StudentVoteDTO studentDTO){
         ResponseDTO res = new ResponseDTO(); // 결과 JSON 생성
+        HttpSession session = request.getSession();
+        //System.out.println("투표세션"+session);
 
         try {
             String studentId = studentDTO.getStudentId();
@@ -175,6 +180,8 @@ public class UserController {
                 return res;
             } else { // 투표 대상 맞다면 저장된 인증번호와 입력한 인증번호 비교
                 if (Objects.equals(voter.getEmailconfirm(), code)) {
+                    session.setAttribute("voter",voter);
+                    //System.out.println("투표 세션 저장"+session.getAttribute("voter"));
                     userService.authCode(voter);
 
                     res.setResCode(120);
@@ -194,20 +201,27 @@ public class UserController {
     }
 
     @GetMapping("/UserVote")
-    public String UserVote(@RequestParam("manager_id") String manager_id, @RequestParam("vote_id") String vote_id,  @RequestParam("student_id") String student_id, Model model){
+    public String UserVote(HttpServletRequest request,@RequestParam("manager_id") String manager_id, @RequestParam("vote_id") String vote_id,  @RequestParam("student_id") String student_id, Model model){
+        HttpSession session=request.getSession();
+        UserEntity voter = (UserEntity) session.getAttribute("voter");
         String name = managerService.findByVote_id(vote_id).getVotename();
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
         List<CandidateStudentDTO> cadidate_student = candidateService.findCandidateStudent(vote_id);
 
-        model.addAttribute("start_date",manager.get(0).getStartdate());
-        model.addAttribute("end_date",manager.get(0).getEnddate());
-        model.addAttribute("vote_student_id", student_id);
-        model.addAttribute("manager_id",manager_id);
-        model.addAttribute("vote_id",vote_id);
-        model.addAttribute("vote_name",name);
-        model.addAttribute("candidate_student", cadidate_student);
+        if(voter!=null&&voter.getEmailconfirm().equals("T")){
 
-        return "user/user_vote";
+            model.addAttribute("start_date",manager.get(0).getStartdate());
+            model.addAttribute("end_date",manager.get(0).getEnddate());
+            model.addAttribute("vote_student_id", student_id);
+            model.addAttribute("manager_id",manager_id);
+            model.addAttribute("vote_id",vote_id);
+            model.addAttribute("vote_name",name);
+            model.addAttribute("candidate_student", cadidate_student);
+
+            return "user/user_vote";
+        }
+        else return "/error";
+
     }
 
     @PostMapping("/onVote")
