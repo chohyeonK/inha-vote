@@ -58,6 +58,9 @@ public class ManagerController {
         HttpSession session=request.getSession();
         String manager_id=(String)session.getAttribute("manager_id");
         List<ManagerEntity> manager=managerService.findByManager_id(manager_id);
+        CandidateEntity elected = candidateService.findElectedByVote_id(manager.get(0).getVoteid());
+        StudentsEntity student = studentsService.findByStudent_id(elected.getStudentid());
+
         if(manager_id!=null) {
             if(managerService.compareVoteDate(manager_id)){
                 if(!managerService.existVote(manager_id)){
@@ -74,9 +77,24 @@ public class ManagerController {
                 }
             }
             /*결과 출력 함수*/
-            return "manager/manager_ResultCertified";
+            redirectAttributes.addFlashAttribute("manager_id", manager_id);
+            redirectAttributes.addFlashAttribute("vote_counter", elected.getVotecounter());
+            redirectAttributes.addFlashAttribute("vote_rate", candidateService.getVoteRateByVoteidAndVoteCounter(manager.get(0).getVoteid(), elected.getVotecounter()));
+            redirectAttributes.addFlashAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
+            redirectAttributes.addFlashAttribute("student_name", student.getStudentname());
+            redirectAttributes.addFlashAttribute("end_date", manager.get(0).getEnddate());
+
+            return "redirect:/ResultCertified";
         }
         else return "/error";
+    }
+
+    @GetMapping("/ResultCertified")
+    public String ResultCertified(HttpServletRequest request,RedirectAttributes redirectAttributes)
+    {
+        HttpSession session=request.getSession();
+
+        return "manager/manager_ResultCertified";
     }
 
     @GetMapping("/Register")
