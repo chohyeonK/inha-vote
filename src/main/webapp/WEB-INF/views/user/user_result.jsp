@@ -21,7 +21,6 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-<%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
   <div style="width: 400px; margin: 0 auto;">
     <div style="border: 1px solid black; padding: 20px;">
@@ -47,7 +46,7 @@
     </div>
   </div>
 </div>
-<script>
+<%--<script>
   var ctx = document.getElementById('myChart').getContext('2d');
   var chart = new Chart(ctx, {
     type: 'bar', //
@@ -70,6 +69,6 @@
       }
     }
   });
-</script>
+</script>--%>
 </body>
 </html>
