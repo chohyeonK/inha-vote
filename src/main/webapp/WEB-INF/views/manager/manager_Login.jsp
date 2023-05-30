@@ -44,7 +44,7 @@
             관리자 이름과 코드가 맞지 않습니다. 다시 확인해주세요.
         </div>
       </c:if>
-      <c:if test="${err2 == false}">
+      <%--<c:if test="${err2 == false}">
         <div class="alert alert-danger" role="alert">
             ${end_date}이후 확인할 수 있습니다.
         </div>
@@ -58,7 +58,7 @@
         <div class="alert alert-danger" role="alert">
           아직 등록 되지 않은 투표입니다. 등록을 먼저 진행해주세요.
         </div>
-      </c:if>
+      </c:if>--%>
     </div>
   </div>
 </div>
