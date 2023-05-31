@@ -17,6 +17,28 @@
     //alert("로그아웃 되었습니다.");
     window.location.href = "/Login"; // 홈으로 이동하는 URL을 입력하세요
   }
+
+  window.onload = function(e) {
+    // 상단 메뉴 버튼 활성화
+    <% String session_page = (String) session.getAttribute("page");
+       if (session_page != null) { %>
+    var page = "<%= session_page %>";
+    <% } %>
+    console.log(page);
+    var menu = document.querySelectorAll("#menubar li a");
+    if (window.location.pathname == '/CreateVote') {
+      menu[1].classList.add("active")
+    } else if (window.location.pathname == '/') {
+      menu[0].classList.add("active")
+    } else if (page=='Register') {
+      menu[2].classList.add("active")
+    } else if (page=='Result') {
+      menu[3].classList.add("active")
+    } else {
+      console.log("엘스")
+      menu[3].classList.add("active")
+    }
+  }
 </script>
 <div style="background-color: lightgray" align="right">
   <div >
@@ -30,12 +52,11 @@
   %>
     <button class="btn btn-primary" type="button" onclick="login()">로그인</button>
   <%}%>
-
   </div>
 </div>
 
 
-<div >
+<div>
   <ul id="menubar" class="nav nav-pills nav-fill">
     <li class="nav-item">
       <a class="nav-link" aria-current="page" href="/">Home</a>
