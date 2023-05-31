@@ -22,27 +22,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<p> 잘못된 접근입니다.</p>
 
-<a href="/">돌아가기</a>
+<%--<a href="/">돌아가기</a>--%>
 <div class="frame">
     <div class="tab-content">
         <div class="tab-pane fade show active" id="reg1">
+            <c:if test="${manager_id == null}">
+                <div class="alert alert-danger" role="alert">
+                        잘못된 접근입니다.
+                </div>
+            </c:if>
             <c:if test="${err2 == false}">
-              <div class="alert alert-danger" role="alert">
-                  ${end_date}이후 확인할 수 있습니다.
-              </div>
+                <div class="alert alert-danger" role="alert">
+                        ${end_date}이후 확인할 수 있습니다.
+                </div>
             </c:if>
             <c:if test="${err3 == false}">
-              <div class="alert alert-danger" role="alert">
-                  이미 등록된 투표입니다. 수정은 관리자에게 문의해주세요.
-              </div>
+                <div class="alert alert-danger" role="alert">
+                    이미 등록된 투표입니다. 수정은 관리자에게 문의해주세요.
+                </div>
             </c:if>
             <c:if test="${err4 == false}">
-              <div class="alert alert-danger" role="alert">
-                아직 등록 되지 않은 투표입니다. 등록을 먼저 진행해주세요.
-              </div>
+                <div class="alert alert-danger" role="alert">
+                    아직 등록 되지 않은 투표입니다. 등록을 먼저 진행해주세요.
+                </div>
             </c:if>
+            <a href="/"> 홈으로 돌아가기</a>
         </div>
     </div>
 </div>
