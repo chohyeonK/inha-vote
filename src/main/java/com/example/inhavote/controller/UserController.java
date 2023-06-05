@@ -100,6 +100,7 @@ public class UserController {
         model.addAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
         model.addAttribute("student_name", student.getStudentname());
         model.addAttribute("end_date", manager.get(0).getEnddate());
+        model.addAttribute("user_vote_rate", userService.getUserVoteRateByVote_id(manager.get(0).getVoteid()));
         return "user/user_result";
     }
     @GetMapping("/UserEmail={manager_id}")

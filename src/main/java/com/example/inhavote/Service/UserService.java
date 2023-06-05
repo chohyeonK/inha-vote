@@ -1,11 +1,15 @@
 package com.example.inhavote.Service;
 
+import com.example.inhavote.Entity.StudentsEntity;
 import com.example.inhavote.Entity.UserEntity;
+import com.example.inhavote.Repository.StudentsRepository;
 import com.example.inhavote.Repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -37,5 +41,26 @@ public class UserService {
     @Transactional
     public void authCode(UserEntity user) {
         user.setEmailconfirm("T");
+    }
+
+    public List<UserEntity> findByVoteid(String vote_id)
+    {
+        return userRepository.findByVoteid(vote_id);
+    }
+
+    public int getUserVoteRateByVote_id(String vote_id)
+    {
+        long voteCount = 0;
+        long userCount = 0;
+        List<UserEntity> users = findByVoteid(vote_id);
+
+        for(UserEntity user : users)
+        {
+            userCount++;
+            if(user.isVoteconfirm())
+                voteCount++;
+        }
+        double voteRate = (double)voteCount / (double)userCount * 100;
+        return (int)voteRate;
     }
 }
