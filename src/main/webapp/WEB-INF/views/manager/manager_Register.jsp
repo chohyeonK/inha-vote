@@ -74,7 +74,6 @@
         <%-- ## 3 markup --%>
         <div id="register2-2" style="display: none;">
           <div>
-            <div style="margin-top: 15px;">학번 검색</div>
             <div style="width: 100%; height: 600px; border: 1px solid black; margin-top: 15px;">
               <div style="width: 55%; height: 100%; padding: 16px; border-right: 1px solid black; float: left;">
                 <form class="form-inline" method="get">

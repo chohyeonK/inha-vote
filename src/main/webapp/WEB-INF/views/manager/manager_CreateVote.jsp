@@ -39,20 +39,36 @@
 <%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
     <form action="/CreateVote" method="post" onsubmit="return onSubmit()">
-        <div class="mt-3 mb-3">
-            <label for="manager-name" class="form-label">담당자명</label>
-            <input type="text" class="form-control" id="manager-name" name="manager_name" placeholder="담당자명을 입력해주세요.">
-        </div>
-        <div class="mb-3">
-          <label for="manager-tel" class="form-label">연락처</label>
-          <input type="text" class="form-control" id="manager-tel" name="manager_tel" placeholder="연락처를 입력해주세요." maxlength="13" oninput="inputPhone(this)">
-        </div>
+        <% String manager_id = (String) session.getAttribute("manager_id");
+            if (manager_id != null) { %>
+            <div class="mt-3 mb-3">
+                <label for="manager-name" class="form-label">담당자명</label>
+                <input type="text" class="form-control" id="manager-name" name="manager_name" placeholder="담당자명을 입력해주세요." disabled>
+            </div>
+            <div class="mb-3">
+              <label for="manager-tel" class="form-label">연락처</label>
+              <input type="text" class="form-control" id="manager-tel" name="manager_tel" placeholder="연락처를 입력해주세요." maxlength="13" oninput="inputPhone(this)" disabled>
+            </div>
+        <% } else{%>
+            <div class="mt-3 mb-3">
+                <label for="manager-name" class="form-label">담당자명</label>
+                <input type="text" class="form-control" id="manager-name" name="manager_name" placeholder="담당자명을 입력해주세요." >
+            </div>
+            <div class="mb-3">
+                <label for="manager-tel" class="form-label">연락처</label>
+                <input type="text" class="form-control" id="manager-tel" name="manager_tel" placeholder="연락처를 입력해주세요." maxlength="13" oninput="inputPhone(this)" >
+            </div>
+        <% } %>
         <div class="d-flex justify-content-end">
             <button type="submit" class="btn btn-primary">생성하기</button>
         </div>
     </form>
     <div class="form-floating mnr-zone">
-        <textarea class="form-control mnr-guide" id="floatingTextarea2" disabled readonly>관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</textarea>
+        <% if (manager_id != null) { %>
+            <textarea class="form-control mnr-guide" id="floatingTextarea2" disabled readonly>재등록을 원하시는 경우 로그아웃 후 다시 이용해주세요.</textarea>
+        <% } else {%>
+            <textarea class="form-control mnr-guide" id="floatingTextarea2" disabled readonly>관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</textarea>
+        <% } %>
     </div>
 </div>
 <%--로딩 스피너 구현--%>

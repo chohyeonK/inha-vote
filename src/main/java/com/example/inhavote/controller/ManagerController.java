@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,11 +32,21 @@ public class ManagerController {
     private final CandidateService candidateService;
 
     @PostMapping(value = "/CreateVote")
-    public String createVote(CreateVoteDTO createVoteDTO, Model model) {
+    public String createVote(HttpServletRequest request,CreateVoteDTO createVoteDTO, Model model) {
         //System.out.println(createVoteDTO.toString());
-        managerService.create_vote(createVoteDTO);
-        model.addAttribute("managerid", createVoteDTO.getManager_id());
+        HttpSession session=request.getSession();
+        String manager_id=(String)session.getAttribute("manager_id");
+
+        if(manager_id!=null) {
+            model.addAttribute("err",false);
+        }
+        else if(manager_id==null){
+            managerService.create_vote(createVoteDTO);
+            model.addAttribute("err",true);
+            model.addAttribute("managerid", createVoteDTO.getManager_id());
+        }
         return "manager/manager_CreateVote";
+
     }
 
     @GetMapping("/session")
@@ -54,7 +65,7 @@ public class ManagerController {
         }
     }
     @GetMapping("/Result")
-    public String Result(HttpServletRequest request,RedirectAttributes redirectAttributes) {
+    public String Result(HttpServletRequest request,Model model) {
         HttpSession session=request.getSession();
         String manager_id=(String)session.getAttribute("manager_id");
         List<ManagerEntity> manager=managerService.findByManager_id(manager_id);
@@ -65,37 +76,35 @@ public class ManagerController {
             if(managerService.compareVoteDate(manager_id)){
                 if(!managerService.existVote(manager_id)){
                     //System.out.println("등록 안됨");
-                    redirectAttributes.addFlashAttribute("err4",false);
+                    model.addAttribute("err4",false);
                     //redirectAttributes.addFlashAttribute("page","/");
                     return "redirect:/error";
                 }
                else {
                     //System.out.println("날짜 안지남");
-                    redirectAttributes.addFlashAttribute("end_date",manager.get(0).getEnddate());
-                    redirectAttributes.addFlashAttribute("err2",false);
+                    model.addAttribute("end_date",manager.get(0).getEnddate());
+                    model.addAttribute("err2",false);
                     return "redirect:/error";
                 }
             }
-            /*결과 출력 함수*/
-            redirectAttributes.addFlashAttribute("manager_id", manager_id);
-            redirectAttributes.addFlashAttribute("vote_counter", elected.getVotecounter());
-            redirectAttributes.addFlashAttribute("vote_rate", candidateService.getVoteRateByVoteidAndVoteCounter(manager.get(0).getVoteid(), elected.getVotecounter()));
-            redirectAttributes.addFlashAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
-            redirectAttributes.addFlashAttribute("student_name", student.getStudentname());
-            redirectAttributes.addFlashAttribute("end_date", manager.get(0).getEnddate());
+            Calendar end_date = Calendar.getInstance();
+            SimpleDateFormat end_date_f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            end_date.setTime(manager.get(0).getEnddate());
+            end_date.add(Calendar.DATE,30);
 
-            return "redirect:/ResultCertified";
+            /*결과 출력 함수*/
+            model.addAttribute("manager_id", manager_id);
+            model.addAttribute("vote_counter", elected.getVotecounter());
+            model.addAttribute("vote_rate", candidateService.getVoteRateByVoteidAndVoteCounter(manager.get(0).getVoteid(), elected.getVotecounter()));
+            model.addAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
+            model.addAttribute("student_name", student.getStudentname());
+            model.addAttribute("end_date",end_date_f.format(end_date.getTime()));
+            return "manager/manager_ResultCertified";
         }
         else return "redirect:/error";
     }
 
-    @GetMapping("/ResultCertified")
-    public String ResultCertified(HttpServletRequest request,RedirectAttributes redirectAttributes)
-    {
-        HttpSession session=request.getSession();
 
-        return "manager/manager_ResultCertified";
-    }
 
     @GetMapping("/Register")
     public String Register(HttpServletRequest request,RedirectAttributes redirectAttributes,Model model) {
@@ -126,9 +135,9 @@ public class ManagerController {
     public String SessionOut(HttpServletRequest request){
         HttpSession session=request.getSession();
         session.invalidate();
-        //String page=request.getHeader("Referer").split("\\?")[1];
+        String page=request.getHeader("Referer");
         //System.out.println(page);
-        return "redirect:/";
+        return "redirect:"+page;
     }
 
 
@@ -141,6 +150,7 @@ public class ManagerController {
         //System.out.println(managerService.findByManager_idAndManager_name(manager_id,manager_name));
         HttpSession session=request.getSession();
         String page =(String)session.getAttribute("page");
+        if(page==null) page="CreateVote";
         // System.out.println("login:"+session+"/page:"+page);
         if (login) {
             session.setAttribute("manager_id",manager_id);
