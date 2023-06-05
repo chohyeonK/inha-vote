@@ -1,12 +1,8 @@
 package com.example.inhavote.Service;
 
-import com.example.inhavote.Entity.StudentsEntity;
-import com.example.inhavote.Entity.UserEntity;
-import com.example.inhavote.Repository.StudentsRepository;
-import com.example.inhavote.Repository.UserRepository;
+import com.example.inhavote.Entity.*;
+import com.example.inhavote.Repository.*;
 import jakarta.transaction.Transactional;
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +10,11 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final StudentsRepository studentsRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, StudentsRepository studentsRepository) {
         this.userRepository = userRepository;
+        this.studentsRepository = studentsRepository;
     }
 
     public UserEntity findByStudent_idAndVote_id(String studentId, String voteId) {
@@ -63,4 +61,43 @@ public class UserService {
         double voteRate = (double)voteCount / (double)userCount * 100;
         return (int)voteRate;
     }
+    public int getUserVoteRateByVote_idAndStudentGrade(String vote_id, int student_grade)
+    {
+        long voteCount = 0;
+        long userCount = 0;
+        List<UserEntity> users = findByVoteid(vote_id);
+
+        for(UserEntity user : users)
+        {
+            StudentsEntity student = studentsRepository.findByStudentid(user.getStudentid());
+            if(student.getStudentgrade() == student_grade)
+            {
+                userCount++;
+                if (user.isVoteconfirm())
+                    voteCount++;
+            }
+        }
+        double voteRate = (double)voteCount / (double)userCount * 100;
+        return (int)voteRate;
+    }
+    public int getUserVoteRateByVote_idAndStudentMajor(String vote_id, String student_major)
+    {
+        long voteCount = 0;
+        long userCount = 0;
+        List<UserEntity> users = findByVoteid(vote_id);
+
+        for(UserEntity user : users)
+        {
+            StudentsEntity student = studentsRepository.findByStudentid(user.getStudentid());
+            if(student.getStudentmajor() == student_major)
+            {
+                userCount++;
+                if (user.isVoteconfirm())
+                    voteCount++;
+            }
+        }
+        double voteRate = (double)voteCount / (double)userCount * 100;
+        return (int)voteRate;
+    }
+
 }
