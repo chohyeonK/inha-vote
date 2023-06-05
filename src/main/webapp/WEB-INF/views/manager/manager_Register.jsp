@@ -86,7 +86,7 @@
                   <c:forEach var="student" items="${student_list}" varStatus="status">
                     <div style="border-bottom: 1px solid black;" >
                         ${student.studentname} ${student.studentid} ${student.studentgrade}학년 ${student.studentmajor}
-                          <i class="bi bi-plus-circle"  onclick="createCandidate('${student.studentname}', '${student.studentid}', '${student.studentgrade}', '${student.studentmajor}', '${status.count}')"></i>
+                          <i class="bi bi-plus-circle"  onclick="createCandidate('${student.studentname}', '${student.studentid}', '${student.studentgrade}', '${student.studentmajor}')"></i>
                     </div>
                   </c:forEach>
                 </div>

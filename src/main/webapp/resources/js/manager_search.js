@@ -3,8 +3,8 @@
 // var cnt = 1
 
 // 후보자 등록 함수
-function createCandidate(name, id, grade, major, index) {
-    console.log(name, id, grade, major, index)
+function createCandidate(name, id, grade, major) {
+    console.log(name, id, grade, major)
     const divAccordian = document.getElementById('accordion')
 
     let count = divAccordian.childElementCount + 1
@@ -28,12 +28,15 @@ function createCandidate(name, id, grade, major, index) {
     divCollapse.setAttribute('aria-labelledby', 'heading-' + count)
     divCollapse.setAttribute('data-parent', '#accordion')
     divCollapse.innerHTML = '<div class="card-body">\n' +
+        '<div><label for="file' +count + '" id="fileLabel'+ count + '">\n' +
+        '                                <div style="background-color: #DCEDEB;">사진 등록</div>\n' +
+        '                              </label></div>' +
         '                        <div style="display: flex; border: 1px solid black;">\n' +
         '                          <div style="width: 45%; height: 170px; overflow: hidden; border-right: 1px solid black;">\n' +
         '                            <div style="width: 130px; height: 100%;">\n' +
-        '                              <label for="file' +count + '" id="fileLabel'+ count + '">\n' +
-        '                                <div style="width: 130px; height: 100%; background-color: #DCEDEB;">사진 등록</div>\n' +
-        '                              </label>\n' +
+        // '                              <label for="file' +count + '" id="fileLabel'+ count + '">\n' +
+        // '                                <div style="width: 10px; height: 100%; background-color: #DCEDEB;">사진 등록</div>\n' +
+        // '                              </label>\n' +
         '                              <input type="file" name="file' +count + '" id="file' + count + '" accept=".jpg, .png" onchange="readFile(this, '+ count + ');" />\n' +
         '                              <img id="preview' + count + '" style="width: 100%; height: auto;"/>\n' +
         '                            </div>\n' +
@@ -107,8 +110,9 @@ function studentSearch() {
                 var studentname = json[i].studentname
                 // console.log(studentgrade, studentid, studentmajor, studentname)
                 let item = document.createElement('div');
-                item.innerHTML = '<div style="border-bottom: 1px solid black;" onclick="createCandidate(`' + studentname +'`, `' + studentid + '`, `' + studentgrade + '`, `' + studentmajor + '`, `' + cnt + '`)">\n' +
-                    '                        ' + studentname + ' ' + studentid + ' ' + studentgrade + '학년 ' + studentmajor + '\n' +
+                item.innerHTML = '<div style="border-bottom: 1px solid black;" >\n' +
+                    '                        ' + studentname + studentid + studentgrade + '학년 ' + studentmajor + '\n' +
+                    '                          <i class="bi bi-plus-circle"  onclick="createCandidate(`' + studentname + '`, `' + studentid + '`, `' + studentgrade + '`, `' + studentmajor + '`)"></i>\n' +
                     '                    </div>'
                 searchList.append(item)
             }

@@ -76,15 +76,19 @@ function readFile(file, cnt) {
         var reader = new FileReader()
         reader.onload = function(e) {
 
-            document.getElementById('fileLabel'+cnt).style.display = 'none';
+            // document.getElementById('fileLabel'+cnt).style.display = 'none';
             document.getElementById('preview'+cnt ).src = e.target.result;
         };
         reader.readAsDataURL(file.files[0]);
-        imgArr.push(file);
+        if (imgArr.length > 0) { // 이미지 교체 시
+            imgArr.splice((cnt-1), 1, file)
+        } else {
+            imgArr.push(file);
+        }
     } else {
         document.getElementById('preview'+cnt).src = ""
     }
-    console.log("imgArr:"+imgArr);
+    // console.log("imgArr:"+imgArr);
 }
 
 // 투표 등록 - 투표 등록 함수
@@ -95,8 +99,8 @@ function onVoteSubmit() {
     const vote_name = document.getElementById('vote-name').value
     const voteStDt = document.getElementById('stDatePicker').value
     const voteToDt = document.getElementById('toDatePicker').value
-     const start_date = new Date(voteStDt+" 09:00:00")
-     const end_date = new Date(voteToDt+" 18:00:00")
+    const start_date = new Date(voteStDt+" 09:00:00")
+    const end_date = new Date(voteToDt+" 18:00:00")
     const stuMajor  = document.getElementById('stu-major');
     const student_major = (stuMajor.options[stuMajor.selectedIndex].value);
     const stuGrade  = document.getElementById('stu-grade');
