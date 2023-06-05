@@ -32,7 +32,7 @@
                 <a class="list-group-item list-group-item-action" style="padding: 30px" onclick="location.href='/UserInfo_candidate?vote_id='+`${vote_id}`+'&student_id='+`${list.student_id}`+'&candiNum='+`${status.index+1}`">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="<c:url value="/resources/img_candidate/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
+                            <img src="<c:url value="/resources/img/candidate_img/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

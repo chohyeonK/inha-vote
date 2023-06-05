@@ -45,7 +45,7 @@
                 </div>
 <%--                <div class="align-self-center p-2 bd-highlight">기호 ${status.index+1}번 ${list.student_name}</div>--%>
                 <div class="p-2 bd-highlight" style="width: 100px; height: 100px; border: 1px solid black;">
-                    <img src="<c:url value="/resources/img_candidate/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
+                    <img src="<c:url value="/resources/img/candidate_img/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
                 </div>
             </div>
         </c:forEach>

@@ -25,7 +25,7 @@
     <div id="userinfo_3">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="<c:url value="/resources/img_candidate/${candidate_info.imgpath}"/>"class="img-fluid rounded-start" alt="...">
+                <img src="<c:url value="/resources/img/candidate_img/${candidate_info.imgpath}"/>"class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
