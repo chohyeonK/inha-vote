@@ -42,13 +42,12 @@
             </div>
         </div>
         <form>
-            <select name = "ChartSelect">
-                <option value = "byGrade" selected>학년별</option>
-                <option value = "byMajor">학과별</option>
+            <select class = "ChartSelect" name = "ChartSelect" id="ChartSelect" onchange="showChart()">
+                <option value = "Grade" data-value="Grade" selected>학년별</option>
+                <option value = "Major" data-value="Major">학과별</option>
             </select>
         </form>
-        <canvas id="GradeChart"></canvas>
-        <canvas id="MajorChart"></canvas>
+        <canvas id="voteRateChart"></canvas>
         <div style="border: 1px solid black; color: red; margin-top: 15px; text-align: center; padding: 20px;">
             결과는 ${end_date}까지 확인할 수 있습니다.
         </div>
@@ -56,50 +55,85 @@
 </div>
 
 <script>
-    var ctx1 = document.getElementById('GradeChart').getContext('2d');
-    var ctx2 = document.getElementById('MajorChart').getContext('2d');
-    var chart1 = new Chart(ctx1, {
-        type: 'bar', //
-        data: {
-            labels: ['1학년', '2학년', '3학년', '4학년'],
-            datasets: [{
-                label: '학년별 투표율',
-                backgroundColor: 'rgb(0, 123, 255)',
-                borderColor: 'rgb(0, 123, 255)',
-                data: [${user_vote_rate_byGrade1}, ${user_vote_rate_byGrade2}, ${user_vote_rate_byGrade3}, ${user_vote_rate_byGrade4}]
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
+    var ChartSelect = document.getElementById('ChartSelect');
+    var ctx = document.getElementById('voteRateChart').getContext('2d');
+    var selected = ChartSelect.options[ChartSelect.selectedIndex].value;
+    if ( selected === "Grade")
+    {
+        var chart1 = new Chart(ctx, {
+            type: 'bar', //
+            data: {
+                labels: ['1학년', '2학년', '3학년', '4학년'],
+                datasets: [{
+                    label: '학년별 투표율',
+                    backgroundColor: 'rgb(0, 123, 255)',
+                    borderColor: 'rgb(0, 123, 255)',
+                    data: [${user_vote_rate_byGrade1}, ${user_vote_rate_byGrade2}, ${user_vote_rate_byGrade3}, ${user_vote_rate_byGrade4}]
                 }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
-        }
-    });
-    var chart2 = new Chart(ctx2, {
-        type: 'bar', //
-        data: {
-            labels: ['소용', '메카', '산경', '금투'],
-            datasets: [{
-                label: '학과별 투표율',
-                backgroundColor: 'rgb(0, 123, 255)',
-                borderColor: 'rgb(0, 123, 255)',
-                data: [${user_vote_rate_byMajorA}, ${user_vote_rate_byMajorB}, ${user_vote_rate_byMajorC}, ${user_vote_rate_byMajorD}]
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
+        });
+    }
+    function showChart()
+    {
+        var selected = ChartSelect.options[ChartSelect.selectedIndex].value;
+        if ( selected === "Grade")
+        {
+            var chart1 = new Chart(ctx, {
+                type: 'bar', //
+                data: {
+                    labels: ['1학년', '2학년', '3학년', '4학년'],
+                    datasets: [{
+                        label: '학년별 투표율',
+                        backgroundColor: 'rgb(0, 123, 255)',
+                        borderColor: 'rgb(0, 123, 255)',
+                        data: [${user_vote_rate_byGrade1}, ${user_vote_rate_byGrade2}, ${user_vote_rate_byGrade3}, ${user_vote_rate_byGrade4}]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
                     }
-                }]
-            }
+                }
+            });
         }
-    });
+        else if ( selected === "Major" )
+        {
+            var chart2 = new Chart(ctx, {
+                type: 'bar', //
+                data: {
+                    labels: ['소용', '메카', '산경', '금투'],
+                    datasets: [{
+                        label: '학과별 투표율',
+                        backgroundColor: 'rgb(0, 123, 255)',
+                        borderColor: 'rgb(0, 123, 255)',
+                        data: [${user_vote_rate_byMajorA}, ${user_vote_rate_byMajorB}, ${user_vote_rate_byMajorC}, ${user_vote_rate_byMajorD}]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    }
 </script>
 </body>
 </html>
