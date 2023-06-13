@@ -89,6 +89,10 @@ public class ManagerController {
             model.addAttribute("user_vote_rate_byGrade2", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 2));
             model.addAttribute("user_vote_rate_byGrade3", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 3));
             model.addAttribute("user_vote_rate_byGrade4", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 4));
+            model.addAttribute("user_vote_rate_byMajorA", userService.getUserVoteRateByVote_idAndStudentMajor(manager.get(0).getVoteid(), "소프트웨어융합공학과"));
+            model.addAttribute("user_vote_rate_byMajorB", userService.getUserVoteRateByVote_idAndStudentMajor(manager.get(0).getVoteid(), "메카트로닉스공학과"));
+            model.addAttribute("user_vote_rate_byMajorC", userService.getUserVoteRateByVote_idAndStudentMajor(manager.get(0).getVoteid(), "산업경영학과"));
+            model.addAttribute("user_vote_rate_byMajorD", userService.getUserVoteRateByVote_idAndStudentMajor(manager.get(0).getVoteid(), "금융투자학과"));
             return "manager/manager_Result";
         }
         else return "redirect:/";

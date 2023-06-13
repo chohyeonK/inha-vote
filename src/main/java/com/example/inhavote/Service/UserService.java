@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -89,7 +90,7 @@ public class UserService {
         for(UserEntity user : users)
         {
             StudentsEntity student = studentsRepository.findByStudentid(user.getStudentid());
-            if(student.getStudentmajor() == student_major)
+            if(Objects.equals(student.getStudentmajor(), student_major))
             {
                 userCount++;
                 if (user.isVoteconfirm())
