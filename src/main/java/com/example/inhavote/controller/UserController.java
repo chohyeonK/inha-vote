@@ -100,7 +100,11 @@ public class UserController {
         model.addAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
         model.addAttribute("student_name", student.getStudentname());
         model.addAttribute("end_date", manager.get(0).getEnddate());
-        model.addAttribute("user_vote_rate", userService.getUserVoteRateByVote_id(manager.get(0).getVoteid()));
+//        model.addAttribute("user_vote_rate_byGrade1", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 1));
+//        model.addAttribute("user_vote_rate_byGrade2", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 2));
+//        model.addAttribute("user_vote_rate_byGrade3", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 3));
+//        model.addAttribute("user_vote_rate_byGrade4", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 4));
+
         return "user/user_result";
     }
     @GetMapping("/UserEmail={manager_id}")

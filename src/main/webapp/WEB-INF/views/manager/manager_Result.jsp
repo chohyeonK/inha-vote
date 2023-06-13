@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,36 +18,65 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
 <body>
-<%@include file="../layout/top_menu.jsp" %>
 <div class="frame">
-    <div class="tab-pane fade show active" id="reg1">
-        <form action="/Login/result_login" method="post">
-            <div class="mt-3 mb-3">
-                <label for="manager-name" class="form-label">관리자 이름</label>
-                <input type="text" class="form-control" id="manager-name" name="manager_name" placeholder="관리자 이름을 입력해주세요.">
+    <div style="width: 400px; margin: 0 auto;">
+        <div style="border: 1px solid black; padding: 20px;">
+            <p>${vote_name} 결과</p>
+            <div style="display: flex; border: 1px solid black;">
+                <div style="width: 40%; height: 150px; border-right: 1px solid black;">
+                    ${img_path}
+                </div>
+                <div style="width: 60%;">
+                    ${student_name}<br>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="manager_id" class="form-label">관리자 코드</label>
-                <input type="text" class="form-control" id="manager_id" name="manager_id" placeholder="관리자 코드를 입력해주세요.">
+            <div>
+                <div style="margin-top: 10px;">득표수 ${vote_counter}</div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: ${vote_rate}%;" aria-valuenow="${vote_rate}" aria-valuemin="0" aria-valuemax="100">${vote_rate}%</div>
+                </div>
+                <div style="float: right">${vote_counter}/${total_vote_count}</div>
             </div>
-
-            <div class="d-flex justify-content-center" style="margin: 15px">
-                <button type="submit" class="btn btn-primary">로그인</button>
-            </div>
+        </div>
+        <form>
+            <select name = "ChartSelect">
+                <option value = "byGrade" selected>학년별</option>
+                <option value = "byMajor">학과별</option>
+            </select>
         </form>
-        <hr />
-        <c:if test="${err1 == false}">
-            <div class="alert alert-danger" role="alert">
-                관리자 이름과 코드가 맞지 않습니다. 다시 확인해주세요.
-            </div>
-        </c:if>
-        <c:if test="${err2 == false}">
-            <div class="alert alert-danger" role="alert">
-                ${end_date}이후 확인할 수 있습니다.
-            </div>
-        </c:if>
+        <canvas id="GradeChart"></canvas>
+        <div style="border: 1px solid black; color: red; margin-top: 15px; text-align: center; padding: 20px;">
+            결과는 ${end_date}까지 확인할 수 있습니다.
+        </div>
     </div>
 </div>
+
+<script>
+    var ctx1 = document.getElementById('GradeChart').getContext('2d');
+    var chart1 = new Chart(ctx1, {
+        type: 'bar', //
+        data: {
+            labels: ['1학년', '2학년', '3학년', '4학년'],
+            datasets: [{
+                label: '투표율',
+                backgroundColor: 'rgb(0, 123, 255)',
+                borderColor: 'rgb(0, 123, 255)',
+                data: [${user_vote_rate_byGrade1}, ${user_vote_rate_byGrade2}, ${user_vote_rate_byGrade3}, ${user_vote_rate_byGrade4}]
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
 </body>
 </html>

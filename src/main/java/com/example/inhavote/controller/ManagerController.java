@@ -29,12 +29,13 @@ public class ManagerController {
     private final ManagerService managerService;
     private final StudentsService studentsService;
     private final CandidateService candidateService;
+    private final UserService userService;
 
     @PostMapping(value = "/CreateVote")
     public String createVote(CreateVoteDTO createVoteDTO, Model model) {
         //System.out.println(createVoteDTO.toString());
         managerService.create_vote(createVoteDTO);
-        model.addAttribute("managerid", createVoteDTO.getManager_id());
+        model.addAttribute("manager_id", createVoteDTO.getManager_id());
         return "manager/manager_CreateVote";
     }
 
@@ -54,74 +55,61 @@ public class ManagerController {
         }
     }
     @GetMapping("/Result")
-    public String Result(HttpServletRequest request,RedirectAttributes redirectAttributes) {
+    public String Result(HttpServletRequest request,RedirectAttributes redirectAttributes, Model model) {
         HttpSession session=request.getSession();
         String manager_id=(String)session.getAttribute("manager_id");
+        String page =(String)session.getAttribute("page");
         List<ManagerEntity> manager=managerService.findByManager_id(manager_id);
         CandidateEntity elected = candidateService.findElectedByVote_id(manager.get(0).getVoteid());
         StudentsEntity student = studentsService.findByStudent_id(elected.getStudentid());
 
         if(manager_id!=null) {
-            if(managerService.compareVoteDate(manager_id)){
-                if(!managerService.existVote(manager_id)){
-                    //System.out.println("등록 안됨");
-                    redirectAttributes.addFlashAttribute("err4",false);
-                    //redirectAttributes.addFlashAttribute("page","/");
+            if(managerService.compareVoteDate(manager_id))
+            {
+                if(!managerService.existVote(manager_id))
+                {
+                    redirectAttributes.addFlashAttribute("err4", false);
                     return "redirect:/error";
                 }
-               else {
-                    //System.out.println("날짜 안지남");
-                    redirectAttributes.addFlashAttribute("end_date",manager.get(0).getEnddate());
-                    redirectAttributes.addFlashAttribute("err2",false);
+                else
+                {
+                    redirectAttributes.addFlashAttribute("end_date", manager.get(0).getEnddate());
+                    redirectAttributes.addFlashAttribute("err2", false);
                     return "redirect:/error";
                 }
             }
-            /*결과 출력 함수*/
-            redirectAttributes.addFlashAttribute("manager_id", manager_id);
-            redirectAttributes.addFlashAttribute("vote_counter", elected.getVotecounter());
-            redirectAttributes.addFlashAttribute("vote_rate", candidateService.getVoteRateByVoteidAndVoteCounter(manager.get(0).getVoteid(), elected.getVotecounter()));
-            redirectAttributes.addFlashAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
-            redirectAttributes.addFlashAttribute("student_name", student.getStudentname());
-            redirectAttributes.addFlashAttribute("end_date", manager.get(0).getEnddate());
 
-            return "redirect:/ResultCertified";
+            model.addAttribute("manager_id", manager_id);
+            model.addAttribute("vote_counter", elected.getVotecounter());
+            model.addAttribute("vote_rate", candidateService.getVoteRateByVoteidAndVoteCounter(manager.get(0).getVoteid(), elected.getVotecounter()));
+            model.addAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
+            model.addAttribute("student_name", student.getStudentname());
+            model.addAttribute("end_date", manager.get(0).getEnddate());
+            model.addAttribute("user_vote_rate_byGrade1", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 1));
+            model.addAttribute("user_vote_rate_byGrade2", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 2));
+            model.addAttribute("user_vote_rate_byGrade3", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 3));
+            model.addAttribute("user_vote_rate_byGrade4", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 4));
+            return "manager/manager_Result";
         }
-        else return "redirect:/error";
-    }
-
-    @GetMapping("/ResultCertified")
-    public String ResultCertified(HttpServletRequest request,RedirectAttributes redirectAttributes)
-    {
-        HttpSession session=request.getSession();
-
-        return "manager/manager_ResultCertified";
+        else return "redirect:/";
     }
 
     @GetMapping("/Register")
-    public String Register(HttpServletRequest request,RedirectAttributes redirectAttributes,Model model) {
+    public String Register(HttpServletRequest request,RedirectAttributes redirectAttributes) {
         HttpSession session=request.getSession();
         String manager_id=(String)session.getAttribute("manager_id");
-        model.addAttribute("student_list", studentsService.findAll());
         if(manager_id!=null) {
             if (managerService.existVote(manager_id)){
                 System.out.println("테이블 존재 어쩌구");
                 redirectAttributes.addFlashAttribute("err3",false);
-                return "redirect:/error";
+                return "redirect:/Login";
             }
             return "manager/manager_Register";
         }
-        else return "redirect:/error";
+        else return "redirect:/";
     }
     @GetMapping("/URL")
-    public String URL(HttpServletRequest request,RedirectAttributes redirectAttributes) {
-        HttpSession session=request.getSession();
-        String manager_id=(String)session.getAttribute("manager_id");
-        if(manager_id!=null) {
-            return "manager/manager_URL";
-        }
-        else return "redirect:/error";
-    }
-
+    public String URL() { return "manager/manager_URL"; }
     @GetMapping("/session_out")
     public String SessionOut(HttpServletRequest request){
         HttpSession session=request.getSession();
@@ -137,6 +125,7 @@ public class ManagerController {
     public String loginVote(HttpServletRequest request, @RequestParam String manager_id, @RequestParam String manager_name, RedirectAttributes redirectAttributes) {
 
         boolean login=managerService.findByManager_idAndManager_name(manager_id,manager_name);
+        String return_page="";
         //System.out.println(manager_id+"  "+manager_name);
         //System.out.println(managerService.findByManager_idAndManager_name(manager_id,manager_name));
         HttpSession session=request.getSession();
@@ -145,10 +134,9 @@ public class ManagerController {
         if (login) {
             session.setAttribute("manager_id",manager_id);
             redirectAttributes.addFlashAttribute("manager_id", manager_id);
-            //redirectAttributes.addFlashAttribute("student_list", studentsService.findAll());
+            redirectAttributes.addFlashAttribute("student_list", studentsService.findAll());
             //System.out.println("manager_id:"+session.getAttribute("manager_id"));
             return "redirect:../"+page;
-
         } else if (!(login)) {
             redirectAttributes.addFlashAttribute("err", false);
             return "redirect:../Login";
@@ -175,22 +163,22 @@ public class ManagerController {
             }
 
             return manager_id;
-        }else return "redirect:/error";
+        }else return "err";
     }
 
     @GetMapping("/Register/search")
     @ResponseBody // 문자열을 반환할 경우 @ResponseBody 어노테이션을 추가합니다.
     public List<StudentsEntity> getString(@RequestParam("param1") String param1) {
-        //System.out.println(param1);
+        System.out.println(param1);
         List<StudentsEntity> result = studentsService.findByStudent(param1);
         return result;
     }
 
     @GetMapping("/manager/manager_URL={data}")
-    public String setManagerid(@PathVariable("data") String manager_id,RedirectAttributes redirectAttributes){
-        //System.out.println(manager_id);
-        redirectAttributes.addFlashAttribute("manager_id", manager_id);
-        return "redirect:/URL";
+    public String setManagerid(@PathVariable("data") String manager_id,Model model){
+        System.out.println(manager_id);
+        model.addAttribute("manager_id", manager_id);
+        return "manager/manager_URL";
 
     }
 
