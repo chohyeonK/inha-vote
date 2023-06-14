@@ -37,7 +37,6 @@
           <div class="form-floating mnr-zone">
             <textarea class="form-control mnr-guide" id="floatingTextarea2"disabled readonly>관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</textarea>
           </div>
-          <hr />
         </div>
       </div>
     </div>
