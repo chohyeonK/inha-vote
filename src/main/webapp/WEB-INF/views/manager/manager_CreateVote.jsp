@@ -39,7 +39,7 @@
 
 <div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
     <%@include file="../layout/top_menu.jsp" %>
-    <div style="display: flex; width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
+    <div style="display: flex; max-width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
         <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
             관리자 등록
         </div>
@@ -64,6 +64,9 @@
         <textarea class="form-control mnr-guide" id="floatingTextarea2" disabled readonly>관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</textarea>
     </div>
 </div>
+
+<%@include file="../layout/footer.jsp" %>
+
 <%--로딩 스피너 구현--%>
 <div id="overlay">
     <span class="loader"></span>
@@ -71,6 +74,7 @@
 <script>
     // 값 전송 받은 후 모달창 띄우는 함수
     const managerId = document.getElementById('managerId').innerText
+    console.log(managerId)
     if (managerId) {
         $('#myModal').modal('show')
     }

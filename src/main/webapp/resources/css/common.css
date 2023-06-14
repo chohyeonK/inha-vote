@@ -43,6 +43,7 @@
 
 .main-logo {
     font-family: 'SBAggroB';
+    font-size: 24px;
 }
 
 .main-font {
@@ -55,21 +56,38 @@
     padding: 20px 30px;
 }
 
-#menubar {
-    max-width: 800px; margin: auto;
-}
+/*#menubar {*/
+/*    max-width: 800px; margin: auto;*/
+/*}*/
 
-#menubar a {
-    color: white;
-}
+/*#menubar a {*/
+/*    color: white;*/
+/*}*/
 
-#menubar ul {
-    list-style:none;
+/*#menubar ul {*/
+/*    list-style:none;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/*#menubar li {*/
+/*    float: left;*/
+/*}*/
+
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-between;
+    max-width: 790px;
     margin: 0 auto;
+    padding-left: 0;
+    padding-top: 10px;
+    flex-wrap: wrap;
 }
 
-#menubar li {
-    float: left;
+#menu a {
+    color: white;
 }
 
 .mnr-zone {
@@ -119,3 +137,21 @@
     }
 }
 
+.content{
+    max-width: 800px;
+    margin: 0 auto;
+}
+.flexbox{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    /*width: 790px;*/
+    max-width: 800px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.item{
+    min-height: 200px;
+    flex-basis: 150px;
+    flex-grow: 1;
+}

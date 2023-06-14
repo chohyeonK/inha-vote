@@ -27,7 +27,7 @@
 <body>
 <div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
   <%@include file="../layout/top_menu.jsp" %>
-  <div style="display: flex; width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
+  <div style="display: flex; max-width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
     <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
       투표 등록
     </div>
@@ -81,15 +81,15 @@
         <%-- ## 3 markup --%>
         <div id="register2-2" style="display: none;">
           <div>
-            <div style="width: 100%; height: 600px; border: 1px solid black; margin-top: 15px;">
-              <div style="width: 55%; height: 100%; padding: 16px; border-right: 1px solid black; float: left;">
+            <div style="width: 100%; height: 600px; border: 1px solid #ced4da; margin-top: 15px;">
+              <div style="width: 55%; height: 100%; padding: 16px; border-right: 1px solid #ced4da; float: left;">
                 <form class="form-inline" method="get">
                   <div style="display: flex;">
                     <input class="form-control " type="text" placeholder="Search" aria-label="Search" name="student_name" id="student_name" onkeydown="keyDown(event)" style="float: left;">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="studentSearch()">검색</button>
                   </div>
                 </form>
-                <div id="studentAll" style="border: 1px solid black; height: calc(100% - 40px); overflow: auto;">
+                <div id="studentAll" style="border: 1px solid #ced4da; height: calc(100% - 40px); overflow: auto;">
                   <!-- 반복문을 이용하여 리스트 출력 -->
                   <c:forEach var="student" items="${student_list}" varStatus="status">
                     <div style="border-bottom: 1px solid black;" >
@@ -98,7 +98,7 @@
                     </div>
                   </c:forEach>
                 </div>
-                  <div id="searchList" style="display: none; border: 1px solid black; height: calc(100% - 40px); overflow: auto;">
+                  <div id="searchList" style="display: none; border: 1px solid #ced4da; height: calc(100% - 40px); overflow: auto;">
 
                   </div>
               </div>
@@ -123,6 +123,8 @@
     </div>
   </div>
 </div>
+
+<%@include file="../layout/footer.jsp" %>
 
 <%--로딩 스피너 구현--%>
 <div id="overlay">

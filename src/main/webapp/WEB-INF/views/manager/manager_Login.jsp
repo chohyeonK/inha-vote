@@ -22,7 +22,7 @@
 <body>
 <div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
   <%@include file="../layout/top_menu.jsp" %>
-  <div style="display: flex; width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
+  <div style="display: flex; max-width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
     <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
       관리자 로그인
     </div>
@@ -69,6 +69,8 @@
     </div>
   </div>
 </div>
+
+<%@include file="../layout/footer.jsp" %>
 
 <%--로딩 스피너 구현--%>
 <div id="overlay">

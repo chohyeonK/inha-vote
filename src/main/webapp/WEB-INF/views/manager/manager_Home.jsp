@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>투표 서비스</title>
     <link href="../../../resources/css/common.css" rel="stylesheet">
     <link href="../../../resources/css/manager.css" rel="stylesheet">
@@ -22,12 +22,13 @@
 <body>
 <div style="padding: 0px 20px 50px 20px; width: 100%; height: 546px; background-color: #117DFF; border-radius: 0px 0px 0px 300px;">
     <%@include file="../layout/top_menu.jsp" %>
-    <div style="display: flex; width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: space-between;">
-        <div class="main-font" style="color: white; font-size: 60px; font-weight: bold;">
+
+    <div style="display: flex; max-width: 790px; margin: 0 auto; padding-top: 29px; justify-content: space-between;">
+        <div class="main-font" style="color: white; font-size: 3.3rem; font-weight: bold;">
             인하대 투표도<br>
             이제는<br>
             온라인에서!
-            <div style="width: 180px; padding: 9px 15px; text-align: center; margin-top: 50px; border-radius: 39px; font-size: 30px; color: #444444; background-color: #ffffff;">
+            <div style="width: 180px; padding: 9px 15px; text-align: center; margin-top: 50px; border-radius: 39px; font-size: 1.7rem; color: #444444; background-color: #ffffff;">
                 투표하기
             </div>
         </div>
@@ -36,7 +37,7 @@
         </div>
     </div>
 </div>
-<div class="main-div" style="display: flex; width: 790px; margin: 0 auto; padding: 50px 0px; justify-content: space-between;">
+<div class="main-div" style="display: flex; flex-wrap: wrap; max-width: 790px; margin: 0 auto; padding: 50px 0px; justify-content: space-between;">
     <div style="display: flex; align-items: center;">
         <div class="highlight" style="font-size: 30px;">
             미래융합대학<br>
@@ -65,15 +66,6 @@
     </div>
 </div>
 
-<div style="width: 100%; height: 100px;">
-    <hr>
-    <div style="width: 790px; margin: 0 auto; text-align: center;">
-        인하대학교 미래융합대 객체지향프로그래밍 세꿀버리팀<br>
-    </div>
-</div>
-
-<%--<div style="width: 790px; height: auto; margin: 0 auto;">--%>
-<%--    <img src="../../../resources/img/main.png" width="100%"/>--%>
-<%--</div>--%>
+<%@include file="../layout/footer.jsp" %>
 </body>
 </html>

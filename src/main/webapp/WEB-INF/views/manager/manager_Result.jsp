@@ -54,6 +54,8 @@
     </div>
 </div>
 
+<%@include file="../layout/footer.jsp" %>
+
 <script>
     var ChartSelect = document.getElementById('ChartSelect');
     var ctx = document.getElementById('voteRateChart').getContext('2d');

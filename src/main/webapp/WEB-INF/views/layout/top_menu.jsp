@@ -41,8 +41,7 @@
   }
 </script>
 
-<div id="menubar">
-  <ul>
+<div id="menu">
     <li>
       <a class="main-logo nav-link" aria-current="page" href="/" style="">인하투표</a>
     </li>
@@ -67,7 +66,6 @@
       <button class="btn btn-primary" type="button" onclick="login()">로그인</button>
       <%}%>
     </li>
-  </ul>
 </div>
 
 
