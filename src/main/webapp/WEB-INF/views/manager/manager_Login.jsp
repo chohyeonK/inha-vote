@@ -20,8 +20,16 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <body>
-<%@include file="../layout/top_menu.jsp" %>
-<div class="frame">
+<div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
+  <%@include file="../layout/top_menu.jsp" %>
+  <div style="display: flex; width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
+    <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
+      관리자 로그인
+    </div>
+  </div>
+</div>
+
+<div class="frame sub-div" style="box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2); position: relative; top: -80px; border: 2px solid #EEEEEE; background-color: white; border-radius: 15px;">
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <form action="/Login/managerid_login" method="post">
@@ -38,7 +46,6 @@
           <button type="submit" class="btn btn-primary" onclick="location.href='Register2'">로그인</button>
         </div>
       </form>
-      <hr />
       <c:if test="${err == false}">
         <div class="alert alert-danger" role="alert">
             관리자 이름과 코드가 맞지 않습니다. 다시 확인해주세요.

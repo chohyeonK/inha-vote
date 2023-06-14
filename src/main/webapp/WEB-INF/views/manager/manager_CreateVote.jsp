@@ -36,8 +36,17 @@
         </div>
     </div>
 </div>
-<%@include file="../layout/top_menu.jsp" %>
-<div class="frame">
+
+<div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
+    <%@include file="../layout/top_menu.jsp" %>
+    <div style="display: flex; width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
+        <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
+            관리자 등록
+        </div>
+    </div>
+</div>
+
+<div class="frame sub-div" style="box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2); position: relative; top: -80px; border: 2px solid #EEEEEE; background-color: white; border-radius: 15px;">
     <form action="/CreateVote" method="post" onsubmit="return onSubmit()">
         <div class="mt-3 mb-3">
             <label for="manager-name" class="form-label">담당자명</label>

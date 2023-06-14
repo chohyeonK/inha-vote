@@ -25,8 +25,16 @@
   <script src="../../../resources/js/common.js"></script>
   <script src="../../../resources/js/manager_search.js"></script>
 <body>
-<%@include file="../layout/top_menu.jsp" %>
-<div class="frame">
+<div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
+  <%@include file="../layout/top_menu.jsp" %>
+  <div style="display: flex; width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
+    <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
+      투표 등록
+    </div>
+  </div>
+</div>
+
+<div class="frame sub-div" style="box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2); position: relative; top: -80px; border: 2px solid #EEEEEE; background-color: white; border-radius: 15px;">
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <div>
@@ -67,19 +75,19 @@
           <div class="d-flex justify-content-end" style="margin-top: 15px;">
             <button type="button" class="btn btn-primary" onclick="nextPage()">다음</button>
           </div>
-          <hr />
         </div>
 
 
         <%-- ## 3 markup --%>
         <div id="register2-2" style="display: none;">
           <div>
-            <div style="margin-top: 15px;">학번 검색</div>
             <div style="width: 100%; height: 600px; border: 1px solid black; margin-top: 15px;">
               <div style="width: 55%; height: 100%; padding: 16px; border-right: 1px solid black; float: left;">
                 <form class="form-inline" method="get">
-                  <input class="form-control " type="text" placeholder="Search" aria-label="Search" name="student_name" id="student_name" onkeydown="keyDown(event)" style="width: 80%; float: left;">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="studentSearch()">검색</button>
+                  <div style="display: flex;">
+                    <input class="form-control " type="text" placeholder="Search" aria-label="Search" name="student_name" id="student_name" onkeydown="keyDown(event)" style="float: left;">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="studentSearch()">검색</button>
+                  </div>
                 </form>
                 <div id="studentAll" style="border: 1px solid black; height: calc(100% - 40px); overflow: auto;">
                   <!-- 반복문을 이용하여 리스트 출력 -->
@@ -109,7 +117,6 @@
             <%--<button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="location.href='Register3'">완료</button> --%>
               <button type="button" class="btn btn-primary" style="margin-left: 10px;" onclick="onVoteSubmit()">완료</button>
           </div>
-          <hr />
         </div>
         </form>
       </div>
