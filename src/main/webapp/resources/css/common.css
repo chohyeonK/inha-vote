@@ -27,18 +27,10 @@
     font-style: normal;
 }
 
-.NanumSquareNeo-Variable {
-    font-family: 'NanumSquareNeo-Variable';
-}
-
 .highlight{
     display: inline;
     box-shadow: inset 0 -10px 0 #D9FCDB;
     /*-10px은 highlight의 두께*/
-}
-
-.main-div, .sub-div {
-    font-family: 'Pretendard-Regular';
 }
 
 .main-logo {
@@ -46,33 +38,11 @@
     font-size: 24px;
 }
 
-.main-font {
-    font-family: 'KBO-Dia-Gothic_bold';
-}
-
 .frame {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px 30px;
 }
-
-/*#menubar {*/
-/*    max-width: 800px; margin: auto;*/
-/*}*/
-
-/*#menubar a {*/
-/*    color: white;*/
-/*}*/
-
-/*#menubar ul {*/
-/*    list-style:none;*/
-/*    margin: 0 auto;*/
-/*}*/
-
-/*#menubar li {*/
-/*    float: left;*/
-/*}*/
-
 
 #menu {
     display: flex;
@@ -92,15 +62,6 @@
 
 .active {
     border-bottom: 3px solid white;
-}
-
-.mnr-zone {
-    margin: 20px auto;
-}
-
-.mnr-guide {
-    height: 100px !important;
-    resize: none;
 }
 
 #overlay {
@@ -141,21 +102,15 @@
     }
 }
 
-.content{
-    max-width: 800px;
-    margin: 0 auto;
+.user-description {
+    background-color: #e9ecef; opacity: 1; padding: 10px; color: #495057; margin: 40px 0px 20px 0px; font-size: 16px;
 }
-.flexbox{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    /*width: 790px;*/
-    max-width: 800px;
-    margin: 0 auto;
-    justify-content: space-between;
+
+.footer {
+    width: 100%; height: 100px;
 }
-.item{
-    min-height: 200px;
-    flex-basis: 150px;
-    flex-grow: 1;
+
+.footer-item {
+    max-width: 790px; margin: 0 auto; text-align: center;
+    font-family: 'Pretendard-Regular';
 }

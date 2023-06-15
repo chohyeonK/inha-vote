@@ -20,15 +20,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<div style="padding: 0px 20px 50px 20px; width: 100%; height: 546px; background-color: #117DFF; border-radius: 0px 0px 0px 300px;">
+<div class="main-banner">
     <%@include file="../layout/top_menu.jsp" %>
 
-    <div style="display: flex; max-width: 790px; margin: 0 auto; padding-top: 29px; justify-content: space-between;">
-        <div class="main-font" style="color: white; font-size: 3.3rem; font-weight: bold;">
+    <div class="main-banner-l">
+        <div class="main-font">
             인하대 투표도<br>
             이제는<br>
             온라인에서!
-            <div style="width: 180px; padding: 9px 15px; text-align: center; margin-top: 50px; border-radius: 39px; font-size: 1.7rem; color: #444444; background-color: #ffffff;">
+            <div class="main-btn" onclick="goVote()">
                 투표하기
             </div>
         </div>
@@ -37,35 +37,39 @@
         </div>
     </div>
 </div>
-<div class="main-div" style="display: flex; flex-wrap: wrap; max-width: 790px; margin: 0 auto; padding: 50px 0px; justify-content: space-between;">
-    <div style="display: flex; align-items: center;">
-        <div class="highlight" style="font-size: 30px;">
+<div class="main-content">
+    <div class="main-content-l">
+        <div class="highlight">
             미래융합대학<br>
             학생을 위한<br>
             온라인 투표
         </div>
     </div>
 
-    <div>
-        <div style="display: flex;">
-            <div style="display: flex; justify-content: center; align-items: center;width: 200px; height: 180px; border-radius: 20px; border: 15px solid #F1F1F1; font-size: 22px; text-align: center;">
-                <div style="line-height: 40px;">
-                    번거롭지 않게<br>
-                    어디에서나<br>
-                    투표 가능!
-                </div>
+    <div class="main-content-r">
+        <div class="main-content-r-itm">
+            <div style="line-height: 40px;">
+                번거롭지 않게<br>
+                어디에서나<br>
+                투표 가능!
             </div>
-            <div style="margin-left: 25px; display: flex; justify-content: center; align-items: center;width: 200px; height: 180px; border-radius: 20px; border: 15px solid #F1F1F1; font-size: 22px; text-align: center;">
-                <div style="line-height: 40px;">
-                    인하대 메일만<br>
-                    있다면<br>
-                    투표 가능!
-                </div>
+        </div>
+        <div class="main-content-r-itm" style="margin-left: 25px;">
+            <div>
+                인하대 메일만<br>
+                있다면<br>
+                투표 가능!
             </div>
         </div>
     </div>
 </div>
 
 <%@include file="../layout/footer.jsp" %>
+
+<script>
+    function goVote() {
+        window.location.href = "/CreateVote";
+    }
+</script>
 </body>
 </html>
