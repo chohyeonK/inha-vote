@@ -19,15 +19,15 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <body>
-<div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
+
+<div class="sub-banner">
   <%@include file="../layout/top_menu.jsp" %>
-  <div style="display: flex; max-width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
-    <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
-      투표 등록 완료
-    </div>
+  <div class="sub-txt">
+    투표 등록 완료
   </div>
 </div>
-<div class="frame sub-div" style="box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2); position: relative; top: -80px; border: 2px solid #EEEEEE; background-color: white; border-radius: 15px;">
+
+<div class="frame sub-content">
   <div class="tab-content">
     <div class="tab-pane fade show active" id="reg1">
       <div>
@@ -39,39 +39,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="tab-pane fade" id="reg2">
-        <%-- ## 5 markup --%>
-        <div>
-          <div style="margin-top: 20px;">
-            <div class="btn btn-primary" style="width: 80px; border-radius: 150px;">
-              투표 1
-            </div>
-            <div class="btn" style="border: 1px solid black; width: 80px; border-radius: 150px;">
-              투표 2
-            </div>
-
-            <div>
-              <div style="margin-top: 15px;">
-                전체참여율
-                <div style="border: 1px solid black; width: 50%; height: 80px; margin-top: 15px;">
-                  그래프 자리
-                </div>
-              </div>
-              <div style="margin-top: 15px;">
-                <select class="custom-select">
-                  <option selected>학년별</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <div style="border: 1px solid black; width: 50%; height: 250px; margin-top: 15px;">
-                  그래프 자리
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
     </div>
   </div>
 </div>

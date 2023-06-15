@@ -37,16 +37,14 @@
     </div>
 </div>
 
-<div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
+<div class="sub-banner">
     <%@include file="../layout/top_menu.jsp" %>
-    <div style="display: flex; max-width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
-        <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
-            관리자 등록
-        </div>
+    <div class="sub-txt">
+        관리자 등록
     </div>
 </div>
 
-<div class="frame sub-div" style="box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2); position: relative; top: -80px; border: 2px solid #EEEEEE; background-color: white; border-radius: 15px;">
+<div class="frame sub-content">
     <form action="/CreateVote" method="post" onsubmit="return onSubmit()">
         <div class="mt-3 mb-3">
             <label for="manager-name" class="form-label">담당자명</label>
@@ -60,7 +58,7 @@
             <button type="submit" class="btn btn-primary">생성하기</button>
         </div>
     </form>
-    <div class="form-floating mnr-zone">
+    <div class="mnr-zone">
         <textarea class="form-control mnr-guide" id="floatingTextarea2" disabled readonly>관리자 코드를 분실하실 경우 관리자에게 문의하십시오.</textarea>
     </div>
 </div>

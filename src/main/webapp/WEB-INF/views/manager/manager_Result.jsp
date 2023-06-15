@@ -23,22 +23,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-
-<div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
+<div class="sub-banner">
     <%@include file="../layout/top_menu.jsp" %>
-    <div style="display: flex; max-width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
-        <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
-            투표 결과
-        </div>
+    <div class="sub-txt">
+        투표 결과
     </div>
 </div>
 
 
-<div class="frame sub-div" style="box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2); position: relative; top: -80px; border: 2px solid #EEEEEE; background-color: white; border-radius: 15px;">
-    <div style="display: flex; margin: 0 auto; justify-content: space-around;">
-        <div style="  padding: 20px 0px; margin-right: 20px;">
-            <p style="font-size: 20px; font-weight: bold;">${vote_name} 결과</p>
-            <div style="display: flex; width: 380px; flex-wrap: wrap; align-items: center;">
+<div class="frame sub-content">
+    <div class="sub-result-content">
+        <div class="sub-result-content-l">
+            <p class="sub-result-head">${vote_name} 결과</p>
+            <div class="sub-result-l">
                 <div style="width: 40%; height: 150px;">
                     <img src="<c:url value="/resources/img/candidate_img/${imgPath}"/>"class="img-fluid rounded-start" alt="...">
                 </div>
@@ -59,8 +56,8 @@
                 <div style="float: right">${vote_counter}/${total_vote_count}</div>
             </div>
         </div>
-        <div style="padding: 20px 0px;">
-            <p style="font-size: 20px; font-weight: bold;">${vote_name} 참여율</p>
+        <div class="sub-result-content-r">
+            <p class="sub-result-head">${vote_name} 참여율</p>
             <form>
                 <select class = "ChartSelect" name = "ChartSelect" id="ChartSelect" onchange="showChart()">
                     <option value = "Grade" data-value="Grade" selected>학년별</option>
