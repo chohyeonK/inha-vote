@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>투표 서비스</title>
     <link href="../../../resources/css/common.css" rel="stylesheet">
     <link href="../../../resources/css/manager.css" rel="stylesheet">
@@ -20,9 +20,52 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<%@include file="../layout/top_menu.jsp" %>
-<div style="width: 790px; height: auto; margin: 0 auto;">
-    <img src="../../../resources/img/main.png" width="100%"/>
+<div style="padding: 0px 20px 50px 20px; width: 100%; height: 546px; background-color: #117DFF; border-radius: 0px 0px 0px 300px;">
+    <%@include file="../layout/top_menu.jsp" %>
+
+    <div style="display: flex; max-width: 790px; margin: 0 auto; padding-top: 29px; justify-content: space-between;">
+        <div class="main-font" style="color: white; font-size: 3.3rem; font-weight: bold;">
+            인하대 투표도<br>
+            이제는<br>
+            온라인에서!
+            <div style="width: 180px; padding: 9px 15px; text-align: center; margin-top: 50px; border-radius: 39px; font-size: 1.7rem; color: #444444; background-color: #ffffff;">
+                투표하기
+            </div>
+        </div>
+        <div>
+            <img src="../../../resources/img/main-person.png" width="430">
+        </div>
+    </div>
 </div>
+<div class="main-div" style="display: flex; flex-wrap: wrap; max-width: 790px; margin: 0 auto; padding: 50px 0px; justify-content: space-between;">
+    <div style="display: flex; align-items: center;">
+        <div class="highlight" style="font-size: 30px;">
+            미래융합대학<br>
+            학생을 위한<br>
+            온라인 투표
+        </div>
+    </div>
+
+    <div>
+        <div style="display: flex;">
+            <div style="display: flex; justify-content: center; align-items: center;width: 200px; height: 180px; border-radius: 20px; border: 15px solid #F1F1F1; font-size: 22px; text-align: center;">
+                <div style="line-height: 40px;">
+                    번거롭지 않게<br>
+                    어디에서나<br>
+                    투표 가능!
+                </div>
+            </div>
+            <div style="margin-left: 25px; display: flex; justify-content: center; align-items: center;width: 200px; height: 180px; border-radius: 20px; border: 15px solid #F1F1F1; font-size: 22px; text-align: center;">
+                <div style="line-height: 40px;">
+                    인하대 메일만<br>
+                    있다면<br>
+                    투표 가능!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%@include file="../layout/footer.jsp" %>
 </body>
 </html>

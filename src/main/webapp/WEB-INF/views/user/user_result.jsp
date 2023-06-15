@@ -41,23 +41,30 @@
         <div style="float: right">${vote_counter}/${total_vote_count}</div>
       </div>
     </div>
-<%--    <canvas id="myChart"></canvas>--%>
+<%--    <form>--%>
+<%--      <select name = "ChartSelect">--%>
+<%--        <option value = "byGrade" selected>학년별</option>--%>
+<%--        <option value = "byMajor">학과별</option>--%>
+<%--      </select>--%>
+<%--    </form>--%>
+<%--    <canvas id="GradeChart"></canvas>--%>
     <div style="border: 1px solid black; color: red; margin-top: 15px; text-align: center; padding: 20px;">
       결과는 ${end_date}까지 확인할 수 있습니다.
     </div>
   </div>
 </div>
+
 <%--<script>--%>
-<%--  var ctx = document.getElementById('myChart').getContext('2d');--%>
-<%--  var chart = new Chart(ctx, {--%>
+<%--  var ctx1 = document.getElementById('GradeChart').getContext('2d');--%>
+<%--  var chart1 = new Chart(ctx1, {--%>
 <%--    type: 'bar', //--%>
 <%--    data: {--%>
-<%--      labels: ['${student_name}', '${student_name}', '${student_name}'],--%>
+<%--      labels: ['1학년', '2학년', '3학년', '4학년'],--%>
 <%--      datasets: [{--%>
-<%--        label: '득표수',--%>
+<%--        label: '투표율',--%>
 <%--        backgroundColor: 'rgb(0, 123, 255)',--%>
 <%--        borderColor: 'rgb(0, 123, 255)',--%>
-<%--        data: [${vote_counter}, ${vote_counter}, ${vote_counter}]--%>
+<%--        data: [${user_vote_rate_byGrade1}, ${user_vote_rate_byGrade2}, ${user_vote_rate_byGrade3}, ${user_vote_rate_byGrade4}]--%>
 <%--      }]--%>
 <%--    },--%>
 <%--    options: {--%>
@@ -71,29 +78,5 @@
 <%--    }--%>
 <%--  });--%>
 <%--</script>--%>
-<%--<script>
-  var ctx = document.getElementById('myChart').getContext('2d');
-  var chart = new Chart(ctx, {
-    type: 'bar', //
-    data: {
-      labels: ['${student_name_0}', '${student_name_1}', '${student_name_2}'],
-      datasets: [{
-        label: '득표수',
-        backgroundColor: 'rgb(0, 123, 255)',
-        borderColor: 'rgb(0, 123, 255)',
-        data: [${vote_counter_0}, ${vote_counter_1}, ${vote_counter_2}]
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
-  });
-</script>--%>
 </body>
 </html>

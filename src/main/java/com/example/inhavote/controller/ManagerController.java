@@ -30,6 +30,7 @@ public class ManagerController {
     private final ManagerService managerService;
     private final StudentsService studentsService;
     private final CandidateService candidateService;
+    private final UserService userService;
 
     @PostMapping(value = "/CreateVote")
     public String createVote(HttpServletRequest request,CreateVoteDTO createVoteDTO, Model model) {
@@ -46,7 +47,6 @@ public class ManagerController {
             model.addAttribute("managerid", createVoteDTO.getManager_id());
         }
         return "manager/manager_CreateVote";
-
     }
 
     @GetMapping("/session")
@@ -99,12 +99,27 @@ public class ManagerController {
             model.addAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
             model.addAttribute("student_name", student.getStudentname());
             model.addAttribute("end_date",end_date_f.format(end_date.getTime()));
+
+            model.addAttribute("user_vote_rate_byGrade1", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 1));
+            model.addAttribute("user_vote_rate_byGrade2", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 2));
+            model.addAttribute("user_vote_rate_byGrade3", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 3));
+            model.addAttribute("user_vote_rate_byGrade4", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 4));
+            model.addAttribute("user_vote_rate_byMajorA", userService.getUserVoteRateByVote_idAndStudentMajor(manager.get(0).getVoteid(), "소프트웨어융합공학과"));
+            model.addAttribute("user_vote_rate_byMajorB", userService.getUserVoteRateByVote_idAndStudentMajor(manager.get(0).getVoteid(), "메카트로닉스공학과"));
+            model.addAttribute("user_vote_rate_byMajorC", userService.getUserVoteRateByVote_idAndStudentMajor(manager.get(0).getVoteid(), "산업경영학과"));
+            model.addAttribute("user_vote_rate_byMajorD", userService.getUserVoteRateByVote_idAndStudentMajor(manager.get(0).getVoteid(), "금융투자학과"));
             return "manager/manager_ResultCertified";
         }
         else return "redirect:/error";
     }
 
+    @GetMapping("/ResultCertified")
+    public String ResultCertified(HttpServletRequest request,RedirectAttributes redirectAttributes)
+    {
+        HttpSession session=request.getSession();
 
+        return "manager/manager_ResultCertified";
+    }
 
     @GetMapping("/Register")
     public String Register(HttpServletRequest request,RedirectAttributes redirectAttributes,Model model) {
@@ -150,12 +165,11 @@ public class ManagerController {
         //System.out.println(managerService.findByManager_idAndManager_name(manager_id,manager_name));
         HttpSession session=request.getSession();
         String page =(String)session.getAttribute("page");
-        if(page==null) page="CreateVote";
         // System.out.println("login:"+session+"/page:"+page);
         if (login) {
             session.setAttribute("manager_id",manager_id);
             redirectAttributes.addFlashAttribute("manager_id", manager_id);
-            //redirectAttributes.addFlashAttribute("student_list", studentsService.findAll());
+            redirectAttributes.addFlashAttribute("student_list", studentsService.findAll());
             //System.out.println("manager_id:"+session.getAttribute("manager_id"));
             return "redirect:../"+page;
 
