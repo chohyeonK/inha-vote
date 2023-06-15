@@ -42,6 +42,7 @@ public class UserController {
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
 
         model.addAttribute("vote_list",manager);
+        model.addAttribute("vote_id",manager.get(0).getVoteid());
         model.addAttribute("start_date",manager.get(0).getStartdate());
         model.addAttribute("end_date",manager.get(0).getEnddate());
         model.addAttribute("manager_id", manager_id);
@@ -94,11 +95,13 @@ public class UserController {
         CandidateEntity elected = candidateService.findElectedByVote_id(manager.get(0).getVoteid());
         StudentsEntity student = studentsService.findByStudent_id(elected.getStudentid());
 
+        model.addAttribute("vote_name", manager.get(0).getVotename());
         model.addAttribute("manager_id", manager_id);
         model.addAttribute("vote_counter", elected.getVotecounter());
         model.addAttribute("vote_rate", candidateService.getVoteRateByVoteidAndVoteCounter(manager.get(0).getVoteid(), elected.getVotecounter()));
         model.addAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
         model.addAttribute("student_name", student.getStudentname());
+        model.addAttribute("student_img", elected.getImgpath());
         model.addAttribute("end_date", manager.get(0).getEnddate());
 //        model.addAttribute("user_vote_rate_byGrade1", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 1));
 //        model.addAttribute("user_vote_rate_byGrade2", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 2));

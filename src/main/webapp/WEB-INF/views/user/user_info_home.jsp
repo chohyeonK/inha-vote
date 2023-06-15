@@ -13,6 +13,7 @@
     <title>사용자-투표 정보</title>
     <link href="../../../resources/css/common.css" rel="stylesheet">
     <link href="../../../resources/css/manager.css" rel="stylesheet">
+    <link href="../../../resources/css/user.css" rel="stylesheet">
     <script src="../../../resources/js/manager.js"></script>
     <script src="../../../resources/js/common.js"></script>
     <script src="../../../resources/js/user.js"></script>
@@ -24,6 +25,29 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
+<div class="user-bg">
+    <div class="user-frame">
+        <div class="user-top">
+            <div class="highlight"><span class="user-vote-title"><c:forEach var="name" items="${vote_list}" >${name.votename}</c:forEach></span></div> <br>
+            투표 시작 : ${start_date}<br>
+            투표 종료 : ${end_date}
+        </div>
+        <%--매니저 id 개수 만큼 버튼 생성--%>
+        <div class="user-menu">
+
+
+            <c:forEach var="list" items="${vote_list}" varStatus="i">
+                <div class="user-menu-item" >
+                    <span style="text-align: center;">${list.votename} 후보</span>
+                </div>
+                <div class="d-flex justify-content-center" style="margin: 15px;">
+                    <button type="button" class="btn btn-primary btn-block" onclick="location.href='UserInfo_list=${manager_id}?vote_id=${vote_id}'">${list.votename} 후보</button>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</div>
+
 <div class="frame">
     <div id="userinfo_1">
         <div style="border: 1px solid black; padding: 10px;">

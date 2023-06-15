@@ -90,6 +90,10 @@
     color: white;
 }
 
+.active {
+    border-bottom: 3px solid white;
+}
+
 .mnr-zone {
     margin: 20px auto;
 }

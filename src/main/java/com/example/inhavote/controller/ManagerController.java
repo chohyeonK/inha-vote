@@ -35,7 +35,7 @@ public class ManagerController {
     public String createVote(CreateVoteDTO createVoteDTO, Model model) {
         //System.out.println(createVoteDTO.toString());
         managerService.create_vote(createVoteDTO);
-        model.addAttribute("manager_id", createVoteDTO.getManager_id());
+        model.addAttribute("managerid", createVoteDTO.getManager_id());
         return "manager/manager_CreateVote";
     }
 
@@ -80,6 +80,8 @@ public class ManagerController {
             }
 
             model.addAttribute("manager_id", manager_id);
+            model.addAttribute("imgPath", elected.getImgpath());
+            model.addAttribute("vote_name", manager.get(0).getVotename());
             model.addAttribute("vote_counter", elected.getVotecounter());
             model.addAttribute("vote_rate", candidateService.getVoteRateByVoteidAndVoteCounter(manager.get(0).getVoteid(), elected.getVotecounter()));
             model.addAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
@@ -99,9 +101,10 @@ public class ManagerController {
     }
 
     @GetMapping("/Register")
-    public String Register(HttpServletRequest request,RedirectAttributes redirectAttributes) {
+    public String Register(HttpServletRequest request,RedirectAttributes redirectAttributes, Model model) {
         HttpSession session=request.getSession();
         String manager_id=(String)session.getAttribute("manager_id");
+        model.addAttribute("student_list", studentsService.findAll());
         if(manager_id!=null) {
             if (managerService.existVote(manager_id)){
                 System.out.println("테이블 존재 어쩌구");

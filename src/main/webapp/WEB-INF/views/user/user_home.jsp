@@ -13,6 +13,7 @@
     <title>사용자</title>
     <link href="../../../resources/css/common.css" rel="stylesheet">
     <link href="../../../resources/css/manager.css" rel="stylesheet">
+    <link href="../../../resources/css/user.css" rel="stylesheet">
     <script src="../../../resources/js/manager.js"></script>
     <script src="../../../resources/js/common.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -21,21 +22,36 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="frame">
-    <div style="border: 1px solid black; padding: 10px;">
-        <c:forEach var="name" items="${vote_list}" >${name.votename}</c:forEach> <br>
-        투표 시작 : ${start_date}<br>
-        투표 종료 : ${end_date}
-    </div>
-    <div class="d-flex justify-content-center" style="margin: 15px">
-        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='UserInfo=${manager_id}'">투표 정보</button>
-    </div>
-    <div class="d-flex justify-content-center" style="margin: 15px">
-        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='UserEmail=${manager_id}'">투표 하기</button>
-    </div>
-    <div class="d-flex justify-content-center" style="margin: 15px">
-        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='UserResult=${manager_id}'">투표 결과</button>
+<div class="user-bg">
+    <div class="user-frame">
+        <div class="user-top">
+            <div class="highlight"><span class="user-vote-title"><c:forEach var="name" items="${vote_list}" >${name.votename}</c:forEach></span></div> <br>
+            투표 시작 : ${start_date}<br>
+            투표 종료 : ${end_date}
+        </div>
+        <div class="user-menu">
+            <div class="user-menu-item" onclick="location.href='UserInfo_list=${manager_id}?vote_id=${vote_id}'">
+                <img src="../../../resources/img/icon/document.png" /> 투표 정보
+            </div>
+            <div class="user-menu-item" onclick="location.href='UserEmail=${manager_id}'">
+                <img src="../../../resources/img/icon/vote.png" /> 투표 하기
+            </div>
+            <div class="user-menu-item" onclick="location.href='UserResult=${manager_id}'">
+                <img src="../../../resources/img/icon/result.png" />투표 결과
+            </div>
+        </div>
+
+        <%--    <div class="d-flex justify-content-center" style="margin: 15px">--%>
+        <%--        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='UserInfo=${manager_id}'">투표 정보</button>--%>
+        <%--    </div>--%>
+        <%--    <div class="d-flex justify-content-center" style="margin: 15px">--%>
+        <%--        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='UserEmail=${manager_id}'">투표 하기</button>--%>
+        <%--    </div>--%>
+        <%--    <div class="d-flex justify-content-center" style="margin: 15px">--%>
+        <%--        <button type="button" class="btn btn-primary btn-lg" onclick="location.href='UserResult=${manager_id}'">투표 결과</button>--%>
+        <%--    </div>--%>
     </div>
 </div>
+
 </body>
 </html>

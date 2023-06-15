@@ -13,6 +13,7 @@
     <title>사용자-투표 정보</title>
     <link href="../../../resources/css/common.css" rel="stylesheet">
     <link href="../../../resources/css/manager.css" rel="stylesheet">
+    <link href="../../../resources/css/user.css" rel="stylesheet">
     <script src="../../../resources/js/manager.js"></script>
     <script src="../../../resources/js/common.js"></script>
     <script src="../../../resources/js/user.js"></script>
@@ -24,23 +25,18 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
-<div class="frame">
-    <div id="userinfo_2">
-        <div style="border: 1px solid black; padding: 10px;"><br>${vote_name}<br><br></div>
-        <div id="list-group-div" class="list-group" style="margin-top: 15px; max-height: 750px; overflow: auto;">
+<div class="user-bg">
+    <div class="user-frame">
+        <div class="user-top">
+            <div class="highlight"><span class="user-vote-title">${vote_name}</span></div> <br>
+        </div>
+
+        <div class="user-info">
             <c:forEach var="list" items="${cadidate_student}" varStatus="status">
-                <a class="list-group-item list-group-item-action" style="padding: 30px" onclick="location.href='/UserInfo_candidate?vote_id='+`${vote_id}`+'&student_id='+`${list.student_id}`+'&candiNum='+`${status.index+1}`">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="<c:url value="/resources/img/candidate_img/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">기호 ${status.index+1}번 ${list.student_name}</h5>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                <div class="user-menu-item" onclick="location.href='/UserInfo_candidate?vote_id='+`${vote_id}`+'&student_id='+`${list.student_id}`+'&candiNum='+`${status.index+1}`">
+                    <img src="<c:url value="/resources/img/candidate_img/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
+                    <h5 class="user-info-txt">기호 ${status.index+1}번 ${list.student_name}</h5>
+                </div>
             </c:forEach>
         </div>
     </div>
