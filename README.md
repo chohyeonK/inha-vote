@@ -54,7 +54,9 @@ Issues: #1234
 ![4](https://user-images.githubusercontent.com/125789872/229516589-e0558551-493f-46a3-95db-4e87fe4e2648.PNG)
 ![229516602-fcf2c0f2-13a9-4241-b299-bc2095776a65](https://user-images.githubusercontent.com/125789872/236659606-abe9bd44-bae6-43c6-ad39-504d5f40c8e4.png)
 
-
+----
+## 개발서버 접속
+http://219.251.94.161:8080/
 
 
 
