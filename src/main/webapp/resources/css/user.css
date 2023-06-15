@@ -1,0 +1,119 @@
+/*사용자 페이지에서 사용되는 스타일 정의*/
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.user-bg {
+    background-color: #DDF0FF;
+    width: 100%;
+    height: 100%;
+}
+
+.user-frame {
+    font-family: 'Pretendard-Regular';
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 50px 25px;
+}
+
+.user-top {
+    font-size: 18px;
+    padding: 20px;
+    background-color: white;
+    color: #454545;
+    border: 4px solid #53B3FF;
+    border-radius: 15px;
+    box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.user-vote-title {
+    font-size: 30px; font-weight: bold;
+    color: black;
+}
+
+.user-menu, .user-info {
+    margin-top: 20px;
+}
+
+.user-menu-item, .user-info-item {
+    font-size: 20px;
+    padding: 15px 10px;
+    display: flex;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 4px solid #53B3FF;
+    align-items: center;
+}
+
+.user-candidate {
+    font-size: 20px;
+    padding: 15px 10px;
+    /*display: flex;*/
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 4px solid #53B3FF;
+
+}
+
+.user-candidate-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-menu-item img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.user-description {
+    background-color: #e9ecef; opacity: 1; padding: 10px; color: #495057; margin: 40px 0px 20px 0px; font-size: 16px;
+}
+
+.user-info img, .user-candidate-info img {
+    width: 115px;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.candidate-spec {
+    font-size: 16px;
+}
+
+.user-info-txt {
+    margin-left: 20px;
+}
+
+.user-email-form {
+    font-size: 20px;
+    padding: 15px 20px;
+    /*display: flex;*/
+    margin-bottom: 10px;
+    /*cursor: pointer;*/
+    background-color: white;
+    box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 4px solid #53B3FF;
+    align-items: center;
+}
+
+.user-vote {
+    font-size: 20px;
+    padding: 20px 30px;
+    /*display: flex;*/
+    margin-bottom: 10px;
+    background-color: white;
+    box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 4px solid #53B3FF;
+    max-height: 750px; overflow: auto;
+    text-align: center;
+}

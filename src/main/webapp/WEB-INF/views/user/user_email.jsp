@@ -12,6 +12,7 @@
   <title>사용자-투표 하기-인증</title>
   <link href="../../../resources/css/common.css" rel="stylesheet">
   <link href="../../../resources/css/manager.css" rel="stylesheet">
+  <link href="../../../resources/css/user.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -24,30 +25,63 @@
   <script src="../../../resources/js/user.js"></script>
 </head>
 <body>
-<div class=frame>
-  <form>
-<%--    <label class="form-label" style="margin: 10px">이름</label>--%>
-<%--    <input type="text" id="userName" class="form-control" placeholder="홍길동" aria-label="name">--%>
-    <label class="form-label" style="margin: 10px">학번</label>
-    <input type="text" id="userId" class="form-control" placeholder="12220001" aria-label="number">
-    <label class="form-label" style="margin: 10px">이메일</label>
-    <div class="d-flex">
-      <input type="text" id="userEmail" class="form-control" placeholder="inhastudent" aria-label="email">
-      <span>@inha.edu</span>
-    </div>
-    <div class="d-flex justify-content-center" style="margin: 10px">
-      <button type="button" class="btn btn-primary" onclick="sendMail()">이메일 인증</button>
-    </div>
-  </form>
+<div class="user-bg">
+    <div class="user-frame">
+        <div class="user-top">
+            <span class="user-vote-title">사용자 인증</span>
+        </div>
 
-  <div class="input-group mb-3">
-    <input type="text" id="voteCode" class="form-control" placeholder="인증 번호" aria-label="sc number" aria-describedby="button-addon2">
-    <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="confirmCode()">확인</button>
-  </div>
-  <div style="border: 1px solid black; padding: 10px;">미융대 학생만 참여 가능하며, 인하대 이메일만 사용할 수 있습니다.</div>
-    <input type="hidden" id="managerId" name="managerId" value="${manager_id}">
-  <input type="hidden" id="voteId" name="voteId" value="${vote_id}">
+        <div class="user-info">
+            <div class="user-email-form">
+                <form>
+                    <label class="form-label" style="margin: 10px 10px 10px 0px;">학번</label>
+                    <input type="text" id="userId" class="form-control mb-3" placeholder="12220001" aria-label="number">
+                    <label class="form-label" style="margin: 10px 10px 10px 0px;">이메일</label>
+                    <div class="d-flex" style="justify-content: space-between;">
+                        <div class="input-group">
+                            <input type="text" id="userEmail" class="form-control" placeholder="inhastudent" aria-label="email">
+                            <div style="margin-left: 10px;">@ inha.edu</div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary" style="margin-left: 30px;" onclick="sendMail()">이메일 인증</button>
+                        </div>
+                    </div>
+                </form>
+
+                <label class="form-label" style="margin: 10px 10px 10px 0px;">인증번호 확인</label>
+                <div class="input-group mb-3">
+                    <input type="text" id="voteCode" class="form-control" placeholder="인증 번호" aria-label="sc number" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="confirmCode()" style="margin-left: 20px;">확인</button>
+                </div>
+                <div class="user-description">미융대 학생만 참여 가능하며, 인하대 이메일만 사용할 수 있습니다.</div>
+                <input type="hidden" id="managerId" name="managerId" value="${manager_id}">
+                <input type="hidden" id="voteId" name="voteId" value="${vote_id}">
+            </div>
+        </div>
+    </div>
 </div>
+<%--<div class=frame>--%>
+<%--  <form>--%>
+<%--    <label class="form-label" style="margin: 10px">학번</label>--%>
+<%--    <input type="text" id="userId" class="form-control" placeholder="12220001" aria-label="number">--%>
+<%--    <label class="form-label" style="margin: 10px">이메일</label>--%>
+<%--    <div class="d-flex">--%>
+<%--      <input type="text" id="userEmail" class="form-control" placeholder="inhastudent" aria-label="email">--%>
+<%--      <span>@inha.edu</span>--%>
+<%--    </div>--%>
+<%--    <div class="d-flex justify-content-center" style="margin: 10px">--%>
+<%--      <button type="button" class="btn btn-primary" onclick="sendMail()">이메일 인증</button>--%>
+<%--    </div>--%>
+<%--  </form>--%>
+
+<%--  <div class="input-group mb-3">--%>
+<%--    <input type="text" id="voteCode" class="form-control" placeholder="인증 번호" aria-label="sc number" aria-describedby="button-addon2">--%>
+<%--    <button class="btn btn-outline-primary" type="button" id="button-addon2" onclick="confirmCode()">확인</button>--%>
+<%--  </div>--%>
+<%--  <div style="border: 1px solid black; padding: 10px;">미융대 학생만 참여 가능하며, 인하대 이메일만 사용할 수 있습니다.</div>--%>
+<%--    <input type="hidden" id="managerId" name="managerId" value="${manager_id}">--%>
+<%--  <input type="hidden" id="voteId" name="voteId" value="${vote_id}">--%>
+<%--</div>--%>
 <%--로딩 스피너 구현--%>
 <div id="overlay">
     <span class="loader"></span>

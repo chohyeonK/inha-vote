@@ -6,12 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>투표 서비스</title>
     <link href="../../../resources/css/common.css" rel="stylesheet">
     <link href="../../../resources/css/manager.css" rel="stylesheet">
+    <link href="../../../resources/css/user.css" rel="stylesheet">
     <script src="../../../resources/js/manager.js"></script>
     <script src="../../../resources/js/common.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -21,16 +23,32 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 <body>
-<div class="frame">
-    <div style="width: 400px; margin: 0 auto;">
-        <div style="border: 1px solid black; padding: 20px;">
-            <p>${vote_name} 결과</p>
-            <div style="display: flex; border: 1px solid black;">
-                <div style="width: 40%; height: 150px; border-right: 1px solid black;">
-                    ${img_path}
+
+<div style="padding: 0px 20px 50px 20px; width: 100%; height: 300px; background-color: #117DFF;">
+    <%@include file="../layout/top_menu.jsp" %>
+    <div style="display: flex; max-width: 790px; height: auto; margin: 0 auto; position: relative; top: 50px; justify-content: center;">
+        <div class="NanumSquareNeo-Variable" style="color: white; font-size: 38px; font-weight: bold;">
+            투표 결과
+        </div>
+    </div>
+</div>
+
+
+<div class="frame sub-div" style="box-shadow: 5px 8.7px 20px 0 rgba(0, 0, 0, 0.2); position: relative; top: -80px; border: 2px solid #EEEEEE; background-color: white; border-radius: 15px;">
+    <div style="display: flex; margin: 0 auto; justify-content: space-around;">
+        <div style="  padding: 20px 0px; margin-right: 20px;">
+            <p style="font-size: 20px; font-weight: bold;">${vote_name} 결과</p>
+            <div style="display: flex; width: 380px; flex-wrap: wrap; align-items: center;">
+                <div style="width: 40%; height: 150px;">
+                    <img src="<c:url value="/resources/img/candidate_img/${imgPath}"/>"class="img-fluid rounded-start" alt="...">
                 </div>
-                <div style="width: 60%;">
-                    ${student_name}<br>
+                <div style="width: 60%; padding-left: 30px;">
+                    <div style="font-size: 20px;">
+                        당선인
+                    </div>
+                    <div style="font-size: 30px;">
+                        <div class="highlight">${student_name}</div>
+                    </div>
                 </div>
             </div>
             <div>
@@ -41,16 +59,21 @@
                 <div style="float: right">${vote_counter}/${total_vote_count}</div>
             </div>
         </div>
-        <form>
-            <select class = "ChartSelect" name = "ChartSelect" id="ChartSelect" onchange="showChart()">
-                <option value = "Grade" data-value="Grade" selected>학년별</option>
-                <option value = "Major" data-value="Major">학과별</option>
-            </select>
-        </form>
-        <canvas id="voteRateChart"></canvas>
-        <div style="border: 1px solid black; color: red; margin-top: 15px; text-align: center; padding: 20px;">
-            결과는 ${end_date}까지 확인할 수 있습니다.
+        <div style="padding: 20px 0px;">
+            <p style="font-size: 20px; font-weight: bold;">${vote_name} 참여율</p>
+            <form>
+                <select class = "ChartSelect" name = "ChartSelect" id="ChartSelect" onchange="showChart()">
+                    <option value = "Grade" data-value="Grade" selected>학년별</option>
+                    <option value = "Major" data-value="Major">학과별</option>
+                </select>
+            </form>
+            <div style="margin-top: 30px;">
+                <canvas id="voteRateChart"></canvas>
+            </div>
         </div>
+    </div>
+    <div class="user-description">
+        결과는 ${end_date}까지 확인할 수 있습니다.
     </div>
 </div>
 

@@ -25,18 +25,18 @@
     var page = "<%= session_page %>";
     <% } %>
     console.log(page);
-    var menu = document.querySelectorAll("#menubar li a");
+    var menu = document.querySelectorAll("#menu li a");
+    console.log(menu)
     if (window.location.pathname == '/CreateVote') {
       menu[1].classList.add("active")
     } else if (window.location.pathname == '/') {
-      menu[0].classList.add("active")
+      // menu[0].classList.add("active")
     } else if (page=='Register') {
       menu[2].classList.add("active")
     } else if (page=='Result') {
       menu[3].classList.add("active")
     } else {
-      console.log("엘스")
-      menu[3].classList.add("active")
+      menu[4].classList.add("active")
     }
   }
 </script>
@@ -54,49 +54,19 @@
     <li>
       <a class="nav-link" href="/session?page=Result">투표 결과</a>
     </li>
-    <li style="float: right">
       <%
         String manage_id=(String) session.getAttribute("manager_id");
         if(manage_id!=null){
       %>
-      <button class="btn btn-primary" type="button" onclick="logout()">로그아웃</button>
+        <li onclick="logout()">
+            <a class="nav-link"  href="" onclick="return false;">로그아웃</a>
+        </li>
       <%
       }else{
       %>
-      <button class="btn btn-primary" type="button" onclick="login()">로그인</button>
-      <%}%>
+    <li onclick="login()">
+        <a class="nav-link"  href="" onclick="return false;">로그인</a>
     </li>
+      <%}%>
 </div>
-
-
-<%--<div style="color: white;">--%>
-<%--  <ul id="menubar" class="nav nav-pills nav-fill">--%>
-<%--    <li class="nav-item">--%>
-<%--      <a class="nav-link" aria-current="page" href="/">Home</a>--%>
-<%--    </li>--%>
-<%--    <li class="nav-item">--%>
-<%--      <a class="nav-link" href="CreateVote">관리자 등록</a>--%>
-<%--    </li>--%>
-<%--    <li class="nav-item">--%>
-<%--      <a class="nav-link" href="/session?page=Register">투표 등록</a>--%>
-<%--    </li>--%>
-<%--    <li class="nav-item">--%>
-<%--      <a class="nav-link" href="/session?page=Result">투표 결과</a>--%>
-<%--    </li>--%>
-<%--    <div align="right">--%>
-<%--      <div >--%>
-<%--        <%--%>
-<%--          String manage_id=(String) session.getAttribute("manager_id");--%>
-<%--          if(manage_id!=null){--%>
-<%--        %>--%>
-<%--        <button class="btn btn-primary" type="button" onclick="logout()">로그아웃</button>--%>
-<%--        <%--%>
-<%--        }else{--%>
-<%--        %>--%>
-<%--        <button class="btn btn-primary" type="button" onclick="login()">로그인</button>--%>
-<%--        <%}%>--%>
-<%--      </div>--%>
-<%--    </div>--%>
-<%--  </ul>--%>
-<%--</div>--%>
 
