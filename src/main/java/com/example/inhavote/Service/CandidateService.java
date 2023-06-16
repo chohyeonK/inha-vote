@@ -47,6 +47,7 @@ public class CandidateService {
             try {
                 byte[] bytes = file.getBytes();
                 Path path = Paths.get("./src/main/webapp/resources/img/candidate_img/" + vote_id+"-"+student_id+".png");
+                //Path path = Paths.get("/home/pi/img/" + vote_id+"-"+student_id+".png");
                 Files.write(path, bytes);
                 //return "succes";
             } catch (IOException e) {

@@ -32,6 +32,9 @@
     <div class="user-menu">
       <div class="user-candidate">
         <div class="user-candidate-info">
+<%--
+          <img src="<c:url value="/home/pi/img/${student_img}"/>"class="img-fluid rounded-start" alt="...">
+--%>
           <img src="<c:url value="/resources/img/candidate_img/${student_img}"/>"class="img-fluid rounded-start" alt="...">
           <div style="margin-left: 60px;">
             <div>당선인</div>

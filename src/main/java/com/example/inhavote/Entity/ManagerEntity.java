@@ -38,5 +38,8 @@ public class ManagerEntity {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "end_date")
     private Date enddate;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_end_date")
+    private Date lastenddate;
 }
 

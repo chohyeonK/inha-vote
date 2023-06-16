@@ -34,6 +34,9 @@
         <div class="user-info">
             <c:forEach var="list" items="${cadidate_student}" varStatus="status">
                 <div class="user-menu-item" onclick="location.href='/UserInfo_candidate?vote_id='+`${vote_id}`+'&student_id='+`${list.student_id}`+'&candiNum='+`${status.index+1}`">
+<%--
+                    <img src="<c:url value="/home/pi/img/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
+--%>
                     <img src="<c:url value="/resources/img/candidate_img/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
                     <h5 class="user-info-txt">기호 ${status.index+1}번 ${list.student_name}</h5>
                 </div>

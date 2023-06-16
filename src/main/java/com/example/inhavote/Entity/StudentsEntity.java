@@ -23,6 +23,7 @@ public class StudentsEntity {
     private String studentmajor;
     @Column(name = "student_grade")
     private int studentgrade;
-
+    @Column(name = "student_email")
+    private String studentemail;
 
 }

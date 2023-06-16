@@ -52,7 +52,7 @@ input[type="file"] {
 }
 
 .main-content-r-itm {
-    display: flex; justify-content: center; align-items: center;width: 200px; height: 180px; border-radius: 20px; border: 15px solid #F1F1F1; font-size: 22px; text-align: center;
+    display: flex; justify-content: center; align-items: center;width: 200px; height: 180px; border-radius: 20px; border: 12px solid #F1F1F1; font-size: 22px; text-align: center;
     line-height: 40px;
 }
 

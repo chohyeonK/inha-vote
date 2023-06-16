@@ -143,11 +143,11 @@ function onVoteSubmit() {
         success : function(data) {
             if(data==="err"){
                 document.getElementById('overlay').style.display = 'none'
-                window.location.href="http://localhost:8080/manager/manager_Login";
+                window.location.href="http://inha-vote.duckdns.org/manager/manager_Login";
 
             }else {
                 console.log(data)
-                window.location.href = "http://localhost:8080/manager/manager_URL=" + data;
+                window.location.href = "http://inha-vote.duckdns.org/manager/manager_URL=" + data;
             }
         }, // success
         error : function(xhr, status) {

@@ -37,44 +37,66 @@ public class UserController {
 //    }
 
     @GetMapping("/UserHome={manager_id}")
-    public String UserHome(@PathVariable("manager_id") String manager_id, Model model){
+    public String UserHome(@PathVariable("manager_id") String manager_id, Model model,RedirectAttributes redirectAttributes){
         //System.out.println("user"+manager_id);
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
-
-        model.addAttribute("vote_list",manager);
-        model.addAttribute("vote_id",manager.get(0).getVoteid());
-        model.addAttribute("start_date",manager.get(0).getStartdate());
-        model.addAttribute("end_date",manager.get(0).getEnddate());
-        model.addAttribute("manager_id", manager_id);
-        return "user/user_home";
+        String err_m=managerService.compareVoteDate(manager_id);
+        System.out.println(err_m);
+        if(err_m.equals("err5")){
+            redirectAttributes.addFlashAttribute(err_m,false);
+            return "redirect:/error";
+        }
+        else {
+            model.addAttribute("vote_list", manager);
+            model.addAttribute("vote_id", manager.get(0).getVoteid());
+            model.addAttribute("start_date", manager.get(0).getStartdate());
+            model.addAttribute("end_date", manager.get(0).getEnddate());
+            model.addAttribute("manager_id", manager_id);
+            return "user/user_home";
+        }
     }
     @GetMapping("/UserInfo={manager_id}")
-    public String UserInfo_home(@PathVariable("manager_id") String manager_id, Model model){
+    public String UserInfo_home(@PathVariable("manager_id") String manager_id, Model model,RedirectAttributes redirectAttributes){
         //System.out.println("user"+manager_id);
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
-        model.addAttribute("manager_id",manager_id);
-        model.addAttribute("vote_list",manager);
-        model.addAttribute("vote_id",manager.get(0).getVoteid());
-        model.addAttribute("start_date",manager.get(0).getStartdate());
-        model.addAttribute("end_date",manager.get(0).getEnddate());
+        String err_m=managerService.compareVoteDate(manager_id);
+        System.out.println(err_m);
+        if(err_m.equals("err5")){
+            redirectAttributes.addFlashAttribute(err_m,false);
+            return "redirect:/error";
+        }
+        else {
+            model.addAttribute("manager_id", manager_id);
+            model.addAttribute("vote_list", manager);
+            model.addAttribute("vote_id", manager.get(0).getVoteid());
+            model.addAttribute("start_date", manager.get(0).getStartdate());
+            model.addAttribute("end_date", manager.get(0).getEnddate());
 
-        return "user/user_info_home";
+            return "user/user_info_home";
+        }
     }
     @GetMapping("/UserInfo_list={manager_id}")
-    public String UserInfo_list(@PathVariable("manager_id") String manager_id,@RequestParam("vote_id")String vote_id, Model model) throws JsonProcessingException {
+    public String UserInfo_list(@PathVariable("manager_id") String manager_id,@RequestParam("vote_id")String vote_id, Model model,RedirectAttributes redirectAttributes) throws JsonProcessingException {
         //System.out.println("manager_id=" + manager_id + "vote_id=" + vote_id);
-
+        List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
         String name=managerService.findByVote_id(vote_id).getVotename();
         List<StudentsEntity> candidate_list=candidateService.candidate_List(vote_id);
         List<CandidateStudentDTO> cadidate_student = candidateService.findCandidateStudent(vote_id);
+        String err_m=managerService.compareVoteDate(manager_id);
+        System.out.println(err_m);
+        if(err_m.equals("err5")){
+            redirectAttributes.addFlashAttribute(err_m,false);
+            return "redirect:/error";
+        }
+        else {
 
+            model.addAttribute("manager_id", manager_id);
+            model.addAttribute("vote_id", vote_id);
+            model.addAttribute("vote_name", name);
+            model.addAttribute("cadidate_student", cadidate_student);
 
-        model.addAttribute("manager_id",manager_id);
-        model.addAttribute("vote_id",vote_id);
-        model.addAttribute("vote_name",name);
-        model.addAttribute("cadidate_student",cadidate_student);
-
-        return "user/user_info_list";
+            return "user/user_info_list";
+        }
     }
     @GetMapping("/UserInfo_candidate")
     public String UserInfo_candidate(@RequestParam("vote_id") String vote_id, @RequestParam("student_id") String student_id, @RequestParam("candiNum") String candiNum, Model model){
@@ -89,33 +111,51 @@ public class UserController {
         return "user/user_info_candidate";
     }
     @GetMapping("/UserResult={manager_id}")
-    public String UserResult(@PathVariable("manager_id") String manager_id, Model model){
+    public String UserResult(@PathVariable("manager_id") String manager_id, Model model,RedirectAttributes redirectAttributes){
         System.out.println("userresult"+manager_id);
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
-        CandidateEntity elected = candidateService.findElectedByVote_id(manager.get(0).getVoteid());
-        StudentsEntity student = studentsService.findByStudent_id(elected.getStudentid());
+        String err_m=managerService.compareVoteDate(manager_id);
+        System.out.println(err_m);
+        if(!err_m.equals("success")){
+            if(err_m.equals("err2")){
+                redirectAttributes.addFlashAttribute("user",manager.get(0).getManagerid());
+                redirectAttributes.addFlashAttribute("user_page",true);
+            }
+            redirectAttributes.addFlashAttribute("end_date",manager.get(0).getEnddate());
+            redirectAttributes.addFlashAttribute(err_m,false);
+            return "redirect:/error";
+        }
+        else {
+            CandidateEntity elected = candidateService.findElectedByVote_id(manager.get(0).getVoteid());
+            StudentsEntity student = studentsService.findByStudent_id(elected.getStudentid());
 
-        model.addAttribute("vote_name", manager.get(0).getVotename());
-        model.addAttribute("manager_id", manager_id);
-        model.addAttribute("vote_counter", elected.getVotecounter());
-        model.addAttribute("vote_rate", candidateService.getVoteRateByVoteidAndVoteCounter(manager.get(0).getVoteid(), elected.getVotecounter()));
-        model.addAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
-        model.addAttribute("student_name", student.getStudentname());
-        model.addAttribute("student_img", elected.getImgpath());
-        model.addAttribute("end_date", manager.get(0).getEnddate());
-//        model.addAttribute("user_vote_rate_byGrade1", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 1));
-//        model.addAttribute("user_vote_rate_byGrade2", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 2));
-//        model.addAttribute("user_vote_rate_byGrade3", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 3));
-//        model.addAttribute("user_vote_rate_byGrade4", userService.getUserVoteRateByVote_idAndStudentGrade(manager.get(0).getVoteid(), 4));
+            model.addAttribute("vote_name", manager.get(0).getVotename());
+            model.addAttribute("manager_id", manager_id);
+            model.addAttribute("vote_counter", elected.getVotecounter());
+            model.addAttribute("vote_rate", candidateService.getVoteRateByVoteidAndVoteCounter(manager.get(0).getVoteid(), elected.getVotecounter()));
+            model.addAttribute("total_vote_count", candidateService.getTotalVoteCountByVoteid(manager.get(0).getVoteid()));
+            model.addAttribute("student_name", student.getStudentname());
+            model.addAttribute("student_img", elected.getImgpath());
+            model.addAttribute("end_date", manager.get(0).getEnddate());
 
-        return "user/user_result";
+
+            return "user/user_result";
+        }
     }
     @GetMapping("/UserEmail={manager_id}")
-    public String UserEmail(@PathVariable("manager_id") String manager_id,Model model){
+    public String UserEmail(@PathVariable("manager_id") String manager_id,Model model,RedirectAttributes redirectAttributes){
 
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
-        model.addAttribute("vote_id", manager.get(0).getVoteid());
-        return "user/user_email";
+        String err_m=managerService.compareVoteDate(manager_id);
+        System.out.println(err_m);
+        if(err_m.equals("err5")){
+            redirectAttributes.addFlashAttribute(err_m,false);
+            return "redirect:/error";
+        }
+        else {
+            model.addAttribute("vote_id", manager.get(0).getVoteid());
+            return "user/user_email";
+        }
     }
 
     @PostMapping("/sendAuth")
@@ -123,11 +163,14 @@ public class UserController {
     public ResponseDTO sendAuth(@RequestBody StudentVoteDTO studentDTO){
         ResponseDTO res = new ResponseDTO(); // 결과 JSON 생성
 
+
         try {
             String studentId = studentDTO.getStudentId();
             String studentEmail = studentDTO.getStudentEmail();
             String voteId = studentDTO.getVoteId();
             String authCode = RandomCode.randomCode();
+
+            StudentsEntity student= studentsService.findByStudent_id(studentId);
 
             // 투표 대상 확인
             UserEntity voter = userService.voterConfirm(studentId, voteId);
@@ -138,8 +181,17 @@ public class UserController {
                 res.setResMessage("투표권이 없습니다. 계정을 다시 확인해주세요.");
 
                 return res;
-            } else { // 투표 대상 맞다면 투표 여부 확인
-                if (voter.isVoteconfirm()) { // 기 투표자라면 130 return
+            } else { // 투표 대상 맞다면 투표 여부 확인 이메일 유효성
+
+                String email=studentEmail.substring(0,studentEmail.indexOf('@'));
+                System.out.println(student.getStudentemail());
+                System.out.println(email!=student.getStudentemail());
+                if (!email.equals(student.getStudentemail())) {
+                    res.setResCode(150);
+                    res.setResMessage("입력한 이메일이 유효하지 않습니다. 이메일을 다시 확인해주세요.");
+
+                    return res;
+                } else if (voter.isVoteconfirm()) { // 기 투표자라면 130 return
                     res.setResCode(130);
                     res.setResMessage("이미 투표를 완료하였습니다.");
 

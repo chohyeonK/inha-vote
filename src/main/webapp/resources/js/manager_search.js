@@ -29,11 +29,11 @@ function createCandidate(name, id, grade, major) {
     divCollapse.setAttribute('data-parent', '#accordion')
     divCollapse.innerHTML = '<div class="card-body">\n' +
         '<div><label for="file' +count + '" id="fileLabel'+ count + '">\n' +
-        '                                <div style="background-color: #DCEDEB;">사진 등록</div>\n' +
+        '                                <div class="btn btn-primary">사진 등록</div>\n' +
         '                              </label></div>' +
         '                        <div style="display: flex; border: 1px solid black;">\n' +
         '                          <div style="width: 45%; height: 170px; overflow: hidden; border-right: 1px solid black;">\n' +
-        '                            <div style="width: 130px; height: 100%;">\n' +
+        '                            <div style="width: 130px; height: 100%; border: 1px solid black;">\n' +
         // '                              <label for="file' +count + '" id="fileLabel'+ count + '">\n' +
         // '                                <div style="width: 10px; height: 100%; background-color: #DCEDEB;">사진 등록</div>\n' +
         // '                              </label>\n' +
@@ -110,7 +110,7 @@ function studentSearch() {
                 var studentname = json[i].studentname
                 // console.log(studentgrade, studentid, studentmajor, studentname)
                 let item = document.createElement('div');
-                item.innerHTML = '<div style="border-bottom: 1px solid black;" >\n' +
+                item.innerHTML = '<div style="border-bottom: 1px solid black; padding: 5px;" >\n' +
                     '                        ' + studentname + studentid + studentgrade + '학년 ' + studentmajor + '\n' +
                     '                          <i class="bi bi-plus-circle"  onclick="createCandidate(`' + studentname + '`, `' + studentid + '`, `' + studentgrade + '`, `' + studentmajor + '`)"></i>\n' +
                     '                    </div>'

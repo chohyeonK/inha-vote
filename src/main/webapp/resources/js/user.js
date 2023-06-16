@@ -42,7 +42,10 @@ function sendMail() {
                 } else if (res.resCode == 110) {
                     alert(res.resMessage)
                     return false
-                } else {
+                } else if (res.resCode == 150) {
+                    alert(res.resMessage)
+                    return false
+                }else {
                     alert(res.resMessage)
                     return false
                 }

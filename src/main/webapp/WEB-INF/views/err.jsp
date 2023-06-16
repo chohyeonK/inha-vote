@@ -47,7 +47,17 @@
                     아직 등록 되지 않은 투표입니다. 등록을 먼저 진행해주세요.
                 </div>
             </c:if>
-            <a href="/"> 홈으로 돌아가기</a>
+            <c:if test="${err5 == false}">
+                <div class="alert alert-danger" role="alert">
+                    이미 만료된 투표입니다. 자세한 내용은 관리자에게 문의해주세요.
+                </div>
+            </c:if>
+            <c:if test="${user_page==true}">
+                <a href="UserHome=${user}"> 돌아가기</a>
+            </c:if>
+            <c:if test="${user_page!=true}">
+                <a href="/"> 홈으로 돌아가기</a>
+            </c:if>
         </div>
     </div>
 </div>

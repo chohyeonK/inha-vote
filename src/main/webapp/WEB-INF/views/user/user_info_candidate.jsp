@@ -33,6 +33,9 @@
         <div class="user-info">
             <div class="user-candidate">
                 <div class="user-candidate-info">
+<%--
+                    <img src="<c:url value="/home/pi/img/${candidate_info.imgpath}"/>"class="img-fluid rounded-start" alt="...">
+--%>
                     <img src="<c:url value="/resources/img/candidate_img/${candidate_info.imgpath}"/>"class="img-fluid rounded-start" alt="...">
                     <div style="margin-left: 20px;">
                         <h5 class="card-title"><div class="highlight">기호 ${candiNum}번 ${candidate.studentname}</div></h5>

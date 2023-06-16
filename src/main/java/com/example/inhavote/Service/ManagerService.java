@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -41,14 +42,38 @@ public class ManagerService {
         manager.setStartdate(registerVoteDTO.getStart_date());
         manager.setStudentgrade(registerVoteDTO.getStudent_grade());
         manager.setStudentmajor(registerVoteDTO.getStudent_major());
+
+        Calendar end_date = Calendar.getInstance();
+        end_date.setTime(registerVoteDTO.getEnd_date());
+        end_date.set(Calendar.HOUR_OF_DAY, 18); // 시간을 09로 설정
+        end_date.set(Calendar.MINUTE, 0); // 분을 00으로 설정
+        end_date.set(Calendar.SECOND, 0); // 초를 00으로 설정
+        end_date.add(Calendar.DATE, 30); // 30일을 더함
+        manager.setLastenddate(end_date.getTime());
     }
-    public boolean compareVoteDate(String manager_id) {
+    /*public boolean compareVoteDate(String manager_id) {
         List<ManagerEntity> manager = findByManager_id(manager_id);
         if (Objects.nonNull(manager.get(0).getEnddate())){
             Date today = new Date();
             return today.before(manager.get(0).getEnddate())?true:false;
         }
         else return true;
+    }*/
+    public String compareVoteDate(String manager_id) {
+        List<ManagerEntity> manager = findByManager_id(manager_id);
+
+        Date today = new Date();
+        Date endDate = manager.get(0).getEnddate();
+        Date lastEndDate = manager.get(0).getLastenddate();
+
+        if (endDate != null && today.before(endDate)) {
+            return "err2";
+        } else if (lastEndDate != null && today.after(lastEndDate)) {
+            return "err5";
+        } else if(endDate==null||lastEndDate==null){
+            return "err4";
+        }
+        return "success";
     }
     public boolean existVote(String manager_id){
         List<ManagerEntity> manager=findByManager_id(manager_id);

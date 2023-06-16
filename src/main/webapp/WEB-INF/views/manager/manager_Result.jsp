@@ -37,6 +37,9 @@
             <p class="sub-result-head">${vote_name} 결과</p>
             <div class="sub-result-l">
                 <div style="width: 40%; height: 150px;">
+<%--
+                    <img src="<c:url value="/home/pi/img/${imgPath}"/>"class="img-fluid rounded-start" alt="...">
+--%>
                     <img src="<c:url value="/resources/img/candidate_img/${imgPath}"/>"class="img-fluid rounded-start" alt="...">
                 </div>
                 <div style="width: 60%; padding-left: 30px;">

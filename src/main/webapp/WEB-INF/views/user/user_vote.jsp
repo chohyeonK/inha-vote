@@ -47,6 +47,9 @@
                             <%--                <div class="align-self-center p-2 bd-highlight">기호 ${status.index+1}번 ${list.student_name}</div>--%>
 
                         <div>
+<%--
+                            <img src="<c:url value="/hoem/pi/img/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
+--%>
                             <img src="<c:url value="/resources/img/candidate_img/${list.img_path}"/>"class="img-fluid rounded-start" alt="...">
                         </div>
                     </div>
