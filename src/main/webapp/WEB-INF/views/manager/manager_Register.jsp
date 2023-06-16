@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
   <script src="../../../resources/js/manager.js"></script>
-  <script src="../../../resources/js/common.js"></script>
+<%--  <script src="../../../resources/js/common.js"></script>--%>
   <script src="../../../resources/js/manager_search.js"></script>
 <body>
 <div class="sub-banner">

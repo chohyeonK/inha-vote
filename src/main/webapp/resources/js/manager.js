@@ -112,7 +112,7 @@ function onVoteSubmit() {
         var resSpec = spec.replace(/(?:\r\n|\r|\n)/g, '<br />');
         var promise = document.getElementsByClassName('promise')[i].value
         var resPromise = promise.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        console.log(resSpec, resPromise)
+        // console.log(resSpec, resPromise)
 
         // candidates[i].candidatespec = document.getElementsByClassName('spec')[i].value
         // candidates[i].candidatepromise = document.getElementsByClassName('promise')[i].value
@@ -145,8 +145,8 @@ function onVoteSubmit() {
         document.getElementById('overlay').style.display = 'none';
         return;
     }
-    console.log("imgArr:"+imgArr.length);
-    console.log("candidates"+candidates.length);
+    // console.log("imgArr:"+imgArr.length);
+    // console.log("candidates"+candidates.length);
     for (let i = 0; i < imgArr.length; i++) {
         formData.append("imgArr", imgArr[i].files[0]);
         //console.log(imgArr[i]);
@@ -165,7 +165,7 @@ function onVoteSubmit() {
                 window.location.href="http://inha-vote.duckdns.org/manager/manager_Login";
 
             }else {
-                console.log(data)
+                // console.log(data)
                 window.location.href = "http://inha-vote.duckdns.org/manager/manager_URL=" + data;
             }
         }, // success

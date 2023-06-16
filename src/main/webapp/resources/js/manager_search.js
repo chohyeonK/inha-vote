@@ -4,7 +4,7 @@
 
 // 후보자 등록 함수
 function createCandidate(name, id, grade, major) {
-    console.log(name, id, grade, major)
+    // console.log(name, id, grade, major)
     const divAccordian = document.getElementById('accordion')
 
     let count = divAccordian.childElementCount + 1
@@ -67,7 +67,7 @@ function createCandidate(name, id, grade, major) {
 
 // 후보자 리스트에서 삭제하는 함수
 function removeCandidate(e, index) {
-    console.log(e, index)
+    // console.log(e, index)
     var number = index - 1
 
     // html 요소 삭제
@@ -82,7 +82,7 @@ function removeCandidate(e, index) {
 // 후보자 검색 함수
 function studentSearch() {
     let word = document.getElementById('student_name').value
-    console.log(word)
+    // console.log(word)
 
     $.ajax({
         url: '/Register/search?param1='+word,
@@ -125,15 +125,15 @@ function studentSearch() {
 
 // 검색 시 엔터키로 가능하도록 하는 함수
 function keyDown(event) {
-    console.log(event)
+    // console.log(event)
     if(event.keyCode == 13){
         studentSearch()
         return;
     } else {
         let word = document.getElementById('student_name').value
-        console.log('word', word)
+        // console.log('word', word)
         if (word == '') {
-            console.log('아무것도 없음')
+            // console.log('아무것도 없음')
             studentSearch()
         }
     }

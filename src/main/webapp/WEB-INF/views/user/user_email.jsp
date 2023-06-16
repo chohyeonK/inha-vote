@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
   <script src="../../../resources/js/manager.js"></script>
-  <script src="../../../resources/js/common.js"></script>
+<%--  <script src="../../../resources/js/common.js"></script>--%>
   <script src="../../../resources/js/user.js"></script>
 </head>
 <body>

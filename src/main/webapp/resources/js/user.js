@@ -5,7 +5,7 @@ window.onload= function() {
 
 // 사용자페이지 - 인증 이메일 보내는 함수
 function sendMail() {
-    console.log('sendMail 함수 실행')
+    // console.log('sendMail 함수 실행')
     document.getElementById('overlay').style.display = 'block'
 
     // var name = document.getElementById('userName').value
@@ -114,7 +114,7 @@ function onVote(voteStudentId, voteId, manager_id) {
     var managerId = manager_id;
     var voteNumber = $("input[name='radioCandidate']:checked").val();
 
-    console.log(voteStudentId, voteId, voteNumber)
+    // console.log(voteStudentId, voteId, voteNumber)
 
     const query = 'label[for="'+ voteNumber + '"]'
     var voteCandidate = document.querySelector(query).innerText;

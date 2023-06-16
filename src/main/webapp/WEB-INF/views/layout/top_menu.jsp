@@ -24,9 +24,9 @@
        if (session_page != null) { %>
     var page = "<%= session_page %>";
     <% } %>
-    console.log(page);
+    // console.log(page);
     var menu = document.querySelectorAll("#menu li a");
-    console.log(menu)
+    // console.log(menu)
     if (window.location.pathname == '/CreateVote') {
       menu[1].classList.add("active")
     } else if (window.location.pathname == '/') {
