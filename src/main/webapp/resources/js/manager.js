@@ -110,9 +110,13 @@ function onVoteSubmit() {
     for (var i = 0; i < candidates.length; i++) {
         candidates[i].candidatespec = document.getElementsByClassName('spec')[i].value
         candidates[i].candidatepromise = document.getElementsByClassName('promise')[i].value
-    }
 
-    // console.log(candidates)
+        if (candidates[i].candidatespec.trim() === '' || candidates[i].candidatepromise.trim() === '') {
+            alert('후보자의 스펙과 공약을 모두 입력해주세요!');
+            document.getElementById('overlay').style.display = 'none';
+            return;
+        }
+    }
 
     const dataArr = {
         manager_id: manager_id,
@@ -126,12 +130,18 @@ function onVoteSubmit() {
     var formData=new FormData();
     formData.append("dataArr",new Blob([JSON.stringify(dataArr)],{type:"application/json"}));
 
+    if(candidates.length!=imgArr.length){
+
+        alert('사진을 등록해주세요!');
+        document.getElementById('overlay').style.display = 'none';
+        return;
+    }
+    console.log("imgArr:"+imgArr.length);
+    console.log("candidates"+candidates.length);
     for (let i = 0; i < imgArr.length; i++) {
         formData.append("imgArr", imgArr[i].files[0]);
         //console.log(imgArr[i]);
     }
-
-    console.log("dataArr:"+formData);
 
     $.ajax({
         cache : false,
