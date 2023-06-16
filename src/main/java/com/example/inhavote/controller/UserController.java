@@ -41,7 +41,7 @@ public class UserController {
         //System.out.println("user"+manager_id);
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
         String err_m=managerService.compareVoteDate(manager_id);
-        System.out.println(err_m);
+        //System.out.println(err_m);
         if(err_m.equals("err5")){
             redirectAttributes.addFlashAttribute(err_m,false);
             return "redirect:/error";
@@ -60,7 +60,7 @@ public class UserController {
         //System.out.println("user"+manager_id);
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
         String err_m=managerService.compareVoteDate(manager_id);
-        System.out.println(err_m);
+        //System.out.println(err_m);
         if(err_m.equals("err5")){
             redirectAttributes.addFlashAttribute(err_m,false);
             return "redirect:/error";
@@ -83,7 +83,7 @@ public class UserController {
         List<StudentsEntity> candidate_list=candidateService.candidate_List(vote_id);
         List<CandidateStudentDTO> cadidate_student = candidateService.findCandidateStudent(vote_id);
         String err_m=managerService.compareVoteDate(manager_id);
-        System.out.println(err_m);
+        //System.out.println(err_m);
         if(err_m.equals("err5")){
             redirectAttributes.addFlashAttribute(err_m,false);
             return "redirect:/error";
@@ -112,10 +112,10 @@ public class UserController {
     }
     @GetMapping("/UserResult={manager_id}")
     public String UserResult(@PathVariable("manager_id") String manager_id, Model model,RedirectAttributes redirectAttributes){
-        System.out.println("userresult"+manager_id);
+        //System.out.println("userresult"+manager_id);
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
         String err_m=managerService.compareVoteDate(manager_id);
-        System.out.println(err_m);
+        //System.out.println(err_m);
         if(!err_m.equals("success")){
             if(err_m.equals("err2")){
                 redirectAttributes.addFlashAttribute("user",manager.get(0).getManagerid());
@@ -147,7 +147,7 @@ public class UserController {
 
         List<ManagerEntity> manager = managerService.findByManager_id(manager_id);
         String err_m=managerService.compareVoteDate(manager_id);
-        System.out.println(err_m);
+        //System.out.println(err_m);
         if(err_m.equals("err5")){
             redirectAttributes.addFlashAttribute(err_m,false);
             return "redirect:/error";
@@ -184,8 +184,8 @@ public class UserController {
             } else { // 투표 대상 맞다면 투표 여부 확인 이메일 유효성
 
                 String email=studentEmail.substring(0,studentEmail.indexOf('@'));
-                System.out.println(student.getStudentemail());
-                System.out.println(email!=student.getStudentemail());
+                //System.out.println(student.getStudentemail());
+                //System.out.println(email!=student.getStudentemail());
                 if (!email.equals(student.getStudentemail())) {
                     res.setResCode(150);
                     res.setResMessage("입력한 이메일이 유효하지 않습니다. 이메일을 다시 확인해주세요.");

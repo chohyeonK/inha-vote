@@ -57,7 +57,7 @@ public class ManagerController {
         session.setAttribute("page",page);
         String manager_id=(String)session.getAttribute("manager_id");
 
-        System.out.println("manager_id:"+manager_id);
+        //System.out.println("manager_id:"+manager_id);
         if(manager_id!=null){
             return "redirect:/"+page;
         }else {
@@ -72,7 +72,7 @@ public class ManagerController {
 
         if(manager_id!=null) {
             String err_m=managerService.compareVoteDate(manager_id);
-            System.out.println(err_m);
+            //System.out.println(err_m);
             if(!err_m.equals("success")){
                 redirectAttributes.addFlashAttribute("end_date",manager.get(0).getEnddate());
                 redirectAttributes.addFlashAttribute(err_m,false);
@@ -113,7 +113,7 @@ public class ManagerController {
         model.addAttribute("student_list", studentsService.findAll());
         if(manager_id!=null) {
             if (managerService.existVote(manager_id)){
-                System.out.println("테이블 존재 어쩌구");
+                //System.out.println("테이블 존재 어쩌구");
                 redirectAttributes.addFlashAttribute("err3",false);
                 return "redirect:/error";
             }
