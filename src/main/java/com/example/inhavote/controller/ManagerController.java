@@ -35,20 +35,20 @@ public class ManagerController {
     private final UserService userService;
 
     @PostMapping(value = "/CreateVote")
-    public String createVote(HttpServletRequest request,CreateVoteDTO createVoteDTO, Model model) {
+    public String createVote(HttpServletRequest request,CreateVoteDTO createVoteDTO, RedirectAttributes redirectAttributes) {
         //System.out.println(createVoteDTO.toString());
         HttpSession session=request.getSession();
         String manager_id=(String)session.getAttribute("manager_id");
 
         if(manager_id!=null) {
-            model.addAttribute("err",false);
+            redirectAttributes.addFlashAttribute("err",false);
         }
         else if(manager_id==null){
             managerService.create_vote(createVoteDTO);
-            model.addAttribute("err",true);
-            model.addAttribute("managerid", createVoteDTO.getManager_id());
+            session.setAttribute("manager_id",createVoteDTO.getManager_id());
+            redirectAttributes.addFlashAttribute("managerid", createVoteDTO.getManager_id());
         }
-        return "manager/manager_CreateVote";
+        return "redirect:/CreateVote";
     }
 
     @GetMapping("/session")
