@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../../resources/css/common.css" rel="stylesheet">
     <link href="../../../resources/css/manager.css" rel="stylesheet">
+    <link href="../../../resources/css/err.css" rel="stylesheet">
     <script src="../../../resources/js/manager.js"></script>
 <%--    <script src="../../../resources/js/common.js"></script>--%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -22,44 +23,64 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="main-banner">
+    <%@include file="./layout/top_menu.jsp" %>
 
-<%--<a href="/">돌아가기</a>--%>
-<div class="frame">
-    <div class="tab-content">
-        <div class="tab-pane fade show active" id="reg1">
-            <c:if test="${manager_id == null}">
-                <div class="alert alert-danger" role="alert">
-                        잘못된 접근입니다.
+    <div class="err-banner-l">
+        <div class="frame">
+            <div>
+                <img src="../../../resources/img/err-icon.png" width="100">
+            </div>
+            <div class="err-font">
+                404: 페이지를 표시할 수 없습니다!
+            </div>
+            <div class="err-tab-content">
+                <div id="reg1">
+                    <c:if test="${manager_id == null}">
+                        <div class="alert alert-danger" role="alert">
+                            잘못된 접근입니다.
+                        </div>
+                    </c:if>
+                    <c:if test="${err2 == false}">
+                        <div class="alert alert-danger" role="alert">
+                                ${end_date}이후 확인할 수 있습니다.
+                        </div>
+                    </c:if>
+                    <c:if test="${err3 == false}">
+                        <div class="alert alert-danger" role="alert">
+                            이미 등록된 투표입니다. 수정은 관리자에게 문의해주세요.
+                        </div>
+                    </c:if>
+                    <c:if test="${err4 == false}">
+                        <div class="alert alert-danger" role="alert">
+                            아직 등록 되지 않은 투표입니다. 등록을 먼저 진행해주세요.
+                        </div>
+                    </c:if>
+                    <c:if test="${err5 == false}">
+                        <div class="alert alert-danger" role="alert">
+                            이미 만료된 투표입니다. 자세한 내용은 관리자에게 문의해주세요.
+                        </div>
+                    </c:if>
+                    <c:if test="${user_page==true}">
+                        <a href="UserHome=${user}"> 돌아가기</a>
+                    </c:if>
                 </div>
-            </c:if>
-            <c:if test="${err2 == false}">
-                <div class="alert alert-danger" role="alert">
-                        ${end_date}이후 확인할 수 있습니다.
+                <div class="err-font">
+                    <div class="err-btn" onclick="goHome()">
+                        홈으로 돌아가기
+                    </div>
                 </div>
-            </c:if>
-            <c:if test="${err3 == false}">
-                <div class="alert alert-danger" role="alert">
-                    이미 등록된 투표입니다. 수정은 관리자에게 문의해주세요.
-                </div>
-            </c:if>
-            <c:if test="${err4 == false}">
-                <div class="alert alert-danger" role="alert">
-                    아직 등록 되지 않은 투표입니다. 등록을 먼저 진행해주세요.
-                </div>
-            </c:if>
-            <c:if test="${err5 == false}">
-                <div class="alert alert-danger" role="alert">
-                    이미 만료된 투표입니다. 자세한 내용은 관리자에게 문의해주세요.
-                </div>
-            </c:if>
-            <c:if test="${user_page==true}">
-                <a href="UserHome=${user}"> 돌아가기</a>
-            </c:if>
-            <c:if test="${user_page!=true}">
-                <a href="/"> 홈으로 돌아가기</a>
-            </c:if>
+            </div>
         </div>
     </div>
 </div>
+
+<%@include file="./layout/footer.jsp" %>
+<%--<a href="/">돌아가기</a>--%>
+<script>
+    function goHome() {
+        window.location.href = "/";
+    }
+</script>
 </body>
 </html>

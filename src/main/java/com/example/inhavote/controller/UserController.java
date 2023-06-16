@@ -44,7 +44,7 @@ public class UserController {
         //System.out.println(err_m);
         if(err_m.equals("err5")){
             redirectAttributes.addFlashAttribute(err_m,false);
-            return "redirect:/error";
+            return "redirect:/error_u";
         }
         else {
             model.addAttribute("vote_list", manager);
@@ -63,7 +63,7 @@ public class UserController {
         //System.out.println(err_m);
         if(err_m.equals("err5")){
             redirectAttributes.addFlashAttribute(err_m,false);
-            return "redirect:/error";
+            return "redirect:/error_u";
         }
         else {
             model.addAttribute("manager_id", manager_id);
@@ -86,7 +86,7 @@ public class UserController {
         //System.out.println(err_m);
         if(err_m.equals("err5")){
             redirectAttributes.addFlashAttribute(err_m,false);
-            return "redirect:/error";
+            return "redirect:/error_u";
         }
         else {
 
@@ -123,7 +123,7 @@ public class UserController {
             }
             redirectAttributes.addFlashAttribute("end_date",manager.get(0).getEnddate());
             redirectAttributes.addFlashAttribute(err_m,false);
-            return "redirect:/error";
+            return "redirect:/error_u";
         }
         else {
             CandidateEntity elected = candidateService.findElectedByVote_id(manager.get(0).getVoteid());
@@ -150,7 +150,7 @@ public class UserController {
         //System.out.println(err_m);
         if(err_m.equals("err5")){
             redirectAttributes.addFlashAttribute(err_m,false);
-            return "redirect:/error";
+            return "redirect:/error_u";
         }
         else {
             model.addAttribute("vote_id", manager.get(0).getVoteid());
@@ -276,7 +276,7 @@ public class UserController {
 
             return "user/user_vote";
         }
-        else return "/error";
+        else return "/error_u";
 
     }
 

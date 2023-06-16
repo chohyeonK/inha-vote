@@ -1,0 +1,13 @@
+.err-font{
+    font-family: 'KBO-Dia-Gothic_bold';
+    color: white; font-size: 2rem; font-weight: bold;
+}
+.err-btn {
+    width: 250px; padding: 9px 15px; text-align: center; margin-top: 50px; border-radius: 39px; font-size: 1.7rem; color: #444444; background-color: #ffffff; cursor: pointer;
+}
+.err-banner-l {
+    max-width: 790px; margin: 0 auto; padding-top: 29px; justify-content: space-between;
+}
+.err-tab-content{
+    padding-top:10px;
+}

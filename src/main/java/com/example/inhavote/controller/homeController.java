@@ -53,5 +53,9 @@ public class homeController implements ErrorController {
         model.addAttribute("manager_id",manager_id);
         return "err";
     }
+    @GetMapping("/error_u")
+    public String error_user() {
 
+        return "u_err";
+    }
 }
