@@ -108,8 +108,17 @@ function onVoteSubmit() {
 
     // 후보자 스펙, 공약 저장
     for (var i = 0; i < candidates.length; i++) {
-        candidates[i].candidatespec = document.getElementsByClassName('spec')[i].value
-        candidates[i].candidatepromise = document.getElementsByClassName('promise')[i].value
+        var spec = document.getElementsByClassName('spec')[i].value
+        var resSpec = spec.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        var promise = document.getElementsByClassName('promise')[i].value
+        var resPromise = promise.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        console.log(resSpec, resPromise)
+
+        // candidates[i].candidatespec = document.getElementsByClassName('spec')[i].value
+        // candidates[i].candidatepromise = document.getElementsByClassName('promise')[i].value
+
+        candidates[i].candidatespec = resSpec
+        candidates[i].candidatepromise = resPromise
 
         if (candidates[i].candidatespec.trim() === '' || candidates[i].candidatepromise.trim() === '') {
             alert('후보자의 스펙과 공약을 모두 입력해주세요!');

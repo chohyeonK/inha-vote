@@ -31,7 +31,7 @@
             <div class="highlight"><span class="user-vote-title">${vote_name}</span></div> <br>
         </div>
 
-        <div class="user-info">
+        <div class="user-info" style="max-height: 450px; overflow: auto;">
             <c:forEach var="list" items="${cadidate_student}" varStatus="status">
                 <div class="user-menu-item" onclick="location.href='/UserInfo_candidate?vote_id='+`${vote_id}`+'&student_id='+`${list.student_id}`+'&candiNum='+`${status.index+1}`">
 <%--
